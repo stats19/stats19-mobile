@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:stat19_app_mobile/principale_screen.dart';
 
-void main() => runApp(MyApp());
+import 'ConnectionScreen.dart';
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+//void main() => runApp(MaterialApp(
+//    home:InscriptionForm()));
 
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Stats19'),
-        ),
-        body: Stack(
-          children: [
-           // Text('Hello the world!',textAlign: TextAlign.center),
-            Positioned(
-              top: 250,
-              left: 120,
-              child: Text('Hello the world!'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+void main(){
+
+    if (Authenticaction()){
+      //If user is authentified
+      runApp(MainPage());
+    }else{
+      runApp(MaterialApp( home:ConnectionForm()));
+    }
+}
+
+bool Authenticaction(){
+  return false;
 }

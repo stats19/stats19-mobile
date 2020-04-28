@@ -23,3 +23,21 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## How to start
+- Presentation: Configuration pré-existantantes.
+    * lib/: dossier pour developper en flutter et dart.
+    * lib/main.dart est le fichier ou s'exécute le programme.
+    * android/ et ios/ est le code généré pour android et ios.
+    * _pubspec.yaml_: est le fichier ou mettre les dépendances et d'autres propriétés d'un projet flutter.
+    
+- Presentation: Configuration rajouté.
+    * Image/ :pour rajouter une image de preference "jpg", "svg" ou "ico". ensuite rajouter l'image 
+    dans _pubspec.yaml_ pour la propriété le chemin vers image (ex:"images/image.jpg");
+    *lib/ressource: pour mettre les valeurs constantes re-utilisable ou long; _.../themes.dart_ pour 
+     le style et _.../value.dart_ pour valeur en dur;
+    
+- Check if everything is well install to developp a flutter project with 
+> flutter doctor
+- To run, go to the terminal of your project and do 
+> flutter run 
