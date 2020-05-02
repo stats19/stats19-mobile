@@ -13,7 +13,7 @@ class Stat19SimpleAppBar extends AppBar{
           fontSize: 19.0),
         ),
       ),
-      backgroundColor: Colors.black.withOpacity(0.2),
+      backgroundColor: Color.fromRGBO(53, 53, 53, 1.0),
       bottomOpacity: 0.345,
       toolbarOpacity: 1.0,
       );

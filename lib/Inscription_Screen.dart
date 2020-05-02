@@ -1,12 +1,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stat19_app_mobile/principale_screen.dart';
+import 'package:stat19_app_mobile/home_screen.dart';
 import 'package:stat19_app_mobile/ressource/themes.dart';
 import 'package:stat19_app_mobile/ressource/values.dart';
 
-import 'AppBar_components.dart';
-import 'models/user.dart';
+import 'components/AppBar_components.dart';
+import 'models/user-model.dart';
 
 class InscriptionForm extends StatefulWidget{
   @override
@@ -67,9 +67,8 @@ class InscriptionFormState extends State<InscriptionForm>{
   }
   @override
   Widget build(BuildContext context) {
-    //TODO: find a way to make the app bar as a one methode or class
    //TODO / In THE appBAR active arrow to go back to previous page
-    //TODO : see if you can make the Appbar transparent
+    //TODO : change style Appbar.
     //TODO :  ADD our logo
     return Scaffold(
       appBar: new Stat19SimpleAppBar(titleName: "S'inscrire"),
@@ -102,8 +101,8 @@ class InscriptionFormState extends State<InscriptionForm>{
                   print("email: " + _new_user.email);
                   print("pswd: " + _new_user.password);
                   /**
-                   * //TODO : set info new user via service to api
-                   * redirect to another main page (Done) And TODO : valid auhentification without passing by connection page
+                   * //TODO : send new user to server
+                   * TODO : valid auhentification without passing by connection page
                    */
                   Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
                   //TODO : find a way to clear Input after validation ( _formKey.currentState.reset();)
