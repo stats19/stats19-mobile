@@ -12,7 +12,7 @@ class LeaguesView extends StatefulWidget{
     return LeaguesState();
   }
 }
-
+//TODO a progressive Methode to see times réponse of service task.
 class LeaguesState extends State<LeaguesView> {
   ApiResponse<List<Leagues>> _leagues_list_Response;
   bool _isFetching = false;

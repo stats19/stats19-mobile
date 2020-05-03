@@ -68,7 +68,6 @@ class InscriptionFormState extends State<InscriptionFormScreen>{
   }
   @override
   Widget build(BuildContext context) {
-   //TODO / In THE appBAR active arrow to go back to previous page
     //TODO :  ADD our logo
     return MaterialApp(
       home: Scaffold(

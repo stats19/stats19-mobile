@@ -17,7 +17,7 @@ class MainPageState extends State<MainPage> {
     return MaterialApp(
       home: Scaffold(
         appBar: new Stat19SimpleAppBar(titleName: "Stats19"),
-        drawer: new HomeNavigationBar(),
+        drawer: new HomeNavigationBar(), //TODO being able to close nav bar thought drawer icons
         body: Container(
           decoration: BoxDecoration(
             image: BODY_BACKGROUND_DECORATION_IMAGE,
