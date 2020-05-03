@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:stat19_app_mobile/home_screen.dart';
-
-import 'Connection_Screen.dart';
+import 'app_router.dart';
 
 //void main() => runApp(MaterialApp(
 //    home:InscriptionForm()));
 
 void main(){
-    //TODO : valid auhentification without passing by connection page
-    if (Authenticaction()){
-      runApp(MainPage());
-    }else{
-      runApp(MaterialApp( home:ConnectionForm()));
-    }
+    runApp(MyApp());
+}
+//TODO : Impl Aunt method valid auhentification without passing by connection page
+bool Authentification(){
+  return false;
 }
 
-bool Authenticaction(){
-  return false;
+class MyApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'router',
+      onGenerateRoute: routing,
+      initialRoute: Authentification()?NamedRoute.HOME_ROUTE:NamedRoute.CONNECTION_ROUTE,
+    );
+  }
+
 }

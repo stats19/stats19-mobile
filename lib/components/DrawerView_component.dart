@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:stat19_app_mobile/ressource/themes.dart';
-import 'package:stat19_app_mobile/ressource/values.dart';
 
 class Menu{
   String _name;
@@ -10,7 +9,6 @@ class Menu{
   bool _hasSousMenus;
   List<Menu> _sousMenus;
   Color _onpressColor = Color.fromRGBO(196, 208, 4, 1.0);
-  //Icon _icon_arrow;
   Menu();
   Menu.sansSousMenu(this._name){
     this._isOpen = false;
@@ -108,7 +106,7 @@ class NavMenuState extends State<NavMenu>{
   void onPressAction(){
     menu.open()==true?menu.set_open(false):menu.set_open(true);
     setState(() {
-      arrow = menu.open()?OPEN_ARROW:CLOSE_ARROW;
+      arrow = menu.open() && menu.hasSousMenus()?OPEN_ARROW:CLOSE_ARROW;
       developSousMenu = menu.open()==true && menu.hasSousMenus()?true:false;
     });
     print(menu.name+": isOpen: "+menu.open().toString() );

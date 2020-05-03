@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:stat19_app_mobile/models/league-model.dart';
-import 'package:stat19_app_mobile/models/user-model.dart';
 import 'api-services.dart';
 
 class LeaguesServices{

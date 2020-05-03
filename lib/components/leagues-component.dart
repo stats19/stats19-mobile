@@ -6,12 +6,9 @@ import 'package:stat19_app_mobile/models/league-model.dart';
 import 'package:stat19_app_mobile/services/api-services.dart';
 import 'package:stat19_app_mobile/services/leagues-services.dart';
 
-import '../models/user-model.dart';
-
 class LeaguesView extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return LeaguesState();
   }
 }

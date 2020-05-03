@@ -1,13 +1,7 @@
 
-
-import 'dart:wasm';
-
 import 'package:flutter/material.dart';
 import 'package:stat19_app_mobile/components/AppBar_components.dart';
-import 'package:stat19_app_mobile/models/user-model.dart';
 import 'package:stat19_app_mobile/ressource/themes.dart';
-import 'package:stat19_app_mobile/services/api-services.dart';
-import 'package:stat19_app_mobile/services/leagues-services.dart';
 
 import 'components/DrawerView_component.dart';
 import 'components/leagues-component.dart';
@@ -22,7 +16,7 @@ class MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: new Stat19SimpleAppBar(titleName: "Stats19 "), //TODO :Add grid view
+        appBar: new Stat19SimpleAppBar(titleName: "Stats19"),
         drawer: new HomeNavigationBar(),
         body: Container(
           decoration: BoxDecoration(
