@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:stat19_app_mobile/components/AppBar_components.dart';
 import 'package:stat19_app_mobile/ressource/themes.dart';
 
-import 'app_router.dart';
-import 'models/user-model.dart';
-import 'ressource/themes.dart';
+import '../app_router.dart';
+import '../models/user-model.dart';
+import '../ressource/themes.dart';
 
 class ConnectionScreen extends StatefulWidget{
   @override
@@ -93,7 +93,7 @@ class ConnectionFormState extends State<ConnectionScreen>{
                            * TODO : get user with paswd == pswdDB and username == usernameDB via  call of Authentification method
                            */
                           _formKey.currentState.reset();
-                          Navigator.pushNamed(context, NamedRoute.HOME_ROUTE);
+                          Navigator.pushReplacementNamed(context, NamedRoute.HOME_ROUTE);
 
                         },
                       )

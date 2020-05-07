@@ -2,11 +2,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'app_router.dart';
-import 'components/AppBar_components.dart';
-import 'models/user-model.dart';
-import 'ressource/themes.dart';
-import 'ressource/values.dart';
+import '../app_router.dart';
+import '../components/AppBar_components.dart';
+import '../models/user-model.dart';
+import '../ressource/themes.dart';
+import '../ressource/values.dart';
 
 class InscriptionFormScreen extends StatefulWidget{
   @override

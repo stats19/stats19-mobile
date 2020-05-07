@@ -2,11 +2,13 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stat19_app_mobile/models/league-model.dart';
 import 'package:stat19_app_mobile/services/api-services.dart';
 import 'package:stat19_app_mobile/services/leagues-services.dart';
 
 class LeaguesView extends StatefulWidget{
+
   @override
   State<StatefulWidget> createState() {
     return LeaguesState();
@@ -16,8 +18,6 @@ class LeaguesView extends StatefulWidget{
 class LeaguesState extends State<LeaguesView> {
   ApiResponse<List<Leagues>> _leagues_list_Response;
   bool _isFetching = false;
-  double _progressValue = 0.0;
-
   @override
   void initState() {
     fetchLeaguesList();
@@ -28,21 +28,20 @@ class LeaguesState extends State<LeaguesView> {
     setState(() {
       _isFetching = true;
     });
-    var service = new LeaguesServices();
-    _leagues_list_Response = await service.getLeagues();
+    _leagues_list_Response = await LeaguesServices.getLeagues();
+
     print("state: list:"+ _leagues_list_Response.data.toString());
     setState(() {
-      _progressValue = 0.0;
       _isFetching = false;
     });
   }
 
   List<Text> _getTextLeaguesNameWidgets() {
     List<Text> leaguesText = new List<Text>();
-    leaguesText.add(Text("Championnats"));
+    leaguesText.add(Text("data service leagues"));
     for (var i = 0; i < _leagues_list_Response.data.length; i++) {
       var league = _leagues_list_Response.data.elementAt(i).toJson();
-      print("fetch : " + league['name']);
+      print("league service fetch : " + league['name']);
       leaguesText.add(Text(league['name']));
     }
     return (leaguesText);
@@ -51,17 +50,16 @@ class LeaguesState extends State<LeaguesView> {
   @override
   Widget build(BuildContext context) {
      return Builder(
-        builder: (_) {
-          if (_isFetching) {
-            return CircularProgressIndicator();
+        builder: (BuildContext context) {
+          if(_isFetching ){
+            //TODO stop spinner when le service echoue ou les donneés son vide
+              return  _leagues_list_Response==null || _leagues_list_Response.data.isEmpty?CircularProgressIndicator()
+                  :Text("Error: unable to find data, no servise available");
           }
-          if (_leagues_list_Response.errorMsg != null) {
-            return Text("Error: unable to find data");
-          }
-          if(!_isFetching) return Column(
+            return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: _getTextLeaguesNameWidgets(),
-          );
+            );
         }
     );
   }

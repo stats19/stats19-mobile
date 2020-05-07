@@ -7,7 +7,7 @@ import 'api-services.dart';
 
 class LeaguesServices{
 
-  Future<ApiResponse<List<Leagues>>> getLeagues() async{
+  static Future<ApiResponse<List<Leagues>>> getLeagues() async{
     return await http.get(ApiArgs.LEAGUES_ENDPOINT(), headers: ApiArgs.header).then((data){
       if(data.statusCode == 200){
         List<Leagues> leagues = new List<Leagues>();
@@ -17,9 +17,9 @@ class LeaguesServices{
             leagues.add(new Leagues.fromjson(json));
             i++;
         }
-        return ApiResponse(data:leagues, errorMsg: null);
+        return ApiResponse(data:leagues, errorMsg: null);//empty
       }
       return ApiResponse(data:null, errorMsg: "error(s)");
-    });//.catchError(return ApiResponse(data:null,  errorMsg: "error(s): not working"); );
+    }).catchError((err){return null;} );
   }
 }

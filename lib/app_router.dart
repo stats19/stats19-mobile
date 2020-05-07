@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:stat19_app_mobile/Connection_Screen.dart';
-import 'package:stat19_app_mobile/Inscription_Screen.dart';
-import 'package:stat19_app_mobile/home_screen.dart';
+import 'package:stat19_app_mobile/views/Connection_Screen.dart';
+import 'package:stat19_app_mobile/views/Inscription_Screen.dart';
+import 'package:stat19_app_mobile/views/HomePage_Screen.dart';
 
 class NamedRoute{
   static const String INSCRIPTION_ROUTE = "inscription";
@@ -18,7 +18,7 @@ Route<dynamic> routing(RouteSettings settings){
       return MaterialPageRoute(builder: (context) => ConnectionScreen());
 
     case NamedRoute.HOME_ROUTE:
-    return MaterialPageRoute(builder: (context) => MainPage());
+      return MaterialPageRoute(builder: (context) => MainPage());
     default:
       return null;
   }

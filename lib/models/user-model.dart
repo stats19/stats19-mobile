@@ -4,7 +4,7 @@
 /// [UserJson] Object json pour recuperer ou manipuler un utilisateur existant.
 
 class User{
-  int _id; //auto-generate
+  int _id; //auto-generated
   String _username;
   String _email;
   String _password;
