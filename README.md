@@ -38,6 +38,7 @@ samples, guidance on mobile development, and a full API reference.
     * [Mini ou bloc de Composants intégrable](/lib/components)
     * [Model d'objet pour manipuler des données](/lib/models)
     * [Services lier l'api ou autres](/lib/services)
+    * [Les écran principaux et vus](/lib/views)
     
 - Check if everything is well install to developp a flutter project with 
 > flutter doctor
