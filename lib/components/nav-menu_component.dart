@@ -4,7 +4,8 @@ import 'package:stat19_app_mobile/ressource/themes.dart';
 
 class NavMenu extends StatefulWidget{
   Menu _menu;
-  NavMenu(this._menu);
+  NavMenu();
+  NavMenu.single(this._menu);
   NavMenu.withIcon(this._menu,this.iconImage);
   IconData iconImage;
   @override
@@ -40,30 +41,14 @@ class NavMenuState extends State<NavMenu>{
     print(menu.name+": isOpen: "+menu.open().toString() );
   }
   List<NavMenu> listSousMenu(){
-    List<NavMenu> sous_NavMenu_menus =  new List<NavMenu>();
+    List<NavMenu> sous_NavMenu_menus = new List<NavMenu>();
     for(Menu item in sousMenus){
-      sous_NavMenu_menus.add(new NavMenu(item));
+      sous_NavMenu_menus.add(new NavMenu.single(item));
     }
     return sous_NavMenu_menus;
   }
-  Widget buildMenuViewOrListView(){
-/*    if(menu.name == "Menu"){
-      return ListTileTheme(
-        selectedColor: MENU_BACKGROUND_ONPRESS_COLOR,
-        child: ListTile(
-          title: Text('${menu.name}',style:TextStyle(fontWeight: FontWeight.bold)),
-          leading: Icon(Icons.home),
-          trailing: this.arrow,
-          onLongPress: (){
-            onPressAction();
-          },
-          onTap: (){
-            onPressAction();
-          },
-        ),
-      );
-    }*/
 
+  Widget buildMenuViewOrListView(){
     if(developSousMenu){
       return Column(
         children: <Widget>[
@@ -80,7 +65,7 @@ class NavMenuState extends State<NavMenu>{
               },
             ),
           ),
-          for(var sous_menu in sousMenus) new NavMenu(sous_menu),
+          Column(children:listSousMenu()),
         ],
       );
     }
@@ -88,7 +73,7 @@ class NavMenuState extends State<NavMenu>{
       selectedColor: MENU_BACKGROUND_ONPRESS_COLOR,
       child: ListTile(
         title: Text('${menu.name}', style:TextStyle(fontWeight: FontWeight.bold)),
-        leading: optionnelIcon!=null?optionnelIcon:Row(),
+        leading:optionnelIcon!=null?optionnelIcon:Row(),
         trailing: this.arrow,
         onLongPress: (){
           onPressAction();

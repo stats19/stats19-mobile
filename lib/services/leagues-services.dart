@@ -9,15 +9,13 @@ class LeaguesServices{
 
   static Future<ApiResponse<List<Leagues>>> getLeagues() async{
     return await http.get(ApiArgs.LEAGUES_ENDPOINT(), headers: ApiArgs.header).then((data){
+      List<Leagues> leagues = new List<Leagues>();
       if(data.statusCode == 200){
-        List<Leagues> leagues = new List<Leagues>();
         final jsonData = jsonDecode(data.body);
-        int i=0;
         for(var json in jsonData){
             leagues.add(new Leagues.fromjson(json));
-            i++;
         }
-        return ApiResponse(data:leagues, errorMsg: null);//empty
+        return ApiResponse(data:null, errorMsg: "service errors");//empty
       }
       return ApiResponse(data:null, errorMsg: "error(s)");
     }).catchError((err){return null;} );

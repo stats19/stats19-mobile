@@ -72,7 +72,7 @@ class HomeNavigationBar extends Drawer{
                 name:"Menu",
                 listSousMenus:[new Menu.sansSousMenu("...1.1"),new Menu.sansSousMenu("...1.2")]
                    ), Icons.home ),
-            NavMenu(new Menu.sansSousMenu("autre menu")),
+            NavMenu.single(new Menu.sansSousMenu("autre menu")),
 
           ]),
     )

@@ -2,7 +2,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stat19_app_mobile/models/league-model.dart';
 import 'package:stat19_app_mobile/services/api-services.dart';
 import 'package:stat19_app_mobile/services/leagues-services.dart';
