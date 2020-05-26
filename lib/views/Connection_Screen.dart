@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stat19_app_mobile/components/AppBar_components.dart';
 import 'package:stat19_app_mobile/ressource/themes.dart';
+import 'package:stat19_app_mobile/services/web_service.dart';
 
 import '../app_router.dart';
 import '../models/user-model.dart';
@@ -17,6 +18,8 @@ class ConnectionScreen extends StatefulWidget{
 
 class ConnectionFormState extends State<ConnectionScreen>{
   User _user = new User();
+  WebService _ws = WebService();
+  bool _loading = false;
   //Color colorTxt;
   final _formKey = GlobalKey<FormState>();
   Widget _username_widget(){
@@ -78,24 +81,36 @@ class ConnectionFormState extends State<ConnectionScreen>{
                       SizedBox(height: 30),
                       _username_widget(),
                       _password_widget(),
-                      SizedBox(height: 75),
-                      RaisedButton(
-                        child: Text("Submit"),
-                        color: GENERAL_BUTTON_COLOR,
-                        onPressed: (){
-                          if(!_formKey.currentState.validate()) {
-                            return;
-                          }
-                          _formKey.currentState.save();
-                          print("username: " + _user.username);
-                          print("pswd: " + _user.password);
-                          /**
-                           * TODO : get user with paswd == pswdDB and username == usernameDB via  call of Authentification method
-                           */
-                          _formKey.currentState.reset();
-                          Navigator.pushReplacementNamed(context, NamedRoute.HOME_ROUTE);
+                      (!this._loading)
+                      ?
+                        RaisedButton(
+                          child: Text("Submit"),
+                          color: GENERAL_BUTTON_COLOR,
+                          onPressed: (){
+                            if(!_formKey.currentState.validate()) {
+                              return;
+                            }
+                            _formKey.currentState.save();
+                            setState(() {
+                              this._loading = true;
+                            });
+                            print("username: " + _user.username);
+                            print("pswd: " + _user.password);
 
-                        },
+                            // API call to log in
+                            this._ws.auth(this._user).then((_){
+                              Navigator.pushReplacementNamed(context, NamedRoute.HOME_ROUTE);
+                              setState(() {
+                                this._loading = false;
+                              });
+                              _formKey.currentState.reset();
+                            });
+
+
+                          },
+                        )
+                      : Center(
+                        child: CupertinoActivityIndicator()
                       )
                     ]),
               ),

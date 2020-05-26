@@ -3,11 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:stat19_app_mobile/app_router.dart';
 import 'package:stat19_app_mobile/ressource/themes.dart';
+import 'package:stat19_app_mobile/services/web_service.dart';
 
 import '../components/nav-menu_component.dart';
 import '../models/menu_item.dart';
 
 class HomeNavigationBar extends Drawer{
+  static WebService _ws = new WebService();
+
   HomeNavigationBar({Key key, BuildContext context}):super(key:key,
     child: Container(
       color: MENU_BACKGROUND_COLOR,
@@ -20,7 +23,7 @@ class HomeNavigationBar extends Drawer{
                     Material(
                       child:Image.asset("images/football-player-icon.jpg",color: MENU_BACKGROUND_ONPRESS_COLOR, colorBlendMode: BlendMode.color),
                     ),
-                    Padding(padding:EdgeInsets.all(8.0),child:Text("show username here",textAlign: TextAlign.end,))
+                    Padding(padding:EdgeInsets.all(8.0),child:Text("${_ws.currentUser.username}",textAlign: TextAlign.end,))
                   ],
                 )
               ),
