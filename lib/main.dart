@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'app_router.dart';
 
-void main() => runApp(MyApp());
+//void main() => runApp(MaterialApp(
+//    home:InscriptionForm()));
 
-class MyApp extends StatelessWidget {
+void main(){
+    runApp(MyApp());
+}
+//TODO : Impl Aunt method valid auhentification without passing by connection page
+bool Authentification(){
+  return false;
+}
+
+class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Stats19'),
-        ),
-        body: Stack(
-          children: [
-           // Text('Hello the world!',textAlign: TextAlign.center),
-            Positioned(
-              top: 250,
-              left: 120,
-              child: Text('Hello the world!'),
-            ),
-          ],
-        ),
-      ),
+      title: 'router',
+      onGenerateRoute: routing,
+      initialRoute: Authentification()?NamedRoute.HOME_ROUTE:NamedRoute.CONNECTION_ROUTE,
     );
   }
+
 }
