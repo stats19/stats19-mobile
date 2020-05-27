@@ -11,7 +11,7 @@ class WebService {
   static final WebService _singleton = WebService._internal();
   String _token;
   String get token => _token;
-  final String SERVER_IP = "http://172.18.80.65:8080";
+  final String SERVER_IP = "http://192.168.0.35:8080";
   final http.Client client = new http.Client();
   static final int codeOk = 200;
   static final String _autorizationIndex = "authorization";
@@ -67,8 +67,9 @@ class WebService {
 
     if(res.statusCode == WebService.codeOk){
       var body = json.decode(res.body);
-      ret = new Leagues.fromjson(body);
-      ret.name = body["name"];
+      print(body);
+      print(body.runtimeType);
+      ret = new Leagues.fromjson(body[0]);
     }else{
       throw Exception("bad status code : ${res.statusCode}");
     }

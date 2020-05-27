@@ -4,7 +4,7 @@
 
 abstract class ApiArgs{
 
-  static const PC_HOST = "172.18.71.81";
+  static const PC_HOST = "192.168.0.35";
   static String get base_url => "http://${PC_HOST}:8080";
 
   static const header = {
