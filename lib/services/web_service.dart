@@ -57,9 +57,9 @@ class WebService {
     }
   }
 
-  Future<Leagues> getLeagues() async {
+  Future<LeaguesList> getLeagues() async {
     print("WebService.GetLeagues()");
-    Leagues ret;
+    LeaguesList ret;
     String url = "$SERVER_IP/api/leagues";
     http.Response res = await http.get(url,
       headers: {"Content-Type": "application/json", "authorization": this._token}
@@ -67,9 +67,7 @@ class WebService {
 
     if(res.statusCode == WebService.codeOk){
       var body = json.decode(res.body);
-      print(body);
-      print(body.runtimeType);
-      ret = new Leagues.fromjson(body[0]);
+      ret = new LeaguesList.fromJson(body);
     }else{
       throw Exception("bad status code : ${res.statusCode}");
     }

@@ -7,7 +7,8 @@ import 'package:stat19_app_mobile/services/web_service.dart';
 
 import 'HomeNav_view.dart';
 import '../components/leagues-component.dart';
-class MainPage extends StatefulWidget{
+
+class MainPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return MainPageState();
@@ -15,13 +16,12 @@ class MainPage extends StatefulWidget{
 }
 
 class MainPageState extends State<MainPage> {
-
   WebService _ws = new WebService();
   bool _loading = false;
-  Leagues _league;
+  LeaguesList _league;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
 
     setState(() {
@@ -29,50 +29,50 @@ class MainPageState extends State<MainPage> {
     });
 
     // API call to get league
-    this._ws.getLeagues().then((Leagues league){
-      this._league = league;
+    this._ws.getLeagues().then((LeaguesList leagues) {
+      this._league = leagues;
       setState(() {
         _loading = false;
       });
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: new Stat19SimpleAppBar(titleName: "Stats19"),
-        drawer: new HomeNavigationBar(context:context), //TODO being able to close nav bar also by touching drawer icons
-        body:Container(
-            decoration: BoxDecoration(
-              image: BODY_BACKGROUND_DECORATION_IMAGE,
-            ),
-            alignment: Alignment.topCenter,// Text('Hello the world!',textAlign: TextAlign.center),
-            child: Column(
-              children: <Widget>[
-                Text('Hello the world!'),
-                (!_loading)
-                ?
-                  Container(
-                    margin: const EdgeInsets.all(10.0),
-                    child: 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("Nom de league : ", style: TextStyle(fontWeight: FontWeight.bold),),
-                          Text("${_league.name}")
-                        ],
-                      )
-                  )
-                :
-                  Center(
-                    child: CupertinoActivityIndicator(),
-                  )
-              ],
-            )
-        )
-      ),
+          appBar: new Stat19SimpleAppBar(titleName: "Stats19"),
+          drawer: new HomeNavigationBar(context: context),
+          //TODO being able to close nav bar also by touching drawer icons
+          body: Container(
+              decoration: BoxDecoration(
+                image: BODY_BACKGROUND_DECORATION_IMAGE,
+              ),
+              alignment: Alignment.topCenter,
+              // Text('Hello the world!',textAlign: TextAlign.center),
+              child: Column(
+                children: <Widget>[
+                  Text('Hello the world!'),
+                  (!_loading)
+                      ? Container(
+                      margin: const EdgeInsets.all(10.0),
+                      child: (new ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: this._league.leagues == null
+                                ? 0
+                                : this._league.leagues.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return new Card(
+                                child:
+                                    new Text(this._league.leagues[index].name),
+                              );
+                            },
+                          )))
+                      : Center(
+                          child: CupertinoActivityIndicator(),
+                        )
+                ],
+              ))),
     );
   }
 }

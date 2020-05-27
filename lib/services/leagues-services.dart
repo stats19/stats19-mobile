@@ -7,13 +7,13 @@ import 'api-services.dart';
 
 class LeaguesServices{
 
-  static Future<ApiResponse<List<Leagues>>> getLeagues() async{
+  static Future<ApiResponse<List<League>>> getLeagues() async{
     return await http.get(ApiArgs.LEAGUES_ENDPOINT(), headers: ApiArgs.header).then((data){
-      List<Leagues> leagues = new List<Leagues>();
+      List<League> leagues = new List<League>();
       if(data.statusCode == 200){
         final jsonData = jsonDecode(data.body);
         for(var json in jsonData){
-            leagues.add(new Leagues.fromjson(json));
+            leagues.add(new League.fromJson(json));
         }
         return ApiResponse(data:null, errorMsg: "service errors");//empty
       }
