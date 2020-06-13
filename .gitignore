@@ -24,6 +24,7 @@ pubspec.lock
 .pub-cache/
 .pub/
 build/
+pubspec.lock
 
 # Android related
 **/android/**/gradle-wrapper.jar
@@ -277,7 +278,7 @@ Thumbs.db
 .project
 .cproject
 .settings/
-
+.idea
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -302,6 +303,3 @@ hs_err_pid*
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
-
-# End of https://www.toptal.com/developers/gitignore/api/flutter,gradle,androidstudio,jetbrains
-'+
