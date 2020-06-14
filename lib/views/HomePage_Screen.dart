@@ -6,7 +6,6 @@ import 'package:stat19_app_mobile/ressource/themes.dart';
 import 'package:stat19_app_mobile/services/web_service.dart';
 
 import 'HomeNav_view.dart';
-import '../components/leagues-component.dart';
 
 class MainPage extends StatefulWidget {
   @override
