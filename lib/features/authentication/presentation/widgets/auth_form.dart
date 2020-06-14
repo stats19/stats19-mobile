@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stat19_app_mobile/features/authentication/presentation/bloc/user_bloc.dart';
 import 'package:stat19_app_mobile/features/leagues/presentation/pages/leagues_page.dart';
 
 import '../../../../app_router.dart';
 import 'message_display.dart';
-
 
 class AuthForm extends StatefulWidget {
   const AuthForm({
@@ -17,9 +17,9 @@ class AuthForm extends StatefulWidget {
 }
 
 class _AuthFormState extends State<AuthForm> {
-
   String username;
   String password;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,22 +28,21 @@ class _AuthFormState extends State<AuthForm> {
         TextField(
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Votre nom d\'utilisateur'
-          ),
+              border: OutlineInputBorder(),
+              hintText: 'Votre nom d\'utilisateur'),
           onChanged: (value) {
             username = value;
-        },),
+          },
+        ),
         SizedBox(height: 30),
         TextField(
           keyboardType: TextInputType.visiblePassword,
           decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Votre mot de passe'
-          ),
+              border: OutlineInputBorder(), hintText: 'Votre mot de passe'),
           onChanged: (value) {
             password = value;
-          },),
+          },
+        ),
         SizedBox(height: 10),
         BlocBuilder<UserBloc, UserState>(builder: (context, state) {
           if ((state is Empty)) {
@@ -51,7 +50,9 @@ class _AuthFormState extends State<AuthForm> {
           } else if (state is Error) {
             return MessageDisplay(message: state.message);
           } else if (state is Loaded) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => LeaguesPage()));
+            SchedulerBinding.instance.addPostFrameCallback((_) {
+              Navigator.of(context).pushNamed(NamedRoute.HOME_ROUTE);
+            });
             return Container();
           }
           return Container();
@@ -59,13 +60,16 @@ class _AuthFormState extends State<AuthForm> {
         SizedBox(height: 150),
         Row(
           children: <Widget>[
-            Expanded(child: RaisedButton(
-              child: Text('Me connecter'),
-              color: Theme.of(context).primaryColor,
-              textTheme: ButtonTextTheme.primary,
-              onPressed: () {
-                dispatchLoginUser();
-              },
+            Expanded(child: ButtonTheme(
+              height: 60,
+              child: RaisedButton(
+                child: Text('Me connecter'),
+                color: Theme.of(context).primaryColor,
+                textTheme: ButtonTextTheme.primary,
+                onPressed: () {
+                  dispatchLoginUser();
+                },
+              ),
             ))
           ],
         )
