@@ -3,16 +3,18 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stat19_app_mobile/core/config/constant.dart';
-import 'package:stat19_app_mobile/core/error/exeptions.dart';
-import 'package:stat19_app_mobile/features/leagues/data/models/league_model.dart';
-import 'package:stat19_app_mobile/features/leagues/data/models/matches_by_league._model.dart';
+
+import '../../../../core/config/constant.dart';
+import '../../../../core/error/exeptions.dart';
+import '../models/league_model.dart';
+import '../models/matches_by_league._model.dart';
 
 
 abstract class LeagueRemoteDataSource {
   /// calls the /login
   ///
   /// Throws a [BadCredentialsException] for 403 error code.
+  /// Throws a [NotFoundException] for 404 error code.
   /// Throws a [ServerException] for all other error codes.
   Future<LeagueListModel> getLeagues();
   /// calls the /register
