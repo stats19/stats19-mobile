@@ -1,11 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../core/error/exeptions.dart';
+import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/user_repository.dart';
-import '../datasources/user_local_data_source.dart';
 import '../datasources/user_remote_data_source.dart';
 
 class UserRepositoryImpl extends UserRepository {

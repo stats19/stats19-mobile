@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/config/constant.dart';
-import '../../../../core/error/exeptions.dart';
+import '../../../../core/error/exceptions.dart';
 import '../models/league_model.dart';
 import '../models/matches_by_league._model.dart';
 

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../core/error/exeptions.dart';
+import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
 import '../../domain/entities/soccer_match.dart';
 import '../../domain/repositories/soccer_match_repository.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/leagues/presentation/bloc/leagues_bloc.dart';
 
 import '../../../../injection_container.dart';
+import '../bloc/leagues_bloc.dart';
 
 class LeaguesPage extends StatelessWidget {
   @override

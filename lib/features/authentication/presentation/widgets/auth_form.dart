@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/authentication/presentation/bloc/user_bloc.dart';
-import 'package:stat19_app_mobile/features/leagues/presentation/pages/leagues_page.dart';
 
 import '../../../../app_router.dart';
+import '../bloc/user_bloc.dart';
 import 'message_display.dart';
 
 class AuthForm extends StatefulWidget {

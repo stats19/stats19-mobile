@@ -2,7 +2,7 @@ import 'package:matcher/matcher.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stat19_app_mobile/core/error/exeptions.dart';
+import 'package:stat19_app_mobile/core/error/exceptions.dart';
 import 'package:stat19_app_mobile/features/authentication/data/datasources/user_local_data_source.dart';
 
 class MockSharedPreferences extends Mock implements SharedPreferences {}

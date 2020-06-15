@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'package:stat19_app_mobile/features/match/data/repositories/soccer_match_repository.dart';
+import 'package:stat19_app_mobile/features/match/data/repositories/soccer_match_repository_impl.dart';
 import 'package:stat19_app_mobile/features/match/domain/usecases/get_soccer_match.dart';
 import 'package:stat19_app_mobile/features/match/presentation/bloc/soccer_match_bloc.dart';
 
@@ -13,12 +13,12 @@ import 'features/authentication/domain/repositories/user_repository.dart';
 import 'features/authentication/domain/usecases/login_user.dart';
 import 'features/authentication/domain/usecases/register_user.dart';
 import 'features/authentication/presentation/bloc/user_bloc.dart';
-import 'features/leagues/data/datasources/league_remote_data_source.dart';
-import 'features/leagues/data/repositories/league_repository_impl.dart';
-import 'features/leagues/domain/repositories/league_repository.dart';
-import 'features/leagues/domain/usecases/get_leagues.dart';
-import 'features/leagues/domain/usecases/get_matches_by_league.dart';
-import 'features/leagues/presentation/bloc/leagues_bloc.dart';
+import 'features/league/data/datasources/league_remote_data_source.dart';
+import 'features/league/data/repositories/league_repository_impl.dart';
+import 'features/league/domain/repositories/league_repository.dart';
+import 'features/league/domain/usecases/get_leagues.dart';
+import 'features/league/domain/usecases/get_matches_by_league.dart';
+import 'features/league/presentation/bloc/leagues_bloc.dart';
 import 'features/match/data/datasources/soccer_match_remote_data_source.dart';
 import 'features/match/domain/repositories/soccer_match_repository.dart';
 

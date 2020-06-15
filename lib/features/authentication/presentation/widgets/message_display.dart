@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stat19_app_mobile/ressource/themes.dart';
+
+import '../../../../ressource/themes.dart';
 
 class MessageDisplay extends StatelessWidget {
   final String message;

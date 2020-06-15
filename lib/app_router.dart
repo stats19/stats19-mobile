@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stat19_app_mobile/features/leagues/presentation/pages/leagues_page.dart';
+import 'package:stat19_app_mobile/features/league/presentation/pages/leagues_page.dart';
 
 import 'features/authentication/presentation/pages/authentication_page.dart';
 

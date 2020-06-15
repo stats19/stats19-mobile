@@ -1,7 +1,7 @@
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../core/error/exeptions.dart';
+import '../../../../core/error/exceptions.dart';
 
 abstract class UserLocalDataSource {
   Future<String> getToken();
