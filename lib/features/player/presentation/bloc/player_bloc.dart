@@ -1,14 +1,15 @@
 import 'dart:async';
-import 'package:meta/meta.dart';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:stat19_app_mobile/core/error/failures.dart';
-import 'package:stat19_app_mobile/features/authentication/presentation/bloc/user_bloc.dart';
-import 'package:stat19_app_mobile/features/player/domain/entities/player.dart';
-import 'package:stat19_app_mobile/features/player/domain/usecases/get_player.dart';
+import 'package:meta/meta.dart';
+
+import '../../../../core/error/failures.dart';
+import '../../../authentication/presentation/bloc/user_bloc.dart';
+import '../../domain/entities/player.dart';
+import '../../domain/usecases/get_player.dart';
 
 part 'player_event.dart';
-
 part 'player_state.dart';
 
 class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
