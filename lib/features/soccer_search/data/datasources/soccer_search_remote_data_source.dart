@@ -26,7 +26,7 @@ class SoccerSearchRemoteDataSourceImpl implements SoccerSearchRemoteDataSource {
   @override
   Future<SoccerSearchModel> getSoccerSearch(String searchStr) async {
     final String token = this.sharedPreferences.getString(CACHED_AUTH_TOKEN);
-    final response = await client.get(HOST + '/api/search?str=$searchStr',
+    final response = await client.get(HOST + '/api/search?searchStr=$searchStr',
         headers: {'Content-Type': 'application/json', 'authorization': token});
 
     if (response.statusCode == 200) {

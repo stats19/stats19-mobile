@@ -8,9 +8,7 @@ import '../bloc/soccer_search_bloc.dart';
 class SoccerSearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: buildApp(context)
-    );
+    return MaterialApp(home: buildApp(context));
   }
 
   BlocProvider<SoccerSearchBloc> buildApp(BuildContext context) {
@@ -26,39 +24,62 @@ class SoccerSearchPage extends StatelessWidget {
                 Tab(icon: Icon(Icons.directions_transit)),
               ],
             ),
-            title: TextField(
-              decoration: InputDecoration(
-                  hintText: "Rechercher ..."
-              ),
-              autofocus: true,
-              onChanged: (value) {
-                BlocProvider.of<SoccerSearchBloc>(context).add(GetSoccerSearchEvent(value));
-              },
-            ),
+            title: BlocBuilder<SoccerSearchBloc, SoccerSearchState>(
+                builder: (context, state) {
+              return TextField(
+                decoration: InputDecoration(hintText: "Rechercher ..."),
+                autofocus: true,
+                onChanged: (value) {
+                  BlocProvider.of<SoccerSearchBloc>(context)
+                      .add(GetSoccerSearchEvent(value));
+                },
+              );
+            }),
           ),
           body: TabBarView(
             children: [
-              BlocBuilder<SoccerSearchBloc, SoccerSearchState>(builder: (context, state) {
+              BlocBuilder<SoccerSearchBloc, SoccerSearchState>(
+                  builder: (context, state) {
                 if ((state is Empty)) {
                   return Container();
                 } else if (state is Error) {
                   return Text(state.message);
                 } else if (state is Loading) {
                   return CircularProgressIndicator();
-                }
-                else if (state is Loaded) {
+                } else if (state is Loaded) {
                   return Expanded(
                     child: ListView.builder(
                       itemCount: state.results.players.length,
-                      itemBuilder: (BuildContext context, int index){
-                        return BuildItem(item: state.results.players[index], type: 'team');
+                      itemBuilder: (BuildContext context, int index) {
+                        return BuildItem(
+                            item: state.results.players[index], type: 'player');
                       },
                     ),
                   );
                 }
                 return Container();
               }),
-              Icon(Icons.directions_transit),
+              BlocBuilder<SoccerSearchBloc, SoccerSearchState>(
+                  builder: (context, state) {
+                if ((state is Empty)) {
+                  return Container();
+                } else if (state is Error) {
+                  return Text(state.message);
+                } else if (state is Loading) {
+                  return CircularProgressIndicator();
+                } else if (state is Loaded) {
+                  return Expanded(
+                    child: ListView.builder(
+                      itemCount: state.results.teams.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return BuildItem(
+                            item: state.results.teams[index], type: 'team');
+                      },
+                    ),
+                  );
+                }
+                return Container();
+              }),
             ],
           ),
         ),
@@ -78,10 +99,13 @@ class BuildItem extends StatelessWidget {
     return new FlatButton(
       padding: const EdgeInsets.all(20),
       child: Center(
-        child: Text(this.item.name, style: TextStyle(fontSize: 16.0),),
+        child: Text(
+          this.item.name,
+          style: TextStyle(fontSize: 16.0),
+        ),
       ),
-      onPressed: (){
-        if(type == 'team'){
+      onPressed: () {
+        if (type == 'team') {
           //TODO : return on match view
 //          Navigator.push(
 //              context,
@@ -91,7 +115,7 @@ class BuildItem extends StatelessWidget {
 //                  }
 //              )
 //          );
-        }else if (type == 'player'){
+        } else if (type == 'player') {
 //          Navigator.push(
 //              context,
 //              MaterialPageRoute(
