@@ -1,10 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'package:stat19_app_mobile/features/match/data/repositories/soccer_match_repository_impl.dart';
-import 'package:stat19_app_mobile/features/match/domain/usecases/get_soccer_match.dart';
-import 'package:stat19_app_mobile/features/match/presentation/bloc/soccer_match_bloc.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'features/authentication/data/datasources/user_local_data_source.dart';
 import 'features/authentication/data/datasources/user_remote_data_source.dart';
@@ -20,7 +16,15 @@ import 'features/league/domain/usecases/get_leagues.dart';
 import 'features/league/domain/usecases/get_matches_by_league.dart';
 import 'features/league/presentation/bloc/leagues_bloc.dart';
 import 'features/match/data/datasources/soccer_match_remote_data_source.dart';
+import 'features/match/data/repositories/soccer_match_repository_impl.dart';
 import 'features/match/domain/repositories/soccer_match_repository.dart';
+import 'features/match/domain/usecases/get_soccer_match.dart';
+import 'features/match/presentation/bloc/soccer_match_bloc.dart';
+import 'features/soccer_search/data/datasources/soccer_search_remote_data_source.dart';
+import 'features/soccer_search/data/repositories/soccer_search_repository_impl.dart';
+import 'features/soccer_search/domain/repositories/soccer_search_repository.dart';
+import 'features/soccer_search/domain/usecases/get_soccer_search.dart';
+import 'features/soccer_search/presentation/bloc/soccer_search_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -54,7 +58,7 @@ Future<void> init() async {
   // data sources
   sl.registerLazySingleton<LeagueRemoteDataSource>(() => LeagueRemoteDataSourceImpl(client: sl(), sharedPreferences: sl()));
 
-    //! Features - Leagues
+    //! Features - SoccerMatch
   // Bloc 
   sl.registerFactory(() => SoccerMatchBloc(getSoccerMatch: sl()));
 
@@ -66,6 +70,20 @@ Future<void> init() async {
 
   // data sources
   sl.registerLazySingleton<SoccerMatchRemoteDataSource>(() => SoccerMatchRemoteDataSourceImpl(client: sl(), sharedPreferences: sl()));
+
+
+  //! Features - SoccerSearch
+  // Bloc 
+  sl.registerFactory(() => SoccerSearchBloc(getSoccerSearch: sl()));
+
+  // Use cases
+  sl.registerLazySingleton(() => GetSoccerSearch(sl()));
+
+  // repository
+  sl.registerLazySingleton<SoccerSearchRepository>(() => SoccerSearchRepositoryImpl(remoteDataSource: sl()));
+
+  // data sources
+  sl.registerLazySingleton<SoccerSearchRemoteDataSource>(() => SoccerSearchRemoteDataSourceImpl(client: sl(), sharedPreferences: sl()));
 
   //! Core
 

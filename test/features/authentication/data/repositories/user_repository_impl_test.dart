@@ -8,8 +8,6 @@ class MockRemoteDataSource extends Mock implements UserRemoteDataSource {}
 
 class MockLocalDataSource extends Mock implements UserLocalDataSource {}
 
-//class MockNetworkInfo extends Mock implements NetworkInfo {}
-
 void main() {
   UserRepositoryImpl repository;
   MockRemoteDataSource mockRemoteDataSource;

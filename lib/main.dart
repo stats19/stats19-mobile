@@ -12,11 +12,6 @@ void main() async {
   runApp(MyApp());
 }
 
-//TODO : Impl Aunt method valid auhentification without passing by connection page
-bool Authentification() {
-  return false;
-}
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

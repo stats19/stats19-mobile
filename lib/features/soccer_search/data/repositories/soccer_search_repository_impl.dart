@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
-import 'package:stat19_app_mobile/features/match/domain/usecases/get_soccer_match.dart';
 import 'package:stat19_app_mobile/features/soccer_search/data/datasources/soccer_search_remote_data_source.dart';
 import 'package:stat19_app_mobile/features/soccer_search/domain/entities/soccer_search.dart';
 import 'package:stat19_app_mobile/features/soccer_search/domain/repositories/soccer_search_repository.dart';

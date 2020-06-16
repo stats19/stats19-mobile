@@ -1,11 +1,9 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:stat19_app_mobile/features/authentication/presentation/bloc/user_bloc.dart';
 
 import '../../../../core/error/failures.dart';
-import '../../../authentication/presentation/bloc/user_bloc.dart';
 import '../../domain/entities/soccer_search.dart';
 import '../../domain/usecases/get_soccer_search.dart';
 
@@ -22,6 +20,7 @@ class SoccerSearchBloc extends Bloc<SoccerSearchEvent, SoccerSearchState> {
   Stream<SoccerSearchState> mapEventToState(
     SoccerSearchEvent event,
   ) async* {
+    print("tets");
     if (event is GetSoccerSearchEvent) {
       yield Loading();
       final failureOrLeagues = await getSoccerSearch(Params(searchStr: event.searchStr));
