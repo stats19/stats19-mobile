@@ -83,6 +83,7 @@ class SoccerSearchPage extends StatelessWidget {
               }),
             ],
           ),
+          bottomNavigationBar: BottomAppBar(),
         ),
       ),
     );
