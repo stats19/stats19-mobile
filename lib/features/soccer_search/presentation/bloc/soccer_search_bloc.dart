@@ -19,8 +19,7 @@ class SoccerSearchBloc extends Bloc<SoccerSearchEvent, SoccerSearchState> {
   @override
   Stream<SoccerSearchState> mapEventToState(
     SoccerSearchEvent event,
-  ) async* {
-    print("tets");
+  ) async* {;
     if (event is GetSoccerSearchEvent) {
       yield Loading();
       final failureOrLeagues = await getSoccerSearch(Params(searchStr: event.searchStr));

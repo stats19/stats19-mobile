@@ -6,7 +6,7 @@ class Player extends Equatable {
   final String name;
   final int weight;
   final int height;
-  final String age;
+  final int age;
   final int playedMatches;
   final int fouls;
   final int redCards;

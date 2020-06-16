@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
 
 import '../../../../injection_container.dart';
 import '../../domain/entities/soccer_search.dart';
@@ -116,14 +117,14 @@ class BuildItem extends StatelessWidget {
 //              )
 //          );
         } else if (type == 'player') {
-//          Navigator.push(
-//              context,
-//              MaterialPageRoute(
-//                  builder: (BuildContext context) {
-//                    return PlayerDetail();
-//                  }
-//              )
-//          );
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return PlayerPage(playerId: item.id,);
+                  }
+              )
+          );
         }
         print("=== pressed ===");
       },
