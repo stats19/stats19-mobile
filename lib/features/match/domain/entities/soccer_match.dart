@@ -50,6 +50,7 @@ class MatchDetails extends Equatable {
   final String playerName;
   final int elapsed;
   final int elapsedPlus;
+  final bool home;
   final int type;
 
   MatchDetails(
@@ -57,8 +58,9 @@ class MatchDetails extends Equatable {
       @required this.playerName,
       @required this.elapsed,
       @required this.elapsedPlus,
+      @required this.home,
       @required this.type});
 
   @override
-  List<Object> get props => [playerId, playerName, elapsed, elapsedPlus, type];
+  List<Object> get props => [playerId, playerName, elapsed, elapsedPlus, type, home];
 }

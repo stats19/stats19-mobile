@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stat19_app_mobile/features/soccer_search/data/models/soccer_search_model.dart';
 
 import '../../../../core/config/constant.dart';
 import '../../../../core/error/exceptions.dart';
+import '../models/soccer_search_model.dart';
 
 
 abstract class SoccerSearchRemoteDataSource {

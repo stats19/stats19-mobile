@@ -21,7 +21,7 @@ abstract class LeagueRemoteDataSource {
   ///
   /// Throws a [BadRequestException] for 400 error code.
   /// Throws a [ServerException] for all other error codes.
-  Future<MatchesByLeagueListModel> getMatchesByLeagues(int leagueId);
+  Future<MatchesByLeagueModel> getMatchesByLeagues(int leagueId);
 }
 
 class LeagueRemoteDataSourceImpl implements LeagueRemoteDataSource {
@@ -47,12 +47,12 @@ class LeagueRemoteDataSourceImpl implements LeagueRemoteDataSource {
   }
 
   @override
-  Future<MatchesByLeagueListModel> getMatchesByLeagues(int leagueId) async {
+  Future<MatchesByLeagueModel> getMatchesByLeagues(int leagueId) async {
     final response = await client.get(HOST + '/api/leagues/$leagueId/matches',
         headers: {'Content-Type': 'application/json'});
 
     if (response.statusCode == 200) {
-      return MatchesByLeagueListModel.fromJson(json.decode(response.body));
+      return MatchesByLeagueModel.fromJson(json.decode(response.body));
     } else if (response.statusCode == 403) {
       throw BadCredentialsException();
     } else if (response.statusCode == 404) {

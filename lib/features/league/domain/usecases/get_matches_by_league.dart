@@ -4,17 +4,17 @@ import 'package:meta/meta.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
-import '../entities/league.dart';
+import '../entities/matches_by_league.dart';
 import '../repositories/league_repository.dart';
 
-class GetMatchesByLeagues extends UseCase<List<League>, Params> {
+class GetMatchesByLeagues extends UseCase<MatchesByLeague, Params> {
   final LeagueRepository repository;
 
   GetMatchesByLeagues(this.repository);
 
   @override
-  Future<Either<Failure, List<League>>> call(Params params) async {
-    return await repository.getLeagues();
+  Future<Either<Failure, MatchesByLeague>> call(Params params) async {
+    return await repository.getMatchesByLeague(params.leagueId);
   }
 }
 

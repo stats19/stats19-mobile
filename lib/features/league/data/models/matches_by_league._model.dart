@@ -4,39 +4,52 @@ import '../../domain/entities/matches_by_league.dart';
 
 class MatchesByLeagueModel extends MatchesByLeague {
   MatchesByLeagueModel({
-    @required matchId, 
-    @required homeName, 
-    @required awayName, 
-    @required home, 
-    @required away,
-    @required date
-  }): super(matchId: matchId, homeName: homeName, awayName: awayName, home: home, away: away, date: date);
+    @required leagueId, 
+    @required leagueName, 
+    @required matches
+  }): super(leagueId: leagueId, leagueName: leagueName, matches: matches);
 
   factory MatchesByLeagueModel.fromJson(Map<String, dynamic> json) {
     return MatchesByLeagueModel(
+      leagueId: json['leagueId'], 
+      leagueName: json['leagueName'], 
+      matches: LeagueMatchModelList.fromJson(json['matches']).matches
+    );
+  }
+
+}
+
+class LeagueMatchModel extends LeagueMatch {
+  LeagueMatchModel({
+    @required matchId, 
+    @required homeName, 
+    @required awayName, 
+    @required date
+  }): super(matchId: matchId, homeName: homeName, awayName: awayName, date: date);
+
+  factory LeagueMatchModel.fromJson(Map<String, dynamic> json) {
+    return LeagueMatchModel(
       matchId: json['matchId'], 
-      homeName: json['homeName'], 
-      home: json['home'], 
-      awayName: json['awayName'], 
-      away: json['away'],
+      homeName: json['homeName'],
+      awayName: json['awayName'],
       date: json['date']
     );
   }
 
 }
 
-class MatchesByLeagueListModel {
-  final List<MatchesByLeagueModel> matchesByLeague;
+class LeagueMatchModelList {
+  final List<LeagueMatchModel> matches;
 
-  MatchesByLeagueListModel({@required this.matchesByLeague});
+  LeagueMatchModelList({@required this.matches});
 
-  factory MatchesByLeagueListModel.fromJson(List<dynamic> parsedJson) {
-      List<MatchesByLeagueModel> leagues = new List<MatchesByLeagueModel>();
-    leagues = parsedJson.map((i)=>MatchesByLeagueModel.fromJson(i)).toList();
+  factory LeagueMatchModelList.fromJson(List<dynamic> parsedJson) {
+      List<LeagueMatchModel> matches = new List<LeagueMatchModel>();
+    matches = parsedJson.map((i)=>LeagueMatchModel.fromJson(i)).toList();
 
 
-    return new MatchesByLeagueListModel(
-      matchesByLeague: leagues,
+    return new LeagueMatchModelList(
+      matches: matches,
     );
   }
 }

@@ -1,5 +1,6 @@
-import 'package:stat19_app_mobile/features/soccer_search/domain/entities/soccer_search.dart';
 import 'package:meta/meta.dart';
+
+import '../../domain/entities/soccer_search.dart';
 
 class SoccerSearchModel extends SoccerSearch {
   SoccerSearchModel(

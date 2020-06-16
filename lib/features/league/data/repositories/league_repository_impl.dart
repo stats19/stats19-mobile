@@ -31,10 +31,10 @@ class LeagueRepositoryImpl extends LeagueRepository {
   }
 
   @override
-  Future<Either<Failure, List<MatchesByLeague>>> getMatchesByLeague(int leagueId) async {
+  Future<Either<Failure, MatchesByLeague>> getMatchesByLeague(int leagueId) async {
     try {
-      final matchesByLeagueList = await remoteDataSource.getMatchesByLeagues(leagueId);
-      return right(matchesByLeagueList.matchesByLeague);
+      final matchesByLeague = await remoteDataSource.getMatchesByLeagues(leagueId);
+      return right(matchesByLeague);
     } on ServerException {
       return Left(ServerFailure());
     } on BadCredentialsException {

@@ -63,12 +63,14 @@ class MatchDetailsModel extends MatchDetails {
       @required playerName,
       @required elapsed,
       @required elapsedPlus,
+      @required home,
       @required type})
       : super(
             playerId: playerId,
             playerName: playerName,
             elapsed: elapsed,
             elapsedPlus: elapsedPlus,
+            home: home,
             type: type);
 
   factory MatchDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -78,6 +80,7 @@ class MatchDetailsModel extends MatchDetails {
       elapsedPlus: json['elapsedPlus'],
       playerId: json['playerId'],
       type: json['type'],
+      home: json['home']
     );
   }
 }
