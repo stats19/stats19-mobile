@@ -48,14 +48,18 @@ class SoccerSearchPage extends StatelessWidget {
                 } else if (state is Loading) {
                   return CircularProgressIndicator();
                 } else if (state is Loaded) {
-                  return Expanded(
-                    child: ListView.builder(
-                      itemCount: state.results.players.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return BuildItem(
-                            item: state.results.players[index], type: 'player');
-                      },
-                    ),
+                  return Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: state.results.players.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return BuildItem(
+                                item: state.results.players[index], type: 'player');
+                          },
+                        ),
+                      ),
+                    ],
                   );
                 }
                 return Container();
