@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stat19_app_mobile/features/league/data/models/league_ranking_model.dart';
 
 import '../../../../core/config/constant.dart';
 import '../../../../core/error/exceptions.dart';
@@ -11,17 +12,22 @@ import '../models/matches_by_league._model.dart';
 
 
 abstract class LeagueRemoteDataSource {
-  /// calls the /login
+  /// calls the /leagues
   ///
   /// Throws a [BadCredentialsException] for 403 error code.
   /// Throws a [NotFoundException] for 404 error code.
   /// Throws a [ServerException] for all other error codes.
   Future<LeagueListModel> getLeagues();
-  /// calls the /register
+  /// calls the /leagues/$leagueId/matches
   ///
   /// Throws a [BadRequestException] for 400 error code.
   /// Throws a [ServerException] for all other error codes.
   Future<MatchesByLeagueModel> getMatchesByLeagues(int leagueId);
+  /// calls the /leagues/$leagueId/ranking
+  ///
+  /// Throws a [BadRequestException] for 400 error code.
+  /// Throws a [ServerException] for all other error codes.
+  Future<LeagueRankingModel> getRanking(int leagueId);
 }
 
 class LeagueRemoteDataSourceImpl implements LeagueRemoteDataSource {
@@ -53,6 +59,22 @@ class LeagueRemoteDataSourceImpl implements LeagueRemoteDataSource {
 
     if (response.statusCode == 200) {
       return MatchesByLeagueModel.fromJson(json.decode(response.body));
+    } else if (response.statusCode == 403) {
+      throw BadCredentialsException();
+    } else if (response.statusCode == 404) {
+      throw NotFoundException();
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<LeagueRankingModel> getRanking(int leagueId) async {
+    final response = await client.get(HOST + '/api/leagues/$leagueId/ranking',
+        headers: {'Content-Type': 'application/json'});
+
+    if (response.statusCode == 200) {
+      return LeagueRankingModel.fromJson(json.decode(response.body));
     } else if (response.statusCode == 403) {
       throw BadCredentialsException();
     } else if (response.statusCode == 404) {

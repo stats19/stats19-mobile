@@ -5,3 +5,15 @@ abstract class LeaguesEvent extends Equatable {
 }
 
 class GetLeaguesEvent extends LeaguesEvent {}
+
+class GetMatchByLeagueEvent extends LeaguesEvent {
+  final int leagueId;
+
+  GetMatchByLeagueEvent(this.leagueId);
+}
+
+class GetRankingEvent extends LeaguesEvent {
+  final int leagueId;
+
+  GetRankingEvent(this.leagueId);
+}
