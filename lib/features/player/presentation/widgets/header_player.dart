@@ -40,3 +40,4 @@ class _HeaderPlayerState extends State<HeaderPlayer> {
     );
   }
 }
+

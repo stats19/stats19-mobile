@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/info_square.dart';
 import 'package:stat19_app_mobile/features/player/presentation/bloc/player_bloc.dart';
 
-import 'info_square.dart';
 
 class StatsPlayer extends StatelessWidget {
   const StatsPlayer({
