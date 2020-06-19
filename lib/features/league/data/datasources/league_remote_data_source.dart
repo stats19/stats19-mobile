@@ -8,7 +8,7 @@ import 'package:stat19_app_mobile/features/league/data/models/league_ranking_mod
 import '../../../../core/config/constant.dart';
 import '../../../../core/error/exceptions.dart';
 import '../models/league_model.dart';
-import '../models/matches_by_league._model.dart';
+import '../models/matches_by_league_model.dart';
 
 
 abstract class LeagueRemoteDataSource {
