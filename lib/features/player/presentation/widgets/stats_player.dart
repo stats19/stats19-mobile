@@ -23,7 +23,6 @@ class StatsPlayer extends StatelessWidget {
                 InfoSquare(type: "Taille",value: state.player.height),
                 InfoSquare(type: "But",value: state.player.goals),
                 InfoSquare(type: "Tir cadré",value: state.player.shotOnTarget),
-                InfoSquare(type: "Passe décisive",value: 0),
                 InfoSquare(type: "Carton rouge",value: state.player.redCards),
                 InfoSquare(type: "Carton jaune",value: state.player.yellowCards),
               ]),
