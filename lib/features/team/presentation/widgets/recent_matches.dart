@@ -16,31 +16,24 @@ class RecentMatches extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Text(
-                "Les derniers matchs",
-                style : TextStyle(color: Colors.white,  fontSize: 20)
-            ),
+            child: Text("Les derniers matchs",
+                style: TextStyle(color: Colors.white, fontSize: 20)),
           ),
-          BlocBuilder<TeamBloc, TeamState>(
-              builder: (context, state) {
-                if ((state is Empty)) {
-                  BlocProvider.of<TeamBloc>(context)
-                      .add(GetTeamEvent(5));
-                  return Container();
-                } else if (state is Loading) {
-                  return CircularProgressIndicator();
-                } else if (state is Loaded) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: state.team.recentMatches.map((e) => ResultBubble(recentMatch: e)).toList()
-                  );
-                } else if (state is Error) {
-                  // return MessageDisplay(message: state.message);
-                  return Text('there is error' + state.message);
-                }
-                return Container();
-              }),
-
+          BlocBuilder<TeamBloc, TeamState>(builder: (context, state) {
+            if (state is Loading) {
+              return CircularProgressIndicator();
+            } else if (state is Loaded) {
+              return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: state.team.recentMatches
+                      .map((e) => ResultBubble(recentMatch: e))
+                      .toList());
+            } else if (state is Error) {
+              // return MessageDisplay(message: state.message);
+              return Text('there is error' + state.message);
+            }
+            return Container();
+          }),
         ],
       ),
     );
@@ -49,8 +42,10 @@ class RecentMatches extends StatelessWidget {
 
 class ResultBubble extends StatelessWidget {
   final RecentMatch recentMatch;
+
   const ResultBubble({
-    Key key, this.recentMatch,
+    Key key,
+    this.recentMatch,
   }) : super(key: key);
 
   @override
@@ -61,29 +56,35 @@ class ResultBubble extends StatelessWidget {
       width: 25,
       height: 25,
       decoration: BoxDecoration(
-          color: recentMatch.result  == "LOSE" ? Colors.redAccent :recentMatch.result == "DRAW" ? Colors.grey: Colors.green,
-          borderRadius: BorderRadius.all(Radius.circular(50))
-      ),
+          color: recentMatch.result == "LOSE"
+              ? Colors.redAccent
+              : recentMatch.result == "DRAW" ? Colors.grey : Colors.green,
+          borderRadius: BorderRadius.all(Radius.circular(50))),
       child: ButtonTheme(
         minWidth: 25,
         height: 25,
         padding: EdgeInsets.all(0),
         child: Align(
           child: FlatButton(
-              onPressed: (){
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) {
-                          return SoccerMatchPage(matchId: recentMatch.matchId,);
-                        }
-                    )
-                );
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return SoccerMatchPage(
+                    matchId: recentMatch.matchId,
+                  );
+                }));
               },
               textColor: Colors.white,
-              child: Text( recentMatch.result  == "LOSE" ? "D" : recentMatch.result == "DRAW" ? "N" : "V", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),)
+              child: Text(
+                recentMatch.result == "LOSE"
+                    ? "D"
+                    : recentMatch.result == "DRAW" ? "N" : "V",
+                textAlign: TextAlign.center,
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+              )
 //              child: Text("N", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),)
-          ),
+              ),
         ),
       ),
     );

@@ -55,7 +55,7 @@ class TeamModel extends Team {
         foul: json['foul'],
         recentMatches: RecentMatchModelList.fromJson(json['recentMatches'])
             .recentMatchModels,
-        playedMatches: PlayedMatchTeamModelList.fromJson(json['playedMatches'])
+        playedMatches: PlayedMatchModelList.fromJson(json['playedMatches'])
             .playedMatchModels,
         nextMatches:
             NextMatchModelList.fromJson(json['nextMatches']).nextMatchModels);
@@ -112,12 +112,13 @@ class PlayedMatchModel extends PlayedMatch {
             away: away);
 
   factory PlayedMatchModel.fromJson(Map<String, dynamic> json) {
+    print(json);
     return PlayedMatchModel(
         matchId: json['matchId'],
         date: json['date'],
         result: json['resultMatch'],
-        home: json['matchId'],
-        away: json['away']);
+        home: PlayedMatchTeamModel.fromJson(json['home']),
+        away: PlayedMatchTeamModel.fromJson(json['away']));
   }
 }
 
@@ -131,17 +132,17 @@ class PlayedMatchTeamModel extends PlayedMatchTeam {
   }
 }
 
-class PlayedMatchTeamModelList {
-  final List<PlayedMatchTeamModel> playedMatchModels;
+class PlayedMatchModelList {
+  final List<PlayedMatchModel> playedMatchModels;
 
-  PlayedMatchTeamModelList({@required this.playedMatchModels});
+  PlayedMatchModelList({@required this.playedMatchModels});
 
-  factory PlayedMatchTeamModelList.fromJson(List<dynamic> parsedJson) {
-    List<PlayedMatchTeamModel> playedMatchModels =
-        new List<PlayedMatchTeamModel>();
+  factory PlayedMatchModelList.fromJson(List<dynamic> parsedJson) {
+    List<PlayedMatchModel> playedMatchModels =
+        new List<PlayedMatchModel>();
     playedMatchModels =
-        parsedJson.map((i) => PlayedMatchTeamModel.fromJson(i)).toList();
-    return new PlayedMatchTeamModelList(
+        parsedJson.map((i) => PlayedMatchModel.fromJson(i)).toList();
+    return new PlayedMatchModelList(
       playedMatchModels: playedMatchModels,
     );
   }
