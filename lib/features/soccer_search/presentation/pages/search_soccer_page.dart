@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/match/presentation/pages/soccer_match_page.dart';
 import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
+import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
 
 import '../../../../injection_container.dart';
 import '../../domain/entities/soccer_search.dart';
@@ -112,15 +114,14 @@ class BuildItem extends StatelessWidget {
       ),
       onPressed: () {
         if (type == 'team') {
-          //TODO : return on match view
-//          Navigator.push(
-//              context,
-//              MaterialPageRoute(
-//                  builder: (BuildContext context) {
-//                    return new MatchDetailWidget(match: (this.matchItem as Match));
-//                  }
-//              )
-//          );
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return new TeamPage();
+                  }
+              )
+          );
         } else if (type == 'player') {
           Navigator.push(
               context,

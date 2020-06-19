@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/match/presentation/pages/soccer_match_page.dart';
+import 'package:stat19_app_mobile/features/team/domain/entities/team.dart';
 import 'package:stat19_app_mobile/features/team/presentation/bloc/team_bloc.dart';
 
 class RecentMatches extends StatelessWidget {
@@ -30,9 +32,7 @@ class RecentMatches extends StatelessWidget {
                 } else if (state is Loaded) {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      ResultBubble(issue: 1,),
-                    ],
+                    children: state.team.recentMatches.map((e) => ResultBubble(recentMatch: e)).toList()
                   );
                 } else if (state is Error) {
                   // return MessageDisplay(message: state.message);
@@ -48,9 +48,9 @@ class RecentMatches extends StatelessWidget {
 }
 
 class ResultBubble extends StatelessWidget {
-  final int issue;
+  final RecentMatch recentMatch;
   const ResultBubble({
-    Key key, this.issue,
+    Key key, this.recentMatch,
   }) : super(key: key);
 
   @override
@@ -61,7 +61,7 @@ class ResultBubble extends StatelessWidget {
       width: 25,
       height: 25,
       decoration: BoxDecoration(
-          color: issue  == 0 ? Colors.redAccent :issue == 1 ? Colors.grey: Colors.green,
+          color: recentMatch.result  == "LOSE" ? Colors.redAccent :recentMatch.result == "DRAW" ? Colors.grey: Colors.green,
           borderRadius: BorderRadius.all(Radius.circular(50))
       ),
       child: ButtonTheme(
@@ -70,9 +70,18 @@ class ResultBubble extends StatelessWidget {
         padding: EdgeInsets.all(0),
         child: Align(
           child: FlatButton(
-              onPressed: null,
+              onPressed: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return SoccerMatchPage(matchId: recentMatch.matchId,);
+                        }
+                    )
+                );
+              },
               textColor: Colors.white,
-              child: Text( issue == 0 ? "D" : issue == 1 ? "N" : "V", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),)
+              child: Text( recentMatch.result  == "LOSE" ? "D" : recentMatch.result == "DRAW" ? "N" : "V", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),)
 //              child: Text("N", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),)
           ),
         ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/match/presentation/pages/soccer_match_page.dart';
+import 'package:stat19_app_mobile/features/team/domain/entities/team.dart';
 import 'package:stat19_app_mobile/features/team/presentation/bloc/team_bloc.dart';
 
 class EndedMatches extends StatelessWidget {
@@ -9,46 +11,51 @@ class EndedMatches extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TeamBloc, TeamState>(
-        builder: (context, state) {
-          if (state is Loading) {
-            return CircularProgressIndicator();
-          } else if (state is Loaded) {
-            return Container(
-                child: ListView(
-                  shrinkWrap: true,
-                  primary: false,
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        EndedMatch(
-//                            home : state.team.,
-//                            away : state.team.
-                        ),
-                        ],
-                    )
-                  ],
-                )
-            );
-          } else if (state is Error) {
-            return Text('there is error' + state.message);
-          }
-          return Container();
-        });
-
-
+    return BlocBuilder<TeamBloc, TeamState>(builder: (context, state) {
+      if (state is Loading) {
+        return CircularProgressIndicator();
+      } else if (state is Loaded) {
+        return Container(
+            child: ListView(
+          shrinkWrap: true,
+          primary: false,
+          children: <Widget>[
+            Column(
+              children: state.team.playedMatches.map((e) => EndedMatch(playedMatch: e)).toList()
+            )
+          ],
+        ));
+      } else if (state is Error) {
+        return Text('there is error' + state.message);
+      }
+      return Container();
+    });
   }
 }
 
 class EndedMatch extends StatelessWidget {
-  final String home;
-  final String away;
+  final PlayedMatch playedMatch;
+
   const EndedMatch({
-    Key key, this.home, this.away,
+    Key key,
+    this.playedMatch,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(child: Text(home + ' - ' + away, style: TextStyle(fontSize: 18, color: Colors.white), ));
+    //TODO afficher score
+    return FlatButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext context) {
+            return SoccerMatchPage(
+              matchId: playedMatch.matchId,
+            );
+          }));
+        },
+        child: Text(
+          playedMatch.home.name + ' - ' + playedMatch.away.name,
+          style: TextStyle(fontSize: 18, color: Colors.white),
+        ));
   }
 }

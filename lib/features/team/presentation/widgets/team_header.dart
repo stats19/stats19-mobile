@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/team/domain/entities/team.dart';
 import 'package:stat19_app_mobile/features/team/presentation/bloc/team_bloc.dart';
 
 class TeamHeader extends StatelessWidget {
+  final int teamId;
   const TeamHeader({
-    Key key,
+    Key key, this.teamId,
   }) : super(key: key);
 
   @override
@@ -30,7 +32,7 @@ class TeamHeader extends StatelessWidget {
           builder: (context, state) {
             if ((state is Empty)) {
               BlocProvider.of<TeamBloc>(context)
-                  .add(GetTeamEvent(5));
+                  .add(GetTeamEvent(teamId));
               return Container();
             } else if (state is Loading) {
               return CircularProgressIndicator();
@@ -38,7 +40,7 @@ class TeamHeader extends StatelessWidget {
               return  Column(
                 children: <Widget>[
                   TeamName(teamName: state.team.name),
-                  TeamLeague(),
+                  TeamLeagueWidget(league: state.team.league,),
                 ],
               );
             } else if (state is Error) {
@@ -52,9 +54,10 @@ class TeamHeader extends StatelessWidget {
   }
 }
 
-class TeamLeague extends StatelessWidget {
-  const TeamLeague({
-    Key key,
+class TeamLeagueWidget extends StatelessWidget {
+  final TeamLeague league;
+  const TeamLeagueWidget({
+    Key key, this.league,
   }) : super(key: key);
 
   @override
@@ -70,7 +73,7 @@ class TeamLeague extends StatelessWidget {
             color: Colors.blueGrey,
             borderRadius: BorderRadius.all(Radius.circular(15))
         ),
-        child: Text("league", style : TextStyle(color: Colors.white,  fontSize: 18,), textAlign: TextAlign.center,));
+        child: Text(league.name, style : TextStyle(color: Colors.white,  fontSize: 18,), textAlign: TextAlign.center,));
   }
 }
 
