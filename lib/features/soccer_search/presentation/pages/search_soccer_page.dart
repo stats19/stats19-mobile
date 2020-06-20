@@ -23,8 +23,10 @@ class SoccerSearchPage extends StatelessWidget {
           appBar: AppBar(
             bottom: TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.directions_car)),
-                Tab(icon: Icon(Icons.directions_transit)),
+//                Tab(icon: Icon(Icons.directions_car)),
+                Tab(icon: Text("Joueur")),
+//                Tab(icon: Icon(Icons.directions_transit)),
+                Tab(icon: Text("Equipe")),
               ],
             ),
             title: BlocBuilder<SoccerSearchBloc, SoccerSearchState>(
