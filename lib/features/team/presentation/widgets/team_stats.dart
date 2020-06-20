@@ -26,6 +26,7 @@ class TeamStats extends StatelessWidget {
                 InfoSquare(type: "But marqué", value: state.team.goals),
                 InfoSquare(type: "But encaissé", value: state.team.goalsConceded),
                 InfoSquare(type: "Fautes", value: state.team.foul),
+                //TODO add best player stat
 //                InfoSquare(type: "Meilleur joueur", value: state.team.),
               ]),
             );

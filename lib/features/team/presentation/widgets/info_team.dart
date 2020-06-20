@@ -10,7 +10,6 @@ class InfoTeam extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-
         child: Container(
           decoration: BoxDecoration(
               color: Colors.white30,
@@ -32,9 +31,9 @@ class InfoTeam extends StatelessWidget {
                                 labelColor: Colors.white,
                                 unselectedLabelColor: Colors.grey,
                                 tabs: [
-                                  Tab(text: "statistique",  ),
-                                  Tab(text: "Match terminé", ),
-                                  Tab(text: "Match à venir", ),
+                                  Tab(text: "stats", ),
+                                  Tab(text: "Match joué", ),
+                                  Tab(text: "Futur match", ),
                                 ]
                             )
                         ),
