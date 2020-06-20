@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/bottom_bar.dart';
 import 'package:stat19_app_mobile/core/presentation/widgets/info_square.dart';
 import 'package:stat19_app_mobile/features/team/presentation/bloc/team_bloc.dart';
 import 'package:stat19_app_mobile/features/team/presentation/widgets/title_team.dart';
@@ -12,10 +13,10 @@ class TeamPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return buildBody(context);
   }
-
 //  Widget build(BuildContext context) {
 //    return MaterialApp(home: buildApp(context));
 //  }
+
   final int teamId;
   TeamPage({this.teamId});
 
@@ -28,7 +29,8 @@ class TeamPage extends StatelessWidget {
           title: TitleTeam(teamId: teamId)
         ),
         body: TeamWidget(teamId: teamId),
-      ),
+          bottomNavigationBar: BottomBar(),
+    ),
     );
   }
 
