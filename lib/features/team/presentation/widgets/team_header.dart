@@ -31,7 +31,6 @@ class TeamHeader extends StatelessWidget {
       BlocBuilder<TeamBloc, TeamState>(
           builder: (context, state) {
             if ((state is Empty)) {
-              print(teamId);
               BlocProvider.of<TeamBloc>(context)
                   .add(GetTeamEvent(teamId));
               return Container();

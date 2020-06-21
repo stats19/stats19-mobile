@@ -134,7 +134,6 @@ class BuildItem extends StatelessWidget {
               )
           );
         }
-        print("=== pressed ===");
       },
     );
   }

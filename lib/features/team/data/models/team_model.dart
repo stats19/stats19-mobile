@@ -112,7 +112,6 @@ class PlayedMatchModel extends PlayedMatch {
             away: away);
 
   factory PlayedMatchModel.fromJson(Map<String, dynamic> json) {
-    print(json);
     return PlayedMatchModel(
         matchId: json['matchId'],
         date: json['date'],
@@ -138,8 +137,7 @@ class PlayedMatchModelList {
   PlayedMatchModelList({@required this.playedMatchModels});
 
   factory PlayedMatchModelList.fromJson(List<dynamic> parsedJson) {
-    List<PlayedMatchModel> playedMatchModels =
-        new List<PlayedMatchModel>();
+    List<PlayedMatchModel> playedMatchModels = new List<PlayedMatchModel>();
     playedMatchModels =
         parsedJson.map((i) => PlayedMatchModel.fromJson(i)).toList();
     return new PlayedMatchModelList(
@@ -156,7 +154,15 @@ class NextMatchModel extends NextMatch {
       @required awayTeam,
       @required homeTeamId,
       @required awayTeamId,
-      @required forecastMatch});
+      @required forecastMatch})
+      : super(
+            date: date,
+            stage: stage,
+            homeTeam: homeTeam,
+            awayTeam: awayTeam,
+            homeTeamId: homeTeamId,
+            awayTeamId: awayTeamId,
+            forecastMatch: forecastMatch);
 
   factory NextMatchModel.fromJson(Map<String, dynamic> json) {
     return NextMatchModel(
