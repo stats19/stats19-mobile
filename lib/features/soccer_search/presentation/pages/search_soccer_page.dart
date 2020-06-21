@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/match/presentation/pages/soccer_match_page.dart';
 import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
+import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
 
 import '../../../../injection_container.dart';
 import '../../domain/entities/soccer_search.dart';
@@ -21,8 +23,10 @@ class SoccerSearchPage extends StatelessWidget {
           appBar: AppBar(
             bottom: TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.directions_car)),
-                Tab(icon: Icon(Icons.directions_transit)),
+//                Tab(icon: Icon(Icons.directions_car)),
+                Tab(icon: Text("Joueur")),
+//                Tab(icon: Icon(Icons.directions_transit)),
+                Tab(icon: Text("Equipe")),
               ],
             ),
             title: BlocBuilder<SoccerSearchBloc, SoccerSearchState>(
@@ -112,15 +116,14 @@ class BuildItem extends StatelessWidget {
       ),
       onPressed: () {
         if (type == 'team') {
-          //TODO : return on match view
-//          Navigator.push(
-//              context,
-//              MaterialPageRoute(
-//                  builder: (BuildContext context) {
-//                    return new MatchDetailWidget(match: (this.matchItem as Match));
-//                  }
-//              )
-//          );
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return new TeamPage(teamId: item.id,);
+                  }
+              )
+          );
         } else if (type == 'player') {
           Navigator.push(
               context,
@@ -131,7 +134,6 @@ class BuildItem extends StatelessWidget {
               )
           );
         }
-        print("=== pressed ===");
       },
     );
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/info_square.dart';
 import 'package:stat19_app_mobile/features/player/presentation/bloc/player_bloc.dart';
 
-import 'info_square.dart';
 
 class StatsPlayer extends StatelessWidget {
   const StatsPlayer({
@@ -23,7 +23,6 @@ class StatsPlayer extends StatelessWidget {
                 InfoSquare(type: "Taille",value: state.player.height),
                 InfoSquare(type: "But",value: state.player.goals),
                 InfoSquare(type: "Tir cadré",value: state.player.shotOnTarget),
-                InfoSquare(type: "Passe décisive",value: 0),
                 InfoSquare(type: "Carton rouge",value: state.player.redCards),
                 InfoSquare(type: "Carton jaune",value: state.player.yellowCards),
               ]),
