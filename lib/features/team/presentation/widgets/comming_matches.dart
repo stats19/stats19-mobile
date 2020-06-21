@@ -21,7 +21,7 @@ class CommingMatches extends StatelessWidget {
           children: <Widget>[
             Column(
                 children: state.team.nextMatches
-                    .map((e) => CommingMatch(nextMatch : e))
+                    .map((e) => CommingMatch(nextMatch: e))
                     .toList())
           ],
         ));
@@ -44,10 +44,15 @@ class CommingMatch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //TODO add background for match result
+    Color color = nextMatch.forecastMatch == 'WIN'
+        ? Colors.green
+        : nextMatch.forecastMatch == 'DRAW'
+            ? Colors.yellow
+            : nextMatch.forecastMatch == 'LOSE' ? Colors.red : Colors.black;
     return FlatButton(
         child: Text(
       nextMatch.homeTeam + ' - ' + nextMatch.awayTeam,
-      style: TextStyle(fontSize: 18, color: Colors.white),
+      style: TextStyle(fontSize: 18, color: color),
     ));
   }
 }

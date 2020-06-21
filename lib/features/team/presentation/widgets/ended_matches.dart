@@ -44,6 +44,11 @@ class EndedMatch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //TODO afficher score
+    Color color = playedMatch.result == 'WIN'
+        ? Colors.green
+        : playedMatch.result == 'DRAW'
+        ? Colors.yellow
+        : playedMatch.result == 'LOSE' ? Colors.red : Colors.black;
     return FlatButton(
         onPressed: () {
           Navigator.push(context,
@@ -55,7 +60,7 @@ class EndedMatch extends StatelessWidget {
         },
         child: Text(
           playedMatch.home.name + ' - ' + playedMatch.away.name,
-          style: TextStyle(fontSize: 18, color: Colors.white),
+          style: TextStyle(fontSize: 18, color: color),
         ));
   }
 }
