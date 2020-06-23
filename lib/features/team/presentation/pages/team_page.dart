@@ -13,9 +13,6 @@ class TeamPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return buildBody(context);
   }
-//  Widget build(BuildContext context) {
-//    return MaterialApp(home: buildApp(context));
-//  }
 
   final int teamId;
   TeamPage({this.teamId});
@@ -35,12 +32,6 @@ class TeamPage extends StatelessWidget {
     );
   }
 
-//  BlocProvider<TeamBloc> buildApp(BuildContext context) {
-//    return BlocProvider(
-//      create: (_) => sl<TeamBloc>(),
-//      child: TeamWidget(teamId: teamId),
-//    );
-//  }
 }
 
 class TeamWidget extends StatelessWidget {
