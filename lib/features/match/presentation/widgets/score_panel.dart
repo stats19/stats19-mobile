@@ -53,7 +53,7 @@ class TeamScorePanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
-        children: <Widget>[Icon(Icons.score), Text(name,style: TextStyle(color: Colors.white,  fontSize: 10))],
+        children: <Widget>[Icon(Icons.score), Flexible(child: Text(name,style: TextStyle(color: Colors.white,  fontSize: 15)))],
       ),
       color: Colors.blue,
       width: 120,

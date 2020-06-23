@@ -25,7 +25,7 @@ class MatchStat extends StatelessWidget {
               children: <Widget>[
                 Text(home.toString()),
                 LinearPercentIndicator(
-                  width: 150.0,
+                  width: 130.0,
                   lineHeight: 8.0,
                   percent: home + away > 0 ? home / (home + away) : 0.0,
                   progressColor: Colors.green,
@@ -36,7 +36,7 @@ class MatchStat extends StatelessWidget {
               children: <Widget>[
                 Text(away.toString()),
                 LinearPercentIndicator(
-                  width: 150.0,
+                  width: 130.0,
                   lineHeight: 8.0,
                   percent: home + away > 0 ? away / (home + away) : 0.0,
                   progressColor: Colors.red,
