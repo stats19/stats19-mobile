@@ -40,7 +40,7 @@ class TeamHeader extends StatelessWidget {
               return  Column(
                 children: <Widget>[
                   TeamName(teamName: state.team.name),
-                  TeamLeagueWidget(league: state.team.league,),
+                  TeamLeagueWidget(league: state.team.league),
                 ],
               );
             } else if (state is Error) {

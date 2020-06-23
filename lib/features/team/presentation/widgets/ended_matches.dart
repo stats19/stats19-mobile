@@ -69,7 +69,7 @@ class EndedMatch extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              Text("score"),
+              Text(playedMatch.home.goals.toString() + ' - ' + playedMatch.away.goals.toString() ),
               Container(
                 child: Text(
                   playedMatch.home.name + ' - ' + playedMatch.away.name,
