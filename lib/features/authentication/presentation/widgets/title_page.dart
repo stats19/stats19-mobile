@@ -8,14 +8,16 @@ class TitlePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 3,
+//      height: MediaQuery.of(context).size.height / 3,
       child: Center(
-        child: SingleChildScrollView(
-            child: Text(
-              'Connectez-vous !',
-              style: TextStyle(fontSize: 25),
-              textAlign: TextAlign.center,
-            )),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Text(
+            'Connectez-vous !',
+            style: TextStyle(fontSize: 25),
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
     );
   }

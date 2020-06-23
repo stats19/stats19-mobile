@@ -12,30 +12,34 @@ class AuthenticationPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Stats19'),
       ),
-      body: SingleChildScrollView(child: buildBody(context)),
+      body: Form(child: buildBody(context)),
     );
   }
 
   BlocProvider<UserBloc> buildBody(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<UserBloc>(),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: <Widget>[
-              SizedBox(height: 10),
-              // to half
-              TitlePage(),
-              SizedBox(height: 50),
-              // Bottom half
-              AuthForm()
-            ],
+      child: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: <Widget>[
+                // to half
+                TitlePage(),
+                InscriptionWidget(),
+
+                // Bottom half
+                AuthForm()
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
+
+
 
 

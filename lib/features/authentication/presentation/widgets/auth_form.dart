@@ -35,9 +35,11 @@ class _AuthFormState extends State<AuthForm> {
         ),
         SizedBox(height: 30),
         TextField(
+          obscureText: true,
           keyboardType: TextInputType.visiblePassword,
           decoration: InputDecoration(
-              border: OutlineInputBorder(), hintText: 'Votre mot de passe'),
+              border: OutlineInputBorder(),
+              hintText: 'Votre mot de passe'),
           onChanged: (value) {
             password = value;
           },
@@ -72,6 +74,7 @@ class _AuthFormState extends State<AuthForm> {
             ))
           ],
         )
+
       ],
     );
   }
