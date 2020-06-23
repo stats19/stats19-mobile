@@ -17,7 +17,7 @@ class RecentMatches extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Text("Les derniers matchs",
-                style: TextStyle(color: Colors.white, fontSize: 20)),
+                style: TextStyle(color: Colors.white, fontSize: 18)),
           ),
           BlocBuilder<TeamBloc, TeamState>(builder: (context, state) {
             if (state is Loading) {

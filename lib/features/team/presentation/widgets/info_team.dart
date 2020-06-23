@@ -29,11 +29,11 @@ class InfoTeam extends StatelessWidget {
                             child: TabBar(
                                 labelStyle: TextStyle(fontSize: 15),
                                 labelColor: Colors.white,
-                                unselectedLabelColor: Colors.grey,
+                                unselectedLabelColor: Colors.black,
                                 tabs: [
-                                  Tab(text: "stats", ),
-                                  Tab(text: "Match joué", ),
-                                  Tab(text: "Futur match", ),
+                                  Tab(text: "Stats", ),
+                                  Tab(text: "Matchs joués", ),
+                                  Tab(text: "Futurs matchs", ),
                                 ]
                             )
                         ),

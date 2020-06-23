@@ -31,13 +31,13 @@ class InfoSquare extends StatelessWidget {
               children: <Widget>[
                 Align(
                   child: Text(type,
-                      style: TextStyle(color: Colors.white, fontSize: 18)),
+                      style: TextStyle(color: Colors.white, fontSize: 15)),
                   alignment: Alignment.topLeft,
                 ),
                 Expanded(
                   child: Align(
                     child: Text(value.toString(),
-                        style: TextStyle(color: Colors.white, fontSize: 30)),
+                        style: TextStyle(color: Colors.white, fontSize: 25)),
                     alignment: Alignment.bottomRight,
                   ),
                 ),

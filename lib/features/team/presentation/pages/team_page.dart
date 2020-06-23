@@ -29,6 +29,7 @@ class TeamPage extends StatelessWidget {
           title: TitleTeam(teamId: teamId)
         ),
         body: TeamWidget(teamId: teamId),
+
           bottomNavigationBar: BottomBar(),
     ),
     );
@@ -51,6 +52,7 @@ class TeamWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.blueGrey[900],
       child: Column(
         children: <Widget>[
           TeamHeader(teamId: teamId),
