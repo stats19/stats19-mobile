@@ -11,6 +11,7 @@ class LeaguesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Les ligues'),
+        automaticallyImplyLeading: false,
       ),
       body: buildBody(context),
       bottomNavigationBar: BottomBar(),
@@ -34,7 +35,7 @@ class LeaguesPage extends StatelessWidget {
                           .add(GetLeaguesEvent());
                       return Container();
                     } else if (state is Loading) {
-                      return Text("is loading");
+                      return Center(child: CircularProgressIndicator());
                     } else if (state is Loaded) {
                       return Container(
                           margin: const EdgeInsets.all(10.0),
