@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/bottom_bar.dart';
 import 'package:stat19_app_mobile/features/match/presentation/pages/soccer_match_page.dart';
 import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
 import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
@@ -32,7 +33,20 @@ class SoccerSearchPage extends StatelessWidget {
             title: BlocBuilder<SoccerSearchBloc, SoccerSearchState>(
                 builder: (context, state) {
               return TextField(
-                decoration: InputDecoration(hintText: "Rechercher ..."),
+                decoration: InputDecoration(
+                  hintText: "Rechercher ...",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: BorderSide(
+                      width: 1,
+                      color: Colors.white70,
+                      style: BorderStyle.none,
+                    ),
+                  ),
+                  filled: true,
+                  contentPadding: EdgeInsets.all(16),
+                  fillColor: Colors.white,
+                ),
                 autofocus: true,
                 onChanged: (value) {
                   BlocProvider.of<SoccerSearchBloc>(context)
@@ -41,6 +55,7 @@ class SoccerSearchPage extends StatelessWidget {
               );
             }),
           ),
+          bottomNavigationBar: BottomBar(),
           body: TabBarView(
             children: [
               BlocBuilder<SoccerSearchBloc, SoccerSearchState>(
@@ -50,7 +65,7 @@ class SoccerSearchPage extends StatelessWidget {
                 } else if (state is Error) {
                   return Text(state.message);
                 } else if (state is Loading) {
-                  return CircularProgressIndicator();
+                  return Center(child: CircularProgressIndicator());
                 } else if (state is Loaded) {
                   return Column(
                     children: <Widget>[
@@ -75,7 +90,7 @@ class SoccerSearchPage extends StatelessWidget {
                 } else if (state is Error) {
                   return Text(state.message);
                 } else if (state is Loading) {
-                  return CircularProgressIndicator();
+                  return Center(child: CircularProgressIndicator());
                 } else if (state is Loaded) {
                   return Expanded(
                     child: ListView.builder(
@@ -91,7 +106,6 @@ class SoccerSearchPage extends StatelessWidget {
               }),
             ],
           ),
-          bottomNavigationBar: BottomAppBar(),
         ),
       ),
     );
