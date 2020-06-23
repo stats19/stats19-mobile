@@ -35,7 +35,6 @@ class EndedMatches extends StatelessWidget {
 
 class EndedMatch extends StatelessWidget {
   final PlayedMatch playedMatch;
-
   const EndedMatch({
     Key key,
     this.playedMatch,
@@ -58,9 +57,30 @@ class EndedMatch extends StatelessWidget {
             );
           }));
         },
-        child: Text(
-          playedMatch.home.name + ' - ' + playedMatch.away.name,
-          style: TextStyle(fontSize: 18, color: color),
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.8,
+          decoration: BoxDecoration(
+              color: color.withOpacity(0.5),
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+              border: Border.all(width: 0.5),
+              boxShadow: [
+                BoxShadow(color: Colors.grey, spreadRadius: 1)
+              ]
+          ),
+          child: Column(
+            children: <Widget>[
+              Text("score"),
+              Container(
+                child: Text(
+                  playedMatch.home.name + ' - ' + playedMatch.away.name,
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white
+                  ),
+                ),
+              ),
+            ],
+          ),
         ));
   }
 }

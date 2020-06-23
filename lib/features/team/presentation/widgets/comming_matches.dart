@@ -43,16 +43,32 @@ class CommingMatch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO add background for match result
+      //TODO add background for potential match result
     Color color = nextMatch.forecastMatch == 'WIN'
         ? Colors.green
         : nextMatch.forecastMatch == 'DRAW'
             ? Colors.yellow
             : nextMatch.forecastMatch == 'LOSE' ? Colors.red : Colors.black;
     return FlatButton(
-        child: Text(
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.8,
+          decoration: BoxDecoration(
+              color: color.withOpacity(0.5),
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+              border: Border.all(width: 0.5),
+              boxShadow: [
+                BoxShadow(color: Colors.grey, spreadRadius: 1)
+              ]
+          ),
+          child: Column(
+            children: <Widget>[
+              Text(nextMatch.date, style: TextStyle(color: Colors.white),),
+              Text(
       nextMatch.homeTeam + ' - ' + nextMatch.awayTeam,
-      style: TextStyle(fontSize: 18, color: color),
-    ));
+      style: TextStyle(fontSize: 15, color: Colors.white),
+    ),
+            ],
+          ),
+        ));
   }
 }
