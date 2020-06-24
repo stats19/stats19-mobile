@@ -13,5 +13,15 @@ class UserLogin extends UserEvent {
   UserLogin(this.username, this.password);
   @override
   List<Object> get props => [username, password];
+}
+
+class RegisterEvent extends UserEvent {
+  final String username;
+  final String email;
+  final String password;
+
+  RegisterEvent({this.username, this.email, this.password});
+  @override
+  List<Object> get props => [username, email, password];
 
 }

@@ -6,26 +6,25 @@ import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/user.dart';
 import '../repositories/user_repository.dart';
-class RegisterUser extends UseCase<User, Params> {
+class RegisterUser extends UseCase<User, RegisterParams> {
   final UserRepository repository;
 
   RegisterUser(this.repository);
 
   @override
-  Future<Either<Failure, User>> call(Params params) async {
+  Future<Either<Failure, User>> call(RegisterParams params) async {
     return await repository.registerUser(params.username, params.email, params.password);
   }
 
 }
 
-class Params extends Equatable {
+class RegisterParams extends Equatable {
   final String username;
   final String email;
   final String password;
 
-  Params({@required this.username, @required this.email, @required this.password});
+  RegisterParams({@required this.username, @required this.email, @required this.password});
 
   @override
-  // TODO: implement props
   List<Object> get props => [username, email, password];
 }

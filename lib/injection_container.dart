@@ -1,6 +1,11 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stat19_app_mobile/features/navigation/data/datasources/forecast_remote_data_source.dart';
+import 'package:stat19_app_mobile/features/navigation/data/repositories/forecast_repository_impl.dart';
+import 'package:stat19_app_mobile/features/navigation/domain/repositories/forecast_repository.dart';
+import 'package:stat19_app_mobile/features/navigation/domain/usecases/RefreshForecast.dart';
+import 'package:stat19_app_mobile/features/navigation/presentation/bloc/navigation_bloc.dart';
 
 import 'features/authentication/data/datasources/user_local_data_source.dart';
 import 'features/authentication/data/datasources/user_remote_data_source.dart';
@@ -42,7 +47,7 @@ final sl = GetIt.instance;
 Future<void> init() async {
   //! Features - User
   // Bloc
-  sl.registerFactory(() => UserBloc(loginUser: sl()));
+  sl.registerFactory(() => UserBloc(loginUser: sl(), registerUser: sl()));
 
   // Use cases
   sl.registerLazySingleton(() => LoginUser(sl()));
@@ -122,6 +127,19 @@ Future<void> init() async {
 
   // data sources
   sl.registerLazySingleton<TeamRemoteDataSource>(() => TeamRemoteDataSourceImpl(client: sl(), sharedPreferences: sl()));
+
+  //! Features - Navigation
+  // Bloc
+  sl.registerFactory(() => NavigationBloc(refreshForecast: sl()));
+
+  // Use cases
+  sl.registerLazySingleton(() => RefreshForecast(sl()));
+
+  // repository
+  sl.registerLazySingleton<ForecastRepository>(() => ForecastRepositoryImpl(remoteDataSource: sl()));
+
+  // data sources
+  sl.registerLazySingleton<ForecastRemoteDataSource>(() => ForecastRemoteDataSourceImpl(client: sl(), sharedPreferences: sl()));
 
   //! Core
 

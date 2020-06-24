@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/bottom_bar.dart';
+import 'package:stat19_app_mobile/features/navigation/presentation/widgets/bottom_bar.dart';
 
 import '../../../../injection_container.dart';
 import '../bloc/leagues_bloc.dart';

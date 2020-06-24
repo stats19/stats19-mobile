@@ -14,18 +14,22 @@ abstract class UserRemoteDataSource {
   /// Throws a [BadCredentialsException] for 403 error code.
   /// Throws a [ServerException] for all other error codes.
   Future<UserModel> loginUser(String username, String email);
+
   /// calls the /register
   ///
   /// Throws a [BadRequestException] for 400 error code.
   /// Throws a [ServerException] for all other error codes.
-  Future<UserModel> registerUser(String username, String email, String password);
+  Future<UserModel> registerUser(
+      String username, String email, String password);
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   final http.Client client;
   final SharedPreferences sharedPreferences;
 
-  UserRemoteDataSourceImpl({@required this.client, @required this.sharedPreferences});
+  UserRemoteDataSourceImpl(
+      {@required this.client, @required this.sharedPreferences});
+
   @override
   Future<UserModel> loginUser(String username, String password) async {
     final response = await client.post(HOST + '/login',
@@ -33,10 +37,10 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
         headers: {'Content-Type': 'application/json'});
 
     if (response.statusCode == 200) {
-      if(response.headers.containsKey('authorization')){
+      if (response.headers.containsKey('authorization')) {
         final token = response.headers['authorization'];
         this.sharedPreferences.setString(CACHED_AUTH_TOKEN, token);
-      }else{
+      } else {
         throw ServerException();
       }
       return UserModel.fromJson(json.decode(response.body));
@@ -48,9 +52,21 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Future<UserModel> registerUser(String username, String email, String password) {
-    // TODO: implement registerUser
-    return null;
-  }
+  Future<UserModel> registerUser(
+      String username, String email, String password) async {
+    final response = await client.post(HOST + '/register',
+        body: json.encode(
+            {'username': username, 'password': password, 'email': email}),
+        headers: {'Content-Type': 'application/json'});
 
+    if (response.statusCode == 200) {
+      return UserModel.fromJson(json.decode(response.body));
+    } else if (response.statusCode == 403) {
+      throw BadCredentialsException();
+    } else if (response.statusCode == 400) {
+      throw BadRequestException();
+    } else {
+      throw ServerException();
+    }
+  }
 }

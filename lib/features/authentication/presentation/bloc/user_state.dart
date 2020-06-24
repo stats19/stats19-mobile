@@ -17,6 +17,12 @@ class Loaded extends UserState {
   Loaded({@required this.user});
 }
 
+class RegisterLoaded extends UserState {
+  final User user;
+
+  RegisterLoaded(this.user);
+}
+
 class Error extends UserState {
   final String message;
 

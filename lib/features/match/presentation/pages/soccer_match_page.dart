@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/bottom_bar.dart';
+import 'package:stat19_app_mobile/features/navigation/presentation/widgets/bottom_bar.dart';
 import 'package:stat19_app_mobile/features/match/presentation/bloc/soccer_match_bloc.dart';
 import 'package:stat19_app_mobile/features/match/presentation/widgets/widgets.dart';
 

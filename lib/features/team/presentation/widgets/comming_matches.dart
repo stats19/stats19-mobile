@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/team/domain/entities/team.dart';
-import 'package:stat19_app_mobile/features/team/presentation/bloc/team_bloc.dart';
+
+import '../../domain/entities/team.dart';
+import '../bloc/team_bloc.dart';
 
 class CommingMatches extends StatelessWidget {
   const CommingMatches({

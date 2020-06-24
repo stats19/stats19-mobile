@@ -10,9 +10,8 @@ import '../datasources/user_remote_data_source.dart';
 class UserRepositoryImpl extends UserRepository {
   final UserRemoteDataSource remoteDataSource;
 
-  UserRepositoryImpl({
-    @required this.remoteDataSource
-  });
+  UserRepositoryImpl({@required this.remoteDataSource});
+
   @override
   Future<Either<Failure, User>> loginUser(String username, String email) async {
     try {
@@ -26,9 +25,18 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<Either<Failure, User>> registerUser(String username, String email, String password) {
-    // TODO: implement registerUser
-    return null;
+  Future<Either<Failure, User>> registerUser(
+      String username, String email, String password) async {
+    try {
+      final user =
+          await remoteDataSource.registerUser(username, email, password);
+      return right(user);
+    } on ServerException {
+      return Left(ServerFailure());
+    } on BadCredentialsException {
+      return Left(BadCredentialsFailure());
+    } on BadRequestException {
+      return Left(BadRequestFailure());
+    }
   }
-
 }

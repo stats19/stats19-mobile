@@ -26,7 +26,7 @@ void main() {
     when(mockUserRepository.registerUser(any, any, any))
         .thenAnswer((_) async => Right(tUser));
     // act
-    final result = await usecase(Params(email: tEmail, username: tUsername, password: tPassword));
+    final result = await usecase(RegisterParams(email: tEmail, username: tUsername, password: tPassword));
     // assert
     expect(result, Right(tUser));
     verify(mockUserRepository.registerUser(tUsername, tEmail, tPassword));
