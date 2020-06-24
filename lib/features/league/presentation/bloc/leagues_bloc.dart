@@ -1,14 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:stat19_app_mobile/features/league/domain/usecases/get_ranking.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../../../authentication/presentation/bloc/user_bloc.dart';
 import '../../domain/entities/league.dart';
+import '../../domain/entities/league_ranking.dart';
+import '../../domain/entities/matches_by_league.dart';
 import '../../domain/usecases/get_leagues.dart';
 import '../../domain/usecases/get_matches_by_league.dart';
+import '../../domain/usecases/get_ranking.dart';
 
 part 'leagues_event.dart';
 
@@ -19,7 +21,10 @@ class LeaguesBloc extends Bloc<LeaguesEvent, LeaguesState> {
   final GetMatchesByLeagues getMatchesByLeagues;
   final GetRanking getRanking;
 
-  LeaguesBloc({@required this.getLeagues, @required this.getMatchesByLeagues, @required this.getRanking});
+  LeaguesBloc(
+      {@required this.getLeagues,
+      @required this.getMatchesByLeagues,
+      @required this.getRanking});
 
   @override
   LeaguesState get initialState => Empty();
@@ -28,12 +33,24 @@ class LeaguesBloc extends Bloc<LeaguesEvent, LeaguesState> {
   Stream<LeaguesState> mapEventToState(
     LeaguesEvent event,
   ) async* {
+    yield Loading();
     if (event is GetLeaguesEvent) {
-      yield Loading();
       final failureOrLeagues = await getLeagues(NoParams());
       yield failureOrLeagues.fold(
           (failure) => Error(message: _mapFailureToMessage(failure)),
-          (leagues) => Loaded(leagues: leagues));
+          (leagues) => LeaguesLoaded(leagues: leagues));
+    } else if (event is GetMatchByLeagueEvent) {
+      final failureOrMatches = await getMatchesByLeagues(
+          MatchesLeagueParams(leagueId: event.leagueId));
+      yield failureOrMatches.fold(
+          (failure) => Error(message: _mapFailureToMessage(failure)),
+          (matches) => MatchesByLeagueLoaded(matchesByLeague: matches));
+    } else if ((event is GetRankingEvent)) {
+      final failureOrRanking =
+          await getRanking(RankingParams(leagueId: event.leagueId));
+      yield failureOrRanking.fold(
+          (failure) => Error(message: _mapFailureToMessage(failure)),
+          (ranking) => RankingLoaded(ranking: ranking));
     }
   }
 

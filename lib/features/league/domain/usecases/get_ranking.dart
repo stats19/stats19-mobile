@@ -7,22 +7,22 @@ import '../../../../core/usecases/usecase.dart';
 import '../entities/league_ranking.dart';
 import '../repositories/league_repository.dart';
 
-class GetRanking extends UseCase<LeagueRanking, Params> {
+class GetRanking extends UseCase<LeagueRanking, RankingParams> {
   final LeagueRepository repository;
 
   GetRanking(this.repository);
 
   @override
-  Future<Either<Failure, LeagueRanking>> call(Params params) async {
+  Future<Either<Failure, LeagueRanking>> call(RankingParams params) async {
     return await repository.getLeagueRanking(params.leagueId);
   }
 }
 
 
-class Params extends Equatable {
+class RankingParams extends Equatable {
   final int leagueId;
 
-  Params({@required this.leagueId});
+  RankingParams({@required this.leagueId});
 
   @override
   List<Object> get props => [leagueId];

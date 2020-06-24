@@ -7,21 +7,21 @@ import '../../../../core/usecases/usecase.dart';
 import '../entities/matches_by_league.dart';
 import '../repositories/league_repository.dart';
 
-class GetMatchesByLeagues extends UseCase<MatchesByLeague, Params> {
+class GetMatchesByLeagues extends UseCase<MatchesByLeague, MatchesLeagueParams> {
   final LeagueRepository repository;
 
   GetMatchesByLeagues(this.repository);
 
   @override
-  Future<Either<Failure, MatchesByLeague>> call(Params params) async {
+  Future<Either<Failure, MatchesByLeague>> call(MatchesLeagueParams params) async {
     return await repository.getMatchesByLeague(params.leagueId);
   }
 }
 
-class Params extends Equatable {
+class MatchesLeagueParams extends Equatable {
   final int leagueId;
 
-  Params({@required this.leagueId});
+  MatchesLeagueParams({@required this.leagueId});
 
   @override
   List<Object> get props => [leagueId];

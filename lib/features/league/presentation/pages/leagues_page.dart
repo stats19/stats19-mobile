@@ -35,7 +35,7 @@ class LeaguesPage extends StatelessWidget {
                       return Container();
                     } else if (state is Loading) {
                       return Text("is loading");
-                    } else if (state is Loaded) {
+                    } else if (state is LeaguesLoaded) {
                       return Container(
                           margin: const EdgeInsets.all(10.0),
                           child: (new ListView.builder(

@@ -6,12 +6,26 @@ abstract class LeaguesState extends Equatable {
 
 class Empty extends LeaguesState {}
 class Loading extends LeaguesState {}
-class Loaded extends LeaguesState {
+class LeaguesLoaded extends LeaguesState {
   final List<League> leagues;
 
-  Loaded({@required this.leagues});
+  LeaguesLoaded({@required this.leagues});
 
   List<Object> get props => [leagues];
+}
+
+class MatchesByLeagueLoaded extends LeaguesState {
+  final MatchesByLeague matchesByLeague;
+
+  MatchesByLeagueLoaded({this.matchesByLeague});
+  List<Object> get props => [matchesByLeague];
+}
+
+class RankingLoaded extends LeaguesState {
+  final LeagueRanking ranking;
+
+  RankingLoaded({this.ranking});
+  List<Object> get props => [ranking];
 }
 
 class Error extends LeaguesState {
