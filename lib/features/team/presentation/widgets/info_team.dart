@@ -13,7 +13,11 @@ class InfoTeam extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
               color: Colors.white30,
-              borderRadius: BorderRadius.all(Radius.circular(15))
+//              borderRadius: BorderRadius.all(Radius.circular(15))
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(15),
+                topLeft: Radius.circular(15)
+              )
           ),
           margin: EdgeInsets.only(
             top: 10,
@@ -27,13 +31,13 @@ class InfoTeam extends StatelessWidget {
                       children: <Widget>[
                         new Expanded(
                             child: TabBar(
-                                labelStyle: TextStyle(fontSize: 15),
+                                labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
                                 labelColor: Colors.white,
-                                unselectedLabelColor: Colors.grey,
+                                unselectedLabelColor: Colors.black,
                                 tabs: [
-                                  Tab(text: "stats", ),
-                                  Tab(text: "Match joué", ),
-                                  Tab(text: "Futur match", ),
+                                  Tab(text: "Stats", ),
+                                  Tab(text: "Matchs joués", ),
+                                  Tab(text: "Futurs matchs", ),
                                 ]
                             )
                         ),

@@ -13,9 +13,6 @@ class TeamPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return buildBody(context);
   }
-//  Widget build(BuildContext context) {
-//    return MaterialApp(home: buildApp(context));
-//  }
 
   final int teamId;
   TeamPage({this.teamId});
@@ -29,17 +26,12 @@ class TeamPage extends StatelessWidget {
           title: TitleTeam(teamId: teamId)
         ),
         body: TeamWidget(teamId: teamId),
+
           bottomNavigationBar: BottomBar(),
     ),
     );
   }
 
-//  BlocProvider<TeamBloc> buildApp(BuildContext context) {
-//    return BlocProvider(
-//      create: (_) => sl<TeamBloc>(),
-//      child: TeamWidget(teamId: teamId),
-//    );
-//  }
 }
 
 class TeamWidget extends StatelessWidget {
@@ -51,6 +43,7 @@ class TeamWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.blueGrey[900],
       child: Column(
         children: <Widget>[
           TeamHeader(teamId: teamId),

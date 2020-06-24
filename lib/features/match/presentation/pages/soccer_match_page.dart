@@ -22,7 +22,7 @@ class SoccerMatchPage extends StatelessWidget {
       create: (_) => sl<SoccerMatchBloc>(),
       child: Scaffold(
           appBar: AppBar(
-            title: Text("hey"),
+            title: TitleMatch(matchId: matchId),
           ),
           backgroundColor: Colors.blueGrey[900],
           body: MatchDetailsWidget(
@@ -45,7 +45,10 @@ class MatchDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Padding(padding: EdgeInsets.all(20), child: Text('LIGUE')),
+
+        // TODO ajouter league name
+        Padding(padding: EdgeInsets.all(20), child: Text("LEAGUE")),
+
         ScorePanel(matchId: matchId),
         Expanded(
             child: DefaultTabController(
@@ -79,3 +82,4 @@ class MatchDetailsWidget extends StatelessWidget {
     );
   }
 }
+

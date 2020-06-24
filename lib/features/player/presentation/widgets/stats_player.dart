@@ -11,6 +11,7 @@ class StatsPlayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return BlocBuilder<PlayerBloc, PlayerState>(
         builder: (context, state) {
           if (state is Loading) {
@@ -19,7 +20,7 @@ class StatsPlayer extends StatelessWidget {
             return Expanded(
               child: GridView.count(crossAxisCount: 3, children: [
                 InfoSquare(type: "Age",value: state.player.age),
-                InfoSquare(type: "Poid",value: state.player.weight),
+                InfoSquare(type: "Poid",value: LbsToKg(state.player.weight) ),
                 InfoSquare(type: "Taille",value: state.player.height),
                 InfoSquare(type: "But",value: state.player.goals),
                 InfoSquare(type: "Tir cadré",value: state.player.shotOnTarget),
@@ -32,5 +33,10 @@ class StatsPlayer extends StatelessWidget {
           }
           return Container();
         });
+  }
+
+  int LbsToKg(int weight) {
+    double KgWeight = weight / 2.2;
+    return KgWeight.round();
   }
 }

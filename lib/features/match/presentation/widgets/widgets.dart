@@ -3,3 +3,4 @@ export 'soccer_match_stat.dart';
 export 'match_stat.dart';
 export 'soccer_match_stat.dart';
 export 'match_highlights.dart';
+export 'title_match.dart';

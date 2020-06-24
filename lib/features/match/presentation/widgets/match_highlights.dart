@@ -79,7 +79,7 @@ class HighLight extends StatelessWidget {
             flex: 2,
             child: Container(
               child: Row(
-                children: <Widget>[home ? Text(name) : Container()],
+                children: <Widget>[home ? Flexible(child: Text(name)) : Container()],
               ),
             ),
           ),
@@ -97,7 +97,7 @@ class HighLight extends StatelessWidget {
             flex: 2,
             child: Container(
               child: Row(
-                children: <Widget>[!home ? Text(name) : Container()],
+                children: <Widget>[!home ? Flexible(child: Text(name)) : Container()],
               ),
             ),
           ),
