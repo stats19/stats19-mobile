@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/league/presentation/pages/league_info_page.dart';
 import 'package:stat19_app_mobile/features/navigation/presentation/widgets/bottom_bar.dart';
 
 import '../../../../injection_container.dart';
@@ -49,10 +50,13 @@ class LeaguesPage extends StatelessWidget {
                                   child: new Text(state.leagues[index].name),
                                   splashColor: Colors.grey[900],
                                   onPressed: () {
-//                                  Navigator.push(
-//                                    context,
-//                                    MaterialPageRoute(builder: (context) => SearchBar()),
-//                                  );
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) {
+                                      print(state.leagues[index].leagueId);
+                                      return LeagueInfoPage(leagueId: state.leagues[index].leagueId,);
+                                    }),
+                                  );
                                   });
                             },
                           )));
