@@ -47,7 +47,11 @@ class MatchDetailsWidget extends StatelessWidget {
       children: <Widget>[
 
         // TODO ajouter league name
-        Padding(padding: EdgeInsets.all(20), child: Text("LEAGUE")),
+        Padding(
+            padding: EdgeInsets.all(20),
+            child: Text("LEAGUE")
+//            child: MatchLeagueButton()
+        ),
 
         ScorePanel(matchId: matchId),
         Expanded(
@@ -83,3 +87,29 @@ class MatchDetailsWidget extends StatelessWidget {
   }
 }
 
+class MatchLeagueButton extends StatelessWidget {
+
+  const MatchLeagueButton({
+    Key key,
+    @required this.matchId,
+  }) : super(key: key);
+
+  final int matchId;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SoccerMatchBloc, SoccerMatchState>(builder: (context, state) {
+      if ((state is Empty)) {
+        BlocProvider.of<SoccerMatchBloc>(context).add(GetSoccerMatchEvent(matchId));
+        return Text("league");
+        return Container();
+      } else if (state is Loaded) {
+        print(state.soccerMatch.leagueName);
+        return Text(state.soccerMatch.leagueName);
+      } else if (state is Error) {
+        return Text('there is error' + state.message);
+      }
+      return Container();
+    });
+  }
+}
