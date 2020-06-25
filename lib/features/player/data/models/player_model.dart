@@ -13,6 +13,7 @@ class PlayerModel extends Player {
       @required redCards,
       @required yellowCards,
       @required shotOnTarget,
+      @required score,
       @required goals})
       : super(
             playerId: playerId,
@@ -25,6 +26,7 @@ class PlayerModel extends Player {
             redCards: redCards,
             yellowCards: yellowCards,
             shotOnTarget: shotOnTarget,
+            score: score,
             goals: goals);
 
   factory PlayerModel.fromJson(Map<String, dynamic> json) {
@@ -39,6 +41,7 @@ class PlayerModel extends Player {
       redCards: json['redCards'],
       yellowCards: json['yellowCards'],
       shotOnTarget: json['shotOnTarget'],
+      score: json['score'],
       goals: json['goals'],
     );
   }

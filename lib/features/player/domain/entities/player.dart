@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
@@ -12,6 +14,7 @@ class Player extends Equatable {
   final int redCards;
   final int yellowCards;
   final int shotOnTarget;
+  final Double score;
   final int goals;
 
   Player(
@@ -25,6 +28,7 @@ class Player extends Equatable {
       @required this.redCards,
       @required this.yellowCards,
       @required this.shotOnTarget,
+      @required this.score,
       @required this.goals});
 
   @override
@@ -39,7 +43,8 @@ class Player extends Equatable {
         redCards,
         yellowCards,
         shotOnTarget,
-        goals
+        goals,
+        score
       ];
 
   @override
