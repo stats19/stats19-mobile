@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:stat19_app_mobile/core/error/failures.dart';
 import 'package:stat19_app_mobile/core/usecases/usecase.dart';
 import 'package:stat19_app_mobile/features/authentication/presentation/bloc/user_bloc.dart';
+import 'package:stat19_app_mobile/features/navigation/domain/usecases/CheckProcess.dart';
 import 'package:stat19_app_mobile/features/navigation/domain/usecases/RefreshForecast.dart';
 
 part 'navigation_event.dart';
@@ -13,8 +14,9 @@ part 'navigation_state.dart';
 
 class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
   final RefreshForecast refreshForecast;
+  final CheckProcess checkProcess;
 
-  NavigationBloc({this.refreshForecast});
+  NavigationBloc({this.refreshForecast, this.checkProcess});
 
   @override
   NavigationState get initialState => NavigationInitial();
@@ -26,13 +28,26 @@ class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
     if (event is RefreshForecastEvent) {
       yield Loading();
       final failureOrForecast = await refreshForecast(NoParams());
-      yield failureOrForecast.fold(
+      yield await failureOrForecast.fold(
           (failure) => Error(message: _mapFailureToMessage(failure)),
-          (forecast) => Loaded());
+          (forecast) async => await waitProcess());
     }
   }
 
+  Future<NavigationState> waitProcess() async {
+    final process = await checkProcess(NoParams());
+    return await process.fold(
+        (failure) => Error(message: _mapFailureToMessage(failure)), (p) async {
+          print(p.retry);
+      if (!p.retry) {
+        return Loaded();
+      }
+      return waitProcess();
+    });
+  }
+
   String _mapFailureToMessage(Failure failure) {
+    print(failure);
     switch (failure.runtimeType) {
       case BadCredentialsFailure:
         return BAD_CREDENTIALS_FAILURE_MESSAGE;

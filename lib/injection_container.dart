@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stat19_app_mobile/features/navigation/data/datasources/forecast_remote_data_source.dart';
 import 'package:stat19_app_mobile/features/navigation/data/repositories/forecast_repository_impl.dart';
 import 'package:stat19_app_mobile/features/navigation/domain/repositories/forecast_repository.dart';
+import 'package:stat19_app_mobile/features/navigation/domain/usecases/CheckProcess.dart';
 import 'package:stat19_app_mobile/features/navigation/domain/usecases/RefreshForecast.dart';
 import 'package:stat19_app_mobile/features/navigation/presentation/bloc/navigation_bloc.dart';
 
@@ -130,10 +131,11 @@ Future<void> init() async {
 
   //! Features - Navigation
   // Bloc
-  sl.registerFactory(() => NavigationBloc(refreshForecast: sl()));
+  sl.registerFactory(() => NavigationBloc(refreshForecast: sl(), checkProcess: sl()));
 
   // Use cases
   sl.registerLazySingleton(() => RefreshForecast(sl()));
+  sl.registerLazySingleton(() => CheckProcess(sl()));
 
   // repository
   sl.registerLazySingleton<ForecastRepository>(() => ForecastRepositoryImpl(remoteDataSource: sl()));

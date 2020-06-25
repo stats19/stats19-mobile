@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 
 class SoccerMatch extends Equatable {
   final int matchId;
+  final MatchLeague league;
   final TeamMatch homeTeam;
   final TeamMatch awayTeam;
   final List<MatchDetails> details;
@@ -11,13 +12,24 @@ class SoccerMatch extends Equatable {
       {@required this.matchId,
       @required this.homeTeam,
       @required this.awayTeam,
+      @required this.league,
       @required this.details});
 
   @override
-  List<Object> get props => [matchId, homeTeam, awayTeam, details];
+  List<Object> get props => [matchId, homeTeam, awayTeam, details, league];
 
   @override
   bool get stringify => true;
+}
+
+class MatchLeague extends Equatable {
+  final int leagueId;
+  final String name;
+
+  MatchLeague({@required this.leagueId, @required this.name});
+
+  @override
+  List<Object> get props => [leagueId, name];
 }
 
 class TeamMatch extends Equatable {
@@ -41,8 +53,16 @@ class TeamMatch extends Equatable {
       @required this.redCard});
 
   @override
-  List<Object> get props =>
-      [teamId, name, goals, possession, shotOnTarget, fouls, yellowCard, redCard];
+  List<Object> get props => [
+        teamId,
+        name,
+        goals,
+        possession,
+        shotOnTarget,
+        fouls,
+        yellowCard,
+        redCard
+      ];
 }
 
 class MatchDetails extends Equatable {
@@ -62,5 +82,6 @@ class MatchDetails extends Equatable {
       @required this.type});
 
   @override
-  List<Object> get props => [playerId, playerName, elapsed, elapsedPlus, type, home];
+  List<Object> get props =>
+      [playerId, playerName, elapsed, elapsedPlus, type, home];
 }

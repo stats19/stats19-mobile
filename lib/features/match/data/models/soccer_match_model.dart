@@ -5,11 +5,13 @@ import '../../domain/entities/soccer_match.dart';
 class SoccerMatchModel extends SoccerMatch {
   SoccerMatchModel(
       {@required matchId,
+      @required league,
       @required homeTeam,
       @required awayTeam,
       @required details})
       : super(
             matchId: matchId,
+            league: league,
             homeTeam: homeTeam,
             awayTeam: awayTeam,
             details: details);
@@ -17,9 +19,20 @@ class SoccerMatchModel extends SoccerMatch {
   factory SoccerMatchModel.fromJson(Map<String, dynamic> json) {
     return SoccerMatchModel(
         matchId: json['matchId'],
+        league: MatchLeagueModel.fromJson(json['league']),
         homeTeam: TeamMatchModel.fromJson(json['homeTeam']),
         awayTeam: TeamMatchModel.fromJson(json['awayTeam']),
         details: MatchDetailsModelList.fromJson(json['details']).details);
+  }
+}
+
+class MatchLeagueModel extends MatchLeague {
+  MatchLeagueModel({@required leagueId, @required name})
+      : super(leagueId: leagueId, name: name);
+
+  factory MatchLeagueModel.fromJson(Map<String, dynamic> json) {
+    return MatchLeagueModel(
+        leagueId: json['leagueId'], name: json['leagueName']);
   }
 }
 
@@ -75,13 +88,12 @@ class MatchDetailsModel extends MatchDetails {
 
   factory MatchDetailsModel.fromJson(Map<String, dynamic> json) {
     return MatchDetailsModel(
-      playerName: json['playerName'],
-      elapsed: json['elapsed'],
-      elapsedPlus: json['elapsedPlus'],
-      playerId: json['playerId'],
-      type: json['type'],
-      home: json['home']
-    );
+        playerName: json['playerName'],
+        elapsed: json['elapsed'],
+        elapsedPlus: json['elapsedPlus'],
+        playerId: json['playerId'],
+        type: json['type'],
+        home: json['home']);
   }
 }
 
