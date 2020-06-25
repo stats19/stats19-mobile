@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stat19_app_mobile/features/match/presentation/bloc/soccer_match_bloc.dart';
+import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
 
 class MatchHighlights extends StatelessWidget {
   const MatchHighlights({
@@ -35,6 +36,7 @@ class MatchHighlights extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       return HighLight(
                           name: state.soccerMatch.details[index].playerName,
+                          id: state.soccerMatch.details[index].playerId,
                           home: state.soccerMatch.details[index].home,
                           elapsed: state.soccerMatch.details[index].elapsed,
                           elapsedPlus:
@@ -55,6 +57,7 @@ class MatchHighlights extends StatelessWidget {
 }
 
 class HighLight extends StatelessWidget {
+  final int id;
   final String name;
   final bool home;
   final int elapsed;
@@ -65,7 +68,8 @@ class HighLight extends StatelessWidget {
       @required this.name,
       @required this.home,
       @required this.elapsed,
-      @required this.elapsedPlus})
+      @required this.elapsedPlus,
+        @required this.id})
       : super(key: key);
 
   @override
@@ -79,7 +83,17 @@ class HighLight extends StatelessWidget {
             flex: 2,
             child: Container(
               child: Row(
-                children: <Widget>[home ? Flexible(child: Text(name)) : Container()],
+                children: <Widget>[home ? Flexible(child: FlatButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return PlayerPage(playerId: id,);
+                      }),
+                    );
+                  },
+                    child: Text(name)
+                )) : Container()],
               ),
             ),
           ),
@@ -97,7 +111,17 @@ class HighLight extends StatelessWidget {
             flex: 2,
             child: Container(
               child: Row(
-                children: <Widget>[!home ? Flexible(child: Text(name)) : Container()],
+                children: <Widget>[!home ? Flexible(child: FlatButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return PlayerPage(playerId: id,);
+                        }),
+                      );
+                    },
+                    child: Text(name)
+                )) : Container()],
               ),
             ),
           ),
