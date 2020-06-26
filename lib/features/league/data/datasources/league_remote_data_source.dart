@@ -71,8 +71,9 @@ class LeagueRemoteDataSourceImpl implements LeagueRemoteDataSource {
 
   @override
   Future<LeagueRankingModel> getRanking(int leagueId) async {
+    final String token = this.sharedPreferences.getString(CACHED_AUTH_TOKEN);
     final response = await client.get(HOST + '/api/leagues/$leagueId/ranking',
-        headers: {'Content-Type': 'application/json'});
+        headers: {'Content-Type': 'application/json', 'authorization': token});
 
     if (response.statusCode == 200) {
       return LeagueRankingModel.fromJson(json.decode(response.body));

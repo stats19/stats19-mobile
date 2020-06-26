@@ -6,6 +6,8 @@ import 'package:stat19_app_mobile/features/navigation/presentation/widgets/botto
 
 import '../../../../injection_container.dart';
 
+
+
 class LeagueInfoPage extends StatelessWidget {
   final int leagueId;
 
@@ -22,19 +24,15 @@ class LeagueInfoPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
             title: Text("toto")
-//            title: TitleTeam(teamId: teamId)
         ),
-//        body: TeamWidget(teamId: teamId),
         body: Container(
           child: Material(child: Column(
             children: <Widget>[
               Text("LEAGUE NAME"),
               InfoLeague(leagueId: leagueId)
-//              FuturMatch(leagueId: leagueId),
             ],
           )),
         ),
-
         bottomNavigationBar: BottomBar(),
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stat19_app_mobile/features/league/presentation/widgets/coming_matches.dart';
 
+import 'widgets.dart';
+
 class InfoLeague extends StatelessWidget {
   final int leagueId;
   const InfoLeague({
@@ -45,26 +47,10 @@ class InfoLeague extends StatelessWidget {
                     Expanded(
                         child: TabBarView(
                             children: [
+                              LeagueRanking(leagueId: leagueId),
                               ComingMatch(leagueId: leagueId),
-                              Container(
-                                color: Colors.white,
-                                padding: EdgeInsets.all(20.0),
-                                child: Table(
-                                  border: TableBorder.all(color: Colors.black),
-                                  children: [
-                                    TableRow(children: [
-                                      Text('Cell 1'),
-                                      Text('Cell 2'),
-                                      Text('Cell 3'),
-                                    ]),
-                                    TableRow(children: [
-                                      Text('Cell 4'),
-                                      Text('Cell 5'),
-                                      Text('Cell 6'),
-                                    ])
-                                  ],
-                                ),
-                              )                            ]
+//
+                            ]
                         )
                     )
                   ]
