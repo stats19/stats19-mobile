@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/league/domain/entities/matches_by_league.dart';
 import 'package:stat19_app_mobile/features/league/presentation/bloc/leagues_bloc.dart';
 import 'package:stat19_app_mobile/features/league/presentation/widgets/title_league.dart';
+import 'package:stat19_app_mobile/features/league/presentation/widgets/widgets.dart';
 
 import '../../../../injection_container.dart';
 
@@ -39,20 +41,23 @@ class LeagueInfoPage extends StatelessWidget {
                         return Center(child: CircularProgressIndicator());
                     } else if (state is MatchesByLeagueLoaded) {
                         print(state.matchesByLeague.toString());
-                        if(state.matchesByLeague is Empty){
+                        if(state.matchesByLeague.matches.length == 0){
                           return Container(
-                            color: Colors.black,
-                            height: 100,
-                            width: 200,
-                            child: Text("pas de match à venir", style: TextStyle(color: Colors.red),),
+                            child: Text("Aucun match à venir", style: TextStyle(color: Colors.red),),
                           );
                         }
                         else{
                           return Container(
-                            margin: const EdgeInsets.all(10.0),
-                            child: Text(state.matchesByLeague.toString())
-//                            child: Text("putin de sa race")
-                        );
+                              child: ListView(
+                                shrinkWrap: true,
+                                primary: false,
+                                children: <Widget>[
+                                  Column(
+                                      children: state.matchesByLeague.matches
+                                          .map((e) => CommingLeagueMatch(nextMatch: e))
+                                          .toList())
+                                ],
+                              ));
                         }
 //
                     } else if (state is Error) {
