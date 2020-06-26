@@ -22,7 +22,7 @@ abstract class LeagueRemoteDataSource {
   ///
   /// Throws a [BadRequestException] for 400 error code.
   /// Throws a [ServerException] for all other error codes.
-  Future<MatchesByLeagueModel> getMatchesByLeagues(int leagueId);
+  Future<MatchesByLeagueModel> getMatchesByLeagues(int leagueId, bool played);
   /// calls the /leagues/$leagueId/ranking
   ///
   /// Throws a [BadRequestException] for 400 error code.
@@ -53,9 +53,9 @@ class LeagueRemoteDataSourceImpl implements LeagueRemoteDataSource {
   }
 
   @override
-  Future<MatchesByLeagueModel> getMatchesByLeagues(int leagueId) async {
+  Future<MatchesByLeagueModel> getMatchesByLeagues(int leagueId, bool played) async {
     final String token = this.sharedPreferences.getString(CACHED_AUTH_TOKEN);
-    final response = await client.get(HOST + '/api/leagues/$leagueId/matches',
+    final response = await client.get(HOST + '/api/leagues/$leagueId/matches?played=$played',
         headers: {'Content-Type': 'application/json', 'authorization': token});
 
     if (response.statusCode == 200) {

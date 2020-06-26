@@ -16,8 +16,9 @@ class LeaguesLoaded extends LeaguesState {
 
 class MatchesByLeagueLoaded extends LeaguesState {
   final MatchesByLeague matchesByLeague;
+  final bool played;
 
-  MatchesByLeagueLoaded({this.matchesByLeague});
+  MatchesByLeagueLoaded({this.matchesByLeague, this.played});
   List<Object> get props => [matchesByLeague];
 }
 
