@@ -20,6 +20,12 @@ class LeagueRanking extends StatelessWidget {
         child: Column(
           children: <Widget>[
             BlocBuilder<LeaguesBloc, LeaguesState>(builder: (context, state) {
+              if (state is RankingLoaded) {
+                return RankingFilter(season: state.ranking.season, leagueId: leagueId);
+              }
+              return RankingFilter(season: '2015/2016', leagueId: leagueId);
+            }),
+            BlocBuilder<LeaguesBloc, LeaguesState>(builder: (context, state) {
               if (state is Loading) {
                 return Center(child: CircularProgressIndicator());
               } else if (state is RankingLoaded) {
@@ -40,19 +46,19 @@ class LeagueRanking extends StatelessWidget {
                         rows: state.ranking
                             .rankingItems // Loops through dataColumnText, each iteration assigning the value to element
                             .map(
-                          ((element) => DataRow(
-                            cells: <DataCell>[
-                              DataCell(
-                                  Flexible(child: Text(element.name))),
-                              DataCell(
-                                  Text(element.matchPlayed.toString())),
-                              DataCell(Text(element.win.toString())),
-                              DataCell(Text(element.draw.toString())),
-                              DataCell(Text(element.lose.toString())),
-                              DataCell(Text(element.points.toString())),
-                            ],
-                          )),
-                        )
+                              ((element) => DataRow(
+                                    cells: <DataCell>[
+                                      DataCell(
+                                          Flexible(child: Text(element.name))),
+                                      DataCell(
+                                          Text(element.matchPlayed.toString())),
+                                      DataCell(Text(element.win.toString())),
+                                      DataCell(Text(element.draw.toString())),
+                                      DataCell(Text(element.lose.toString())),
+                                      DataCell(Text(element.points.toString())),
+                                    ],
+                                  )),
+                            )
                             .toList(),
                       )),
                     ),
@@ -65,5 +71,39 @@ class LeagueRanking extends StatelessWidget {
             }),
           ],
         ));
+  }
+}
+
+class RankingFilter extends StatelessWidget {
+  final String season;
+  final int leagueId;
+
+  const RankingFilter({Key key, this.season, this.leagueId}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: season,
+      elevation: 16,
+      onChanged: (String newValue) {
+        BlocProvider.of<LeaguesBloc>(context)
+            .add(GetRankingEvent(leagueId: leagueId, season: newValue));
+      },
+      items: [
+        '2015/2016',
+        '2014/2015',
+        '2013/2014',
+        '2012/2013',
+        '2011/2012',
+        '2010/2011',
+        '2009/2010',
+        '2008/2009'
+      ]
+          .map<DropdownMenuItem<String>>((e) => DropdownMenuItem<String>(
+                value: e,
+                child: Text(e),
+              ))
+          .toList(),
+    );
   }
 }

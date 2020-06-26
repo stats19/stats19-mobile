@@ -18,14 +18,14 @@ class ComingMatch extends StatelessWidget {
         alignment: Alignment.topCenter,
         child: Column(
           children: <Widget>[
-//            BlocBuilder<LeaguesBloc, LeaguesState>(builder: (context, state) {
-//              if (state is MatchesByLeagueLoaded) {
-//                return MatchLeagueFilter(
-//                    played: state.played,
-//                    leagueId: state.matchesByLeague.leagueId);
-//              }
-//              return MatchLeagueFilter(played: false);
-//            }),
+            BlocBuilder<LeaguesBloc, LeaguesState>(builder: (context, state) {
+              if (state is MatchesByLeagueLoaded) {
+                return MatchLeagueFilter(
+                    played: state.played,
+                    leagueId: state.matchesByLeague.leagueId);
+              }
+              return MatchLeagueFilter(played: false, leagueId: leagueId,);
+            }),
             BlocBuilder<LeaguesBloc, LeaguesState>(builder: (context, state) {
               if ((state is Empty)) {
                 BlocProvider.of<LeaguesBloc>(context)

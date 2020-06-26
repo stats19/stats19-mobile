@@ -24,8 +24,9 @@ class MatchesByLeagueLoaded extends LeaguesState {
 
 class RankingLoaded extends LeaguesState {
   final LeagueRanking ranking;
+  final String season;
 
-  RankingLoaded({this.ranking});
+  RankingLoaded({this.ranking, this.season});
   List<Object> get props => [ranking];
 }
 

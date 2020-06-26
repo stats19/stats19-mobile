@@ -15,6 +15,7 @@ class GetMatchByLeagueEvent extends LeaguesEvent {
 
 class GetRankingEvent extends LeaguesEvent {
   final int leagueId;
+  final String season;
 
-  GetRankingEvent(this.leagueId);
+  GetRankingEvent({this.leagueId, this.season = '2015/2016'});
 }
