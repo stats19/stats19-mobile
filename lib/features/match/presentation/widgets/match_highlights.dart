@@ -150,13 +150,13 @@ class HighLight extends StatelessWidget {
                           },
                           child: Row(
                             children: <Widget>[
+                              IconAction(type: type),
                               Container(
                                   child: Flexible(
                                       child: Text(
                                         name,
-                                        textAlign: TextAlign.left,
+                                        textAlign: TextAlign.right,
                                       ))),
-                              IconAction(type: type),
                             ],
                           )))
                       : Container()
@@ -178,10 +178,11 @@ class IconAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double Iconwidth = 20;
     if (type == 3){
       return Image.asset(
       "lib/ressource/assets/goal.png",
-      width: 20);
+      width: Iconwidth);
     return Container();
     }
     else if (type == 2){
@@ -189,10 +190,10 @@ class IconAction extends StatelessWidget {
         children: <Widget>[
           Image.asset(
               "lib/ressource/assets/yellow-card.png",
-              width: 20),
+              width: Iconwidth),
           Image.asset(
               "lib/ressource/assets/yellow-card.png",
-              width: 20),
+              width: Iconwidth),
         ],
       );
       return Container();
@@ -200,13 +201,13 @@ class IconAction extends StatelessWidget {
     else if (type == 1){
       return Image.asset(
           "lib/ressource/assets/red-card.png",
-          width: 20);
+          width: Iconwidth);
       return Container();
     }
     else if (type == 0){
       return Image.asset(
           "lib/ressource/assets/yellow-card.png",
-          width: 20);
+          width: Iconwidth);
       return Container();
     }
   }
