@@ -27,6 +27,8 @@ class LeagueRanking extends StatelessWidget {
               return RankingFilter(season: '2015/2016', leagueId: leagueId);
             }),
             BlocBuilder<LeaguesBloc, LeaguesState>(builder: (context, state) {
+              double tabletxtsize = 17;
+
               if (state is Loading) {
                 return Center(child: CircularProgressIndicator());
               } else if (state is RankingLoaded) {
@@ -34,49 +36,69 @@ class LeagueRanking extends StatelessWidget {
                 return Expanded(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
-                    child: FittedBox(
-                      child: (DataTable(
-                        columns: [
-                          DataColumn(label: Text('Club', style: TextStyle(fontSize: 40))),
-                          DataColumn(label: Text('MJ', style: TextStyle(fontSize: 40))),
-                          DataColumn(label: Text('G', style: TextStyle(fontSize: 40))),
-                          DataColumn(label: Text('N', style: TextStyle(fontSize: 40))),
-                          DataColumn(label: Text('P', style: TextStyle(fontSize: 40))),
-                          DataColumn(label: Text('S', style: TextStyle(fontSize: 40))),
-                          DataColumn(label: Text('Pts', style: TextStyle(fontSize: 40))),
-                        ],
-                        rows: state.ranking
-                            .rankingItems // Loops through dataColumnText, each iteration assigning the value to element
-                            .map(
-                              ((element) => DataRow(
-                                    cells: <DataCell>[
-                                      DataCell(
-//                                          Flexible(child: Text(element.name, style: TextStyle(fontSize: 40)))),
-                                          Flexible(child: FlatButton(
-                                              onPressed: () {
-                                                Navigator.push(context,
-                                                    MaterialPageRoute(builder: (BuildContext context) {
-                                                      return TeamPage(
-                                                        teamId: element.teamId,
-                                                      );
-                                                    }));
-                                              },
-                                              child: Text(element.name, style: TextStyle(fontSize: 40)))
-                                          )
-                                      ),
-                                      DataCell(
-                                          Text(element.matchPlayed.toString(), style: TextStyle(fontSize: 40))),
-                                      DataCell(Text(element.win.toString(), style: TextStyle(fontSize: 40))),
-                                      DataCell(Text(element.draw.toString(), style: TextStyle(fontSize: 40))),
-                                      DataCell(Text(element.lose.toString(), style: TextStyle(fontSize: 40))),
-                                      DataCell(Text(element.score.toString(), style: TextStyle(fontSize: 40))),
-                                      DataCell(Text(element.points.toString(), style: TextStyle(fontSize: 40))),
-                                    ],
-                                  )),
-                            )
-                            .toList(),
-                      )),
-                    ),
+                    child: (DataTable(
+                      columnSpacing: 10,
+//                      horizontalMargin: 5,
+                      columns: [
+                        DataColumn(
+                            label: Text('Club',style: TextStyle(fontSize: tabletxtsize)),
+                          numeric: false,
+                        ),
+                        DataColumn(
+                            label: Text('MJ', style: TextStyle(fontSize: tabletxtsize)),
+                          numeric: false,
+                        ),
+                        DataColumn(
+                            label: Text('G', style: TextStyle(fontSize: tabletxtsize)),
+                          numeric: false,
+                        ),
+                        DataColumn(
+                            label: Text('N', style: TextStyle(fontSize: tabletxtsize)),
+                          numeric: false,
+                        ),
+                        DataColumn(
+                            label: Text('P', style: TextStyle(fontSize: tabletxtsize)),
+                          numeric: false,
+                        ),
+                        DataColumn(
+                            label: Text('S', style: TextStyle(fontSize: tabletxtsize)),
+                          numeric: false,
+                        ),
+                        DataColumn(
+                            label: Text('Pts', style: TextStyle(fontSize: tabletxtsize)),
+                          numeric: false,
+                        ),
+                      ],
+                      rows: state.ranking
+                          .rankingItems // Loops through dataColumnText, each iteration assigning the value to element
+                          .map(
+                            ((element) => DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(
+                                        FlatButton(
+                                          padding: EdgeInsets.only(left: 0),
+                                            onPressed: () {
+                                              Navigator.push(context,
+                                                  MaterialPageRoute(builder: (BuildContext context) {
+                                                    return TeamPage(
+                                                      teamId: element.teamId,
+                                                    );
+                                                  }));
+                                            },
+                                            child: Container(width: 80 ,child: Text(element.name, style: TextStyle(fontSize: tabletxtsize))))
+                                    ),
+                                    DataCell(
+                                        Text(element.matchPlayed.toString(), style: TextStyle(fontSize: tabletxtsize))),
+                                    DataCell(Text(element.win.toString(), style: TextStyle(fontSize: tabletxtsize))),
+                                    DataCell(Text(element.draw.toString(), style: TextStyle(fontSize: tabletxtsize))),
+                                    DataCell(Text(element.lose.toString(), style: TextStyle(fontSize: tabletxtsize))),
+                                    DataCell(Text(element.score.toString(), style: TextStyle(fontSize: tabletxtsize))),
+                                    DataCell(Text(element.points.toString(), style: TextStyle(fontSize: tabletxtsize))),
+                                  ],
+                                )),
+                          )
+                          .toList(),
+                    )),
                   ),
                 );
               } else if (state is Error) {
