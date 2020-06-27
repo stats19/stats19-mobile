@@ -28,6 +28,7 @@ class MatchHighlights extends StatelessWidget {
           if (state is Loading) {
             return CircularProgressIndicator();
           } else if (state is Loaded) {
+            print(state.soccerMatch.matchId);
             return Column(
               children: <Widget>[
                 Expanded(
@@ -35,7 +36,6 @@ class MatchHighlights extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     itemCount: state.soccerMatch.details.length,
                     itemBuilder: (BuildContext context, int index) {
-                      print(state.soccerMatch.details[index].type);
                       return HighLight(
                           name: state.soccerMatch.details[index].playerName,
                           type: state.soccerMatch.details[index].type,
@@ -109,7 +109,7 @@ class HighLight extends StatelessWidget {
                                   Container(
                                       child: Flexible(
                                           child: Text(
-                                    name + type.toString(),
+                                    name,
                                     textAlign: TextAlign.left,
                                   ))),
                                   IconAction(type: type),
@@ -153,7 +153,7 @@ class HighLight extends StatelessWidget {
                               Container(
                                   child: Flexible(
                                       child: Text(
-                                        name + type.toString(),
+                                        name,
                                         textAlign: TextAlign.left,
                                       ))),
                               IconAction(type: type),
@@ -185,7 +185,7 @@ class IconAction extends StatelessWidget {
     return Container();
     }
     else if (type == 2){
-      return Column(
+      return Row(
         children: <Widget>[
           Image.asset(
               "lib/ressource/assets/yellow-card.png",
