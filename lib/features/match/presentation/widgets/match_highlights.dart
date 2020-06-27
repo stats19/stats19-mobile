@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stat19_app_mobile/features/match/presentation/bloc/soccer_match_bloc.dart';
@@ -34,8 +35,10 @@ class MatchHighlights extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     itemCount: state.soccerMatch.details.length,
                     itemBuilder: (BuildContext context, int index) {
+                      print(state.soccerMatch.details[index].type);
                       return HighLight(
                           name: state.soccerMatch.details[index].playerName,
+                          type: state.soccerMatch.details[index].type,
                           id: state.soccerMatch.details[index].playerId,
                           home: state.soccerMatch.details[index].home,
                           elapsed: state.soccerMatch.details[index].elapsed,
@@ -59,6 +62,7 @@ class MatchHighlights extends StatelessWidget {
 class HighLight extends StatelessWidget {
   final int id;
   final String name;
+  final int type;
   final bool home;
   final int elapsed;
   final int elapsedPlus;
@@ -66,34 +70,53 @@ class HighLight extends StatelessWidget {
   const HighLight(
       {Key key,
       @required this.name,
+      @required this.type,
       @required this.home,
       @required this.elapsed,
       @required this.elapsedPlus,
-        @required this.id})
+      @required this.id})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+//      margin: EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Expanded(
             flex: 2,
             child: Container(
+              padding: EdgeInsets.all(0.0),
+//              color: Colors.red,
               child: Row(
-                children: <Widget>[home ? Flexible(child: FlatButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) {
-                        return PlayerPage(playerId: id,);
-                      }),
-                    );
-                  },
-                    child: Text(name)
-                )) : Container()],
+                children: <Widget>[
+                  home
+                      ? Flexible(
+                          child: FlatButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return PlayerPage(
+                                      playerId: id,
+                                    );
+                                  }),
+                                );
+                              },
+                              child: Row(
+                                children: <Widget>[
+                                  Container(
+                                      child: Flexible(
+                                          child: Text(
+                                    name + type.toString(),
+                                    textAlign: TextAlign.left,
+                                  ))),
+                                  IconAction(type: type),
+                                ],
+                              )))
+                      : Container()
+                ],
               ),
             ),
           ),
@@ -111,22 +134,80 @@ class HighLight extends StatelessWidget {
             flex: 2,
             child: Container(
               child: Row(
-                children: <Widget>[!home ? Flexible(child: FlatButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return PlayerPage(playerId: id,);
-                        }),
-                      );
-                    },
-                    child: Text(name)
-                )) : Container()],
+                children: <Widget>[
+                  !home
+                      ? Flexible(
+                      child: FlatButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return PlayerPage(
+                                  playerId: id,
+                                );
+                              }),
+                            );
+                          },
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                  child: Flexible(
+                                      child: Text(
+                                        name + type.toString(),
+                                        textAlign: TextAlign.left,
+                                      ))),
+                              IconAction(type: type),
+                            ],
+                          )))
+                      : Container()
+                ],
               ),
             ),
           ),
         ],
       ),
     );
+  }
+}
+
+class IconAction extends StatelessWidget {
+  final int type;
+  const IconAction({
+    Key key, this.type,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (type == 3){
+      return Image.asset(
+      "lib/ressource/assets/goal.png",
+      width: 20);
+    return Container();
+    }
+    else if (type == 2){
+      return Column(
+        children: <Widget>[
+          Image.asset(
+              "lib/ressource/assets/yellow-card.png",
+              width: 20),
+          Image.asset(
+              "lib/ressource/assets/yellow-card.png",
+              width: 20),
+        ],
+      );
+      return Container();
+    }
+    else if (type == 1){
+      return Image.asset(
+          "lib/ressource/assets/red-card.png",
+          width: 20);
+      return Container();
+    }
+    else if (type == 0){
+      return Image.asset(
+          "lib/ressource/assets/yellow-card.png",
+          width: 20);
+      return Container();
+    }
   }
 }
