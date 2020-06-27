@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:stat19_app_mobile/features/league/presentation/pages/league_info_page.dart';
 import 'package:stat19_app_mobile/features/navigation/presentation/widgets/bottom_bar.dart';
 import 'package:stat19_app_mobile/features/match/presentation/bloc/soccer_match_bloc.dart';
 import 'package:stat19_app_mobile/features/match/presentation/widgets/widgets.dart';
@@ -107,6 +108,14 @@ class MatchLeagueButton extends StatelessWidget {
         return Container();
       } else if (state is Loaded) {
         return RaisedButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (BuildContext context) {
+                    return LeagueInfoPage(
+                      leagueId: state.soccerMatch.league.leagueId,
+                    );
+                  }));
+            },
             padding: EdgeInsets.only(
               top: 5,
               left: 10,

@@ -22,12 +22,12 @@ abstract class LeagueRemoteDataSource {
   ///
   /// Throws a [BadRequestException] for 400 error code.
   /// Throws a [ServerException] for all other error codes.
-  Future<MatchesByLeagueModel> getMatchesByLeagues(int leagueId);
+  Future<MatchesByLeagueModel> getMatchesByLeagues(int leagueId, bool played);
   /// calls the /leagues/$leagueId/ranking
   ///
   /// Throws a [BadRequestException] for 400 error code.
   /// Throws a [ServerException] for all other error codes.
-  Future<LeagueRankingModel> getRanking(int leagueId);
+  Future<LeagueRankingModel> getRanking(int leagueId, String season);
 }
 
 class LeagueRemoteDataSourceImpl implements LeagueRemoteDataSource {
@@ -53,9 +53,9 @@ class LeagueRemoteDataSourceImpl implements LeagueRemoteDataSource {
   }
 
   @override
-  Future<MatchesByLeagueModel> getMatchesByLeagues(int leagueId) async {
+  Future<MatchesByLeagueModel> getMatchesByLeagues(int leagueId, bool played) async {
     final String token = this.sharedPreferences.getString(CACHED_AUTH_TOKEN);
-    final response = await client.get(HOST + '/api/leagues/$leagueId/matches',
+    final response = await client.get(HOST + '/api/leagues/$leagueId/matches?played=$played',
         headers: {'Content-Type': 'application/json', 'authorization': token});
 
     if (response.statusCode == 200) {
@@ -70,9 +70,10 @@ class LeagueRemoteDataSourceImpl implements LeagueRemoteDataSource {
   }
 
   @override
-  Future<LeagueRankingModel> getRanking(int leagueId) async {
-    final response = await client.get(HOST + '/api/leagues/$leagueId/ranking',
-        headers: {'Content-Type': 'application/json'});
+  Future<LeagueRankingModel> getRanking(int leagueId, String season) async {
+    final String token = this.sharedPreferences.getString(CACHED_AUTH_TOKEN);
+    final response = await client.get(HOST + '/api/leagues/$leagueId/ranking?season=$season',
+        headers: {'Content-Type': 'application/json', 'authorization': token});
 
     if (response.statusCode == 200) {
       return LeagueRankingModel.fromJson(json.decode(response.body));

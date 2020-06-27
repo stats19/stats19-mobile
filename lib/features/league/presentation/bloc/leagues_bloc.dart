@@ -41,13 +41,13 @@ class LeaguesBloc extends Bloc<LeaguesEvent, LeaguesState> {
           (leagues) => LeaguesLoaded(leagues: leagues));
     } else if (event is GetMatchByLeagueEvent) {
       final failureOrMatches = await getMatchesByLeagues(
-          MatchesLeagueParams(leagueId: event.leagueId));
+          MatchesLeagueParams(leagueId: event.leagueId, played: event.played));
       yield failureOrMatches.fold(
           (failure) => Error(message: _mapFailureToMessage(failure)),
-          (matches) => MatchesByLeagueLoaded(matchesByLeague: matches));
+          (matches) => MatchesByLeagueLoaded(matchesByLeague: matches, played: event.played));
     } else if ((event is GetRankingEvent)) {
       final failureOrRanking =
-          await getRanking(RankingParams(leagueId: event.leagueId));
+          await getRanking(RankingParams(leagueId: event.leagueId, season: event.season));
       yield failureOrRanking.fold(
           (failure) => Error(message: _mapFailureToMessage(failure)),
           (ranking) => RankingLoaded(ranking: ranking));

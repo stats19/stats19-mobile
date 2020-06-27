@@ -16,15 +16,17 @@ class LeaguesLoaded extends LeaguesState {
 
 class MatchesByLeagueLoaded extends LeaguesState {
   final MatchesByLeague matchesByLeague;
+  final bool played;
 
-  MatchesByLeagueLoaded({this.matchesByLeague});
+  MatchesByLeagueLoaded({this.matchesByLeague, this.played});
   List<Object> get props => [matchesByLeague];
 }
 
 class RankingLoaded extends LeaguesState {
   final LeagueRanking ranking;
+  final String season;
 
-  RankingLoaded({this.ranking});
+  RankingLoaded({this.ranking, this.season});
   List<Object> get props => [ranking];
 }
 

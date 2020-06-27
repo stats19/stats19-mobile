@@ -7,6 +7,6 @@ import '../entities/matches_by_league.dart';
 
 abstract class LeagueRepository {
   Future<Either<Failure, List<League>>> getLeagues();
-  Future<Either<Failure, MatchesByLeague>> getMatchesByLeague(int leagueId);
-  Future<Either<Failure, LeagueRanking>> getLeagueRanking(int leagueId);
+  Future<Either<Failure, MatchesByLeague>> getMatchesByLeague(int leagueId, bool played);
+  Future<Either<Failure, LeagueRanking>> getLeagueRanking(int leagueId, String season);
 }

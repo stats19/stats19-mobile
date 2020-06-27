@@ -14,15 +14,16 @@ class GetRanking extends UseCase<LeagueRanking, RankingParams> {
 
   @override
   Future<Either<Failure, LeagueRanking>> call(RankingParams params) async {
-    return await repository.getLeagueRanking(params.leagueId);
+    return await repository.getLeagueRanking(params.leagueId, params.season);
   }
 }
 
 
 class RankingParams extends Equatable {
   final int leagueId;
+  final String season;
 
-  RankingParams({@required this.leagueId});
+  RankingParams({@required this.leagueId, @required this.season});
 
   @override
   List<Object> get props => [leagueId];

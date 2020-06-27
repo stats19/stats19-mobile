@@ -32,9 +32,9 @@ class LeagueRepositoryImpl extends LeagueRepository {
   }
 
   @override
-  Future<Either<Failure, MatchesByLeague>> getMatchesByLeague(int leagueId) async {
+  Future<Either<Failure, MatchesByLeague>> getMatchesByLeague(int leagueId, bool played) async {
     try {
-      final matchesByLeague = await remoteDataSource.getMatchesByLeagues(leagueId);
+      final matchesByLeague = await remoteDataSource.getMatchesByLeagues(leagueId, played);
       return right(matchesByLeague);
     } on ServerException {
       return Left(ServerFailure());
@@ -46,9 +46,9 @@ class LeagueRepositoryImpl extends LeagueRepository {
   }
 
   @override
-  Future<Either<Failure, LeagueRanking>> getLeagueRanking(int leagueId) async {
+  Future<Either<Failure, LeagueRanking>> getLeagueRanking(int leagueId, String season) async {
     try {
-      final ranking = await remoteDataSource.getRanking(leagueId);
+      final ranking = await remoteDataSource.getRanking(leagueId, season);
       return right(ranking);
     } on ServerException {
       return Left(ServerFailure());

@@ -14,14 +14,15 @@ class GetMatchesByLeagues extends UseCase<MatchesByLeague, MatchesLeagueParams> 
 
   @override
   Future<Either<Failure, MatchesByLeague>> call(MatchesLeagueParams params) async {
-    return await repository.getMatchesByLeague(params.leagueId);
+    return await repository.getMatchesByLeague(params.leagueId, params.played);
   }
 }
 
 class MatchesLeagueParams extends Equatable {
   final int leagueId;
+  final bool played;
 
-  MatchesLeagueParams({@required this.leagueId});
+  MatchesLeagueParams({@required this.leagueId, @required this.played});
 
   @override
   List<Object> get props => [leagueId];
