@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stat19_app_mobile/features/league/presentation/bloc/leagues_bloc.dart';
+import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
 
 class LeagueRanking extends StatelessWidget {
   const LeagueRanking({
@@ -36,12 +37,13 @@ class LeagueRanking extends StatelessWidget {
                     child: FittedBox(
                       child: (DataTable(
                         columns: [
-                          DataColumn(label: Text('Club')),
-                          DataColumn(label: Text('MJ')),
-                          DataColumn(label: Text('G')),
-                          DataColumn(label: Text('N')),
-                          DataColumn(label: Text('P')),
-                          DataColumn(label: Text('Pts')),
+                          DataColumn(label: Text('Club', style: TextStyle(fontSize: 40))),
+                          DataColumn(label: Text('MJ', style: TextStyle(fontSize: 40))),
+                          DataColumn(label: Text('G', style: TextStyle(fontSize: 40))),
+                          DataColumn(label: Text('N', style: TextStyle(fontSize: 40))),
+                          DataColumn(label: Text('P', style: TextStyle(fontSize: 40))),
+                          DataColumn(label: Text('S', style: TextStyle(fontSize: 40))),
+                          DataColumn(label: Text('Pts', style: TextStyle(fontSize: 40))),
                         ],
                         rows: state.ranking
                             .rankingItems // Loops through dataColumnText, each iteration assigning the value to element
@@ -49,13 +51,26 @@ class LeagueRanking extends StatelessWidget {
                               ((element) => DataRow(
                                     cells: <DataCell>[
                                       DataCell(
-                                          Flexible(child: Text(element.name))),
+//                                          Flexible(child: Text(element.name, style: TextStyle(fontSize: 40)))),
+                                          Flexible(child: FlatButton(
+                                              onPressed: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(builder: (BuildContext context) {
+                                                      return TeamPage(
+                                                        teamId: element.teamId,
+                                                      );
+                                                    }));
+                                              },
+                                              child: Text(element.name, style: TextStyle(fontSize: 40)))
+                                          )
+                                      ),
                                       DataCell(
-                                          Text(element.matchPlayed.toString())),
-                                      DataCell(Text(element.win.toString())),
-                                      DataCell(Text(element.draw.toString())),
-                                      DataCell(Text(element.lose.toString())),
-                                      DataCell(Text(element.points.toString())),
+                                          Text(element.matchPlayed.toString(), style: TextStyle(fontSize: 40))),
+                                      DataCell(Text(element.win.toString(), style: TextStyle(fontSize: 40))),
+                                      DataCell(Text(element.draw.toString(), style: TextStyle(fontSize: 40))),
+                                      DataCell(Text(element.lose.toString(), style: TextStyle(fontSize: 40))),
+                                      DataCell(Text(element.score.toString(), style: TextStyle(fontSize: 40))),
+                                      DataCell(Text(element.points.toString(), style: TextStyle(fontSize: 40))),
                                     ],
                                   )),
                             )
