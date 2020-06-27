@@ -28,6 +28,7 @@ class MatchHighlights extends StatelessWidget {
           if (state is Loading) {
             return CircularProgressIndicator();
           } else if (state is Loaded) {
+            print(state.soccerMatch.matchId);
             return Column(
               children: <Widget>[
                 Expanded(
@@ -35,7 +36,6 @@ class MatchHighlights extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     itemCount: state.soccerMatch.details.length,
                     itemBuilder: (BuildContext context, int index) {
-                      print(state.soccerMatch.details[index].type);
                       return HighLight(
                           name: state.soccerMatch.details[index].playerName,
                           type: state.soccerMatch.details[index].type,
@@ -109,7 +109,7 @@ class HighLight extends StatelessWidget {
                                   Container(
                                       child: Flexible(
                                           child: Text(
-                                    name + type.toString(),
+                                    name,
                                     textAlign: TextAlign.left,
                                   ))),
                                   IconAction(type: type),
@@ -150,13 +150,13 @@ class HighLight extends StatelessWidget {
                           },
                           child: Row(
                             children: <Widget>[
+                              IconAction(type: type),
                               Container(
                                   child: Flexible(
                                       child: Text(
-                                        name + type.toString(),
-                                        textAlign: TextAlign.left,
+                                        name,
+                                        textAlign: TextAlign.right,
                                       ))),
-                              IconAction(type: type),
                             ],
                           )))
                       : Container()
@@ -178,21 +178,22 @@ class IconAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double Iconwidth = 20;
     if (type == 3){
       return Image.asset(
       "lib/ressource/assets/goal.png",
-      width: 20);
+      width: Iconwidth);
     return Container();
     }
     else if (type == 2){
-      return Column(
+      return Row(
         children: <Widget>[
           Image.asset(
               "lib/ressource/assets/yellow-card.png",
-              width: 20),
+              width: Iconwidth),
           Image.asset(
               "lib/ressource/assets/yellow-card.png",
-              width: 20),
+              width: Iconwidth),
         ],
       );
       return Container();
@@ -200,13 +201,13 @@ class IconAction extends StatelessWidget {
     else if (type == 1){
       return Image.asset(
           "lib/ressource/assets/red-card.png",
-          width: 20);
+          width: Iconwidth);
       return Container();
     }
     else if (type == 0){
       return Image.asset(
           "lib/ressource/assets/yellow-card.png",
-          width: 20);
+          width: Iconwidth);
       return Container();
     }
   }
