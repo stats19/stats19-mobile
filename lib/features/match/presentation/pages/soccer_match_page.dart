@@ -49,8 +49,8 @@ class MatchDetailsWidget extends StatelessWidget {
         // TODO ajouter league name
         Padding(
             padding: EdgeInsets.all(20),
-            child: Text("LEAGUE")
-//            child: MatchLeagueButton()
+//            child: Text("LEAGUE")
+            child: MatchLeagueButton()
         ),
 
         ScorePanel(matchId: matchId),
@@ -87,6 +87,8 @@ class MatchDetailsWidget extends StatelessWidget {
   }
 }
 
+
+
 class MatchLeagueButton extends StatelessWidget {
 
   const MatchLeagueButton({
@@ -104,8 +106,20 @@ class MatchLeagueButton extends StatelessWidget {
         return Text("league");
         return Container();
       } else if (state is Loaded) {
-        print(state.soccerMatch.leagueName);
-        return Text(state.soccerMatch.leagueName);
+        return RaisedButton(
+            padding: EdgeInsets.only(
+              top: 5,
+              left: 10,
+              right: 10,
+              bottom: 5,
+            ),
+//            decoration: BoxDecoration(
+//                color: Colors.blueGrey,
+//                borderRadius: BorderRadius.all(Radius.circular(15))
+//            ),
+            child: Text(state.soccerMatch.league.name, style : TextStyle(color: Colors.white,  fontSize: 18,), textAlign: TextAlign.center,));
+
+//        return Text(state.soccerMatch.league.name);
       } else if (state is Error) {
         return Text('there is error' + state.message);
       }
