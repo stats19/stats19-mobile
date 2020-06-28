@@ -123,9 +123,15 @@ class MatchLeagueButton extends StatelessWidget {
         return Text("league");
       } else if (state is Loaded) {
         return RaisedButton(
+            padding: EdgeInsets.only(
+              top: 5,
+              left: 10,
+              right: 10,
+              bottom: 5,
+            ),
             color: Colors.blueGrey,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
 //                side: BorderSide(color: Colors.red)
             ),
             onPressed: () {
