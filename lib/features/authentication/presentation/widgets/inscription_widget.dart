@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stat19_app_mobile/features/authentication/presentation/pages/registration_page.dart';
 
 class InscriptionWidget extends StatelessWidget {
   const InscriptionWidget({
@@ -12,6 +13,13 @@ class InscriptionWidget extends StatelessWidget {
         children: <Widget>[
           Text("Pas encore de compte ?"),
           FlatButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (BuildContext context) {
+                    return RegistrationPage(
+                    );
+                  }));
+            },
             child: Text("Inscrivez vous ! "),
           ),
         ],
