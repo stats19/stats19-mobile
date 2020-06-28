@@ -14,6 +14,7 @@ class LeaguesPage extends StatelessWidget {
         title: Text('Les ligues'),
         automaticallyImplyLeading: false,
       ),
+      backgroundColor: Colors.blueGrey[900],
       body: buildBody(context),
       bottomNavigationBar: BottomBar(),
     );

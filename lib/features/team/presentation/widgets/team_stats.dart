@@ -13,9 +13,11 @@ class TeamStats extends StatelessWidget {
     return BlocBuilder<TeamBloc, TeamState>(
         builder: (context, state) {
           if (state is Loading) {
-            return CircularProgressIndicator();
+//            return CircularProgressIndicator();
+            return Container();
           } else if (state is Loaded) {
             return Container(
+              padding: const EdgeInsets.all(8.0),
               child: GridView.count(crossAxisCount: 3, children: [
                 InfoSquare(type: "Match joué", value: state.team.matchesPlayed),
                 InfoSquare(type: "Match gagné", value: state.team.matchesWin),

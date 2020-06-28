@@ -44,46 +44,62 @@ class MatchDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Padding(
+              padding: EdgeInsets.all(15),
+              child: MatchLeagueButton()
+          ),
 
-        // TODO ajouter league name
-        Padding(
-            padding: EdgeInsets.all(20),
-//            child: Text("LEAGUE")
-            child: MatchLeagueButton()
-        ),
+          ScorePanel(matchId: matchId),
+          Expanded(
+              child: DefaultTabController(
+                  length: 2,
+                  child: Container(
 
-        ScorePanel(matchId: matchId),
-        Expanded(
-            child: DefaultTabController(
-                length: 2,
-                child: new Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      new Row(
+                    margin: const EdgeInsets.only(
+                          left: 20,
+                          top: 0,
+                          right: 20,
+                        ),
+                    child: new Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          new Expanded(
-                              child: TabBar(
-                                  labelColor: Colors.black,
-                                  unselectedLabelColor: Colors.grey,
-                                  tabs: [
-                                Tab(
-                                  text: "Temps fort",
-                                ),
-                                Tab(
-                                  text: "statistique",
-                                ),
-                              ])),
-                        ],
-                      ),
-                      Expanded(
-                          child: TabBarView(children: [
-                        MatchHighlights(),
-                        SoccerMatchStats()
-                      ]))
-                    ])))
-      ],
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20)
+                              ),
+                            color: Colors.white30,
+                            ),
+                            child: new Row(
+                              children: <Widget>[
+                                new Expanded(
+                                    child: TabBar(
+                                        labelColor: Colors.white,
+                                        unselectedLabelColor: Colors.grey,
+                                        tabs: [
+                                      Tab(
+                                        text: "Temps fort",
+                                      ),
+                                      Tab(
+                                        text: "Stats",
+                                      ),
+                                    ])),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                              child: TabBarView(children: [
+                            MatchHighlights(),
+                            SoccerMatchStats()
+                          ]))
+                        ]),
+                  )))
+        ],
+      ),
     );
   }
 }
@@ -105,9 +121,19 @@ class MatchLeagueButton extends StatelessWidget {
       if ((state is Empty)) {
         BlocProvider.of<SoccerMatchBloc>(context).add(GetSoccerMatchEvent(matchId));
         return Text("league");
-        return Container();
       } else if (state is Loaded) {
         return RaisedButton(
+            padding: EdgeInsets.only(
+              top: 5,
+              left: 10,
+              right: 10,
+              bottom: 5,
+            ),
+            color: Colors.blueGrey,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+//                side: BorderSide(color: Colors.red)
+            ),
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (BuildContext context) {
@@ -116,19 +142,8 @@ class MatchLeagueButton extends StatelessWidget {
                     );
                   }));
             },
-            padding: EdgeInsets.only(
-              top: 5,
-              left: 10,
-              right: 10,
-              bottom: 5,
-            ),
-//            decoration: BoxDecoration(
-//                color: Colors.blueGrey,
-//                borderRadius: BorderRadius.all(Radius.circular(15))
-//            ),
             child: Text(state.soccerMatch.league.name, style : TextStyle(color: Colors.white,  fontSize: 18,), textAlign: TextAlign.center,));
 
-//        return Text(state.soccerMatch.league.name);
       } else if (state is Error) {
         return Text('there is error' + state.message);
       }

@@ -12,21 +12,12 @@ class MatchHighlights extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(
-          left: 20,
-          top: 0,
-          right: 20,
-          bottom: 20,
-        ),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20)),
-            color: Colors.blue),
+        color: Colors.white30,
         child: BlocBuilder<SoccerMatchBloc, SoccerMatchState>(
             builder: (context, state) {
           if (state is Loading) {
-            return CircularProgressIndicator();
+            return Container();
+//            return CircularProgressIndicator();
           } else if (state is Loaded) {
             print(state.soccerMatch.matchId);
             return Column(
@@ -37,6 +28,7 @@ class MatchHighlights extends StatelessWidget {
                     itemCount: state.soccerMatch.details.length,
                     itemBuilder: (BuildContext context, int index) {
                       return HighLight(
+
                           name: state.soccerMatch.details[index].playerName,
                           type: state.soccerMatch.details[index].type,
                           id: state.soccerMatch.details[index].playerId,
