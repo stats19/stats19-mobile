@@ -12,8 +12,9 @@ class Empty extends TeamState {
 class Loading extends TeamState {}
 class Loaded extends TeamState {
   final Team team;
+  final String season;
 
-  Loaded({@required this.team});
+  Loaded({@required this.team, @required this.season});
 
   List<Object> get props => [team];
 }

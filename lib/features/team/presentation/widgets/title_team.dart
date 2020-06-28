@@ -14,7 +14,7 @@ class TitleTeam extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TeamBloc, TeamState>(builder: (context, state) {
       if ((state is Empty)) {
-        BlocProvider.of<TeamBloc>(context).add(GetTeamEvent(teamId));
+        BlocProvider.of<TeamBloc>(context).add(GetTeamEvent(teamId: teamId));
         return Text("équipe");
         return Container();
       } else if (state is Loaded) {

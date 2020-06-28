@@ -30,17 +30,14 @@ class TeamHeader extends StatelessWidget {
       child:
       BlocBuilder<TeamBloc, TeamState>(
           builder: (context, state) {
-            if ((state is Empty)) {
-              BlocProvider.of<TeamBloc>(context)
-                  .add(GetTeamEvent(teamId));
-              return Container();
-            } else if (state is Loading) {
+            if (state is Loading) {
               return CircularProgressIndicator();
             } else if (state is Loaded) {
               return  Column(
                 children: <Widget>[
                   TeamName(teamName: state.team.name),
                   TeamLeagueWidget(league: state.team.league),
+                  TeamFilter(teamId: state.team.teamId, season: state.season)
                 ],
               );
             } else if (state is Error) {
@@ -104,6 +101,40 @@ class TeamName extends StatelessWidget {
               style : TextStyle(color: Colors.white,  fontSize: 35,),
               textAlign: TextAlign.center,)),
       ],
+    );
+  }
+}
+
+class TeamFilter extends StatelessWidget {
+  final String season;
+  final int teamId;
+
+  const TeamFilter({Key key, this.season, this.teamId}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: season,
+      elevation: 16,
+      onChanged: (String newValue) {
+        BlocProvider.of<TeamBloc>(context)
+            .add(GetTeamEvent(teamId: teamId, season: newValue));
+      },
+      items: [
+        '2015/2016',
+        '2014/2015',
+        '2013/2014',
+        '2012/2013',
+        '2011/2012',
+        '2010/2011',
+        '2009/2010',
+        '2008/2009'
+      ]
+          .map<DropdownMenuItem<String>>((e) => DropdownMenuItem<String>(
+        value: e,
+        child: Text(e),
+      ))
+          .toList(),
     );
   }
 }

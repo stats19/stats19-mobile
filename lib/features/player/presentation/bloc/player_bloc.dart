@@ -26,10 +26,10 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
   ) async* {
     if (event is GetPlayerEvent) {
       yield Loading();
-      final player = await getPlayer(Params(playerId: event.playerId));
+      final player = await getPlayer(Params(playerId: event.playerId, season: event.season));
       yield player.fold(
           (failure) => Error(message: _mapFailureToMessage(failure)),
-          (player) => Loaded(player: player));
+          (player) => Loaded(player: player, season: event.season));
     }
   }
 

@@ -14,7 +14,7 @@ class TitlePlayer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PlayerBloc, PlayerState>(builder: (context, state) {
       if ((state is Empty)) {
-        BlocProvider.of<PlayerBloc>(context).add(GetPlayerEvent(playerId));
+        BlocProvider.of<PlayerBloc>(context).add(GetPlayerEvent(playerId: playerId));
         return Text("Joueur");
         return Container();
       } else if (state is Loaded) {

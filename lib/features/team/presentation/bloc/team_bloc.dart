@@ -24,10 +24,10 @@ class TeamBloc extends Bloc<TeamEvent, TeamState> {
   ) async* {
     if (event is GetTeamEvent) {
         yield Loading();
-      final failureOrLeagues = await getTeam(Params(teamId: event.teamId));
+      final failureOrLeagues = await getTeam(Params(teamId: event.teamId, season: event.season));
       yield failureOrLeagues.fold(
           (failure) => Error(message: _mapFailureToMessage(failure)),
-          (team) => Loaded(team: team));
+          (team) => Loaded(team: team, season: event.season));
     }
   }
 
