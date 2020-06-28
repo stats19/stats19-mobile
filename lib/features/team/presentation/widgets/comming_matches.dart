@@ -44,7 +44,6 @@ class CommingMatch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      //TODO add background for potential match result
     Color color = nextMatch.forecastMatch == 'WIN'
         ? Colors.green
         : nextMatch.forecastMatch == 'DRAW'
