@@ -10,7 +10,7 @@ import '../models/team_model.dart';
 
 
 abstract class TeamRemoteDataSource {
-  Future<TeamModel> getTeam(int teamId);
+  Future<TeamModel> getTeam(int teamId, String season);
 }
 
 class TeamRemoteDataSourceImpl implements TeamRemoteDataSource {
@@ -20,9 +20,9 @@ class TeamRemoteDataSourceImpl implements TeamRemoteDataSource {
   TeamRemoteDataSourceImpl({@required this.client, @required this.sharedPreferences});
 
   @override
-  Future<TeamModel> getTeam(int teamId) async {
+  Future<TeamModel> getTeam(int teamId, String season) async {
     final String token = this.sharedPreferences.getString(CACHED_AUTH_TOKEN);
-    final response = await client.get(HOST + '/api/teams/$teamId',
+    final response = await client.get(HOST + '/api/teams/$teamId?season=$season',
         headers: {'Content-Type': 'application/json', 'authorization': token});
 
     if (response.statusCode == 200) {

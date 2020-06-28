@@ -14,15 +14,16 @@ class GetTeam extends UseCase<Team, Params> {
 
   @override
   Future<Either<Failure, Team>> call(Params params) async {
-    return await repository.getTeam(params.teamId);
+    return await repository.getTeam(params.teamId, params.season);
   }
 }
 
 
 class Params extends Equatable {
   final int teamId;
+  final String season;
 
-  Params({@required this.teamId});
+  Params({@required this.teamId, @required this.season});
 
   @override
   List<Object> get props => [teamId];

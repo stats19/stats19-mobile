@@ -8,14 +8,14 @@ import '../../domain/repositories/player_repository.dart';
 import '../datasources/player_remote_data_source.dart';
 
 class PlayerRepositoryImpl extends PlayerRepository {
-  final PlayerRemoteDataSouce remoteDataSource;
+  final PlayerRemoteDataSource remoteDataSource;
 
   PlayerRepositoryImpl({@required this.remoteDataSource});
 
   @override
-  Future<Either<Failure, Player>> getPlayer(int playerId) async {
+  Future<Either<Failure, Player>> getPlayer(int playerId, String season) async {
     try {
-      final player = await remoteDataSource.getPlayer(playerId);
+      final player = await remoteDataSource.getPlayer(playerId, season);
       return right(player);
     } on ServerException {
       return Left(ServerFailure());

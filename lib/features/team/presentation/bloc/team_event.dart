@@ -6,6 +6,7 @@ abstract class TeamEvent extends Equatable {
 
 class GetTeamEvent extends TeamEvent {
   final int teamId;
+  final String season;
 
-  GetTeamEvent(this.teamId);
+  GetTeamEvent({@required this.teamId, this.season = '2015/2016'});
 }

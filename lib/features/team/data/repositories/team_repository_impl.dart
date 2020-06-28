@@ -15,9 +15,9 @@ class TeamRepositoryImpl extends TeamRepository {
   });
 
   @override
-  Future<Either<Failure, Team>> getTeam(int teamId) async {
+  Future<Either<Failure, Team>> getTeam(int teamId, String season) async {
     try {
-      final team = await remoteDataSource.getTeam(teamId);
+      final team = await remoteDataSource.getTeam(teamId, season);
       return right(team);
     } on ServerException {
       return Left(ServerFailure());

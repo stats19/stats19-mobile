@@ -14,7 +14,7 @@ class Player extends Equatable {
   final int redCards;
   final int yellowCards;
   final int shotOnTarget;
-  final Double score;
+  final double score;
   final int goals;
 
   Player(

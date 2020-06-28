@@ -7,8 +7,9 @@ abstract class PlayerEvent extends Equatable {
 
 class GetPlayerEvent extends PlayerEvent {
   final int playerId;
+  final String season;
 
-  GetPlayerEvent(this.playerId);
+  GetPlayerEvent({@required this.playerId, this.season = '2015/2016'});
 
   @override
   List<Object> get props => [playerId];

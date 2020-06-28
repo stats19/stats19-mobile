@@ -119,7 +119,7 @@ Future<void> init() async {
   sl.registerLazySingleton<PlayerRepository>(() => PlayerRepositoryImpl(remoteDataSource: sl()));
 
   // data sources
-  sl.registerLazySingleton<PlayerRemoteDataSouce>(() => PlayerRemoteDataSourceImpl(client: sl(), sharedPreferences: sl()));
+  sl.registerLazySingleton<PlayerRemoteDataSource>(() => PlayerRemoteDataSourceImpl(client: sl(), sharedPreferences: sl()));
 
   //! Features - Team
   // Bloc

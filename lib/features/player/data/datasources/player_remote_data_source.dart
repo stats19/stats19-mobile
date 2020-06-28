@@ -8,21 +8,21 @@ import '../../../../core/config/constant.dart';
 import '../../../../core/error/exceptions.dart';
 import '../models/player_model.dart';
 
-abstract class PlayerRemoteDataSouce {
-  Future<PlayerModel> getPlayer(int playerId);
+abstract class PlayerRemoteDataSource {
+  Future<PlayerModel> getPlayer(int playerId, String season);
 }
 
 
-class PlayerRemoteDataSourceImpl extends PlayerRemoteDataSouce {
+class PlayerRemoteDataSourceImpl extends PlayerRemoteDataSource {
   final http.Client client;
   final SharedPreferences sharedPreferences;
 
   PlayerRemoteDataSourceImpl({@required this.client, @required this.sharedPreferences});
 
   @override
-  Future<PlayerModel> getPlayer(int playerId) async {
+  Future<PlayerModel> getPlayer(int playerId, String season) async {
     final String token = this.sharedPreferences.getString(CACHED_AUTH_TOKEN);
-    final response = await client.get(HOST + '/api/players/$playerId',
+    final response = await client.get(HOST + '/api/players/$playerId?season=$season',
         headers: {'Content-Type': 'application/json', 'authorization': token});
 
     if (response.statusCode == 200) {
