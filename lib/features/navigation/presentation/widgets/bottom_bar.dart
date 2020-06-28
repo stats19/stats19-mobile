@@ -16,7 +16,6 @@ class BottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       child: Container(
-//        height: 75,
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,6 +38,15 @@ class BottomBar extends StatelessWidget {
                 }),
             refreshButton(context),
             IconButton(
+                icon: Icon(Icons.group),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SoccerMatchPage(matchId: 1729)),
+                  );
+                }),
+            IconButton(
                 icon: Icon(Icons.account_circle),
                 onPressed: () {
                   Navigator.push(
@@ -46,7 +54,8 @@ class BottomBar extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => SoccerMatchPage(matchId: 1729)),
                   );
-                })
+                }),
+
           ],
         ),
       ),

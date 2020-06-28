@@ -12,18 +12,7 @@ class SoccerMatchStats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(
-        left: 20,
-        top: 0,
-        right: 20,
-        bottom: 20,
-      ),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20)),
-          color: Colors.blue),
-//                                      child: Center(child: Text('action', style: TextStyle(color: Colors.white))),
+      color: Colors.white30,
       child: Container(
           child: SingleChildScrollView(
         padding: EdgeInsets.all(15),
