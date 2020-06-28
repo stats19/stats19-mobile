@@ -5,7 +5,7 @@ import 'package:stat19_app_mobile/features/league/presentation/widgets/coming_ma
 
 import 'widgets.dart';
 
-class InfoLeague extends StatelessWidget {
+class InfoLeague extends StatefulWidget {
   final int leagueId;
 
   const InfoLeague({
@@ -14,54 +14,69 @@ class InfoLeague extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _InfoLeagueState createState() => _InfoLeagueState(leagueId: leagueId);
+}
+
+class _InfoLeagueState extends State<InfoLeague>
+    with SingleTickerProviderStateMixin {
+  final int leagueId;
+  TabController _tabController;
+
+  _InfoLeagueState({@required this.leagueId});
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: 2);
+    _tabController.addListener(() {
+      if (_tabController.index == 0) {
+        BlocProvider.of<LeaguesBloc>(context)
+            .add(GetMatchByLeagueEvent(leagueId: leagueId));
+      } else {
+        BlocProvider.of<LeaguesBloc>(context)
+            .add(GetRankingEvent(leagueId: leagueId));
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Expanded(
         child: Container(
-      decoration: BoxDecoration(
-          color: Colors.white30,
+            decoration: BoxDecoration(
+                color: Colors.white30,
 //              borderRadius: BorderRadius.all(Radius.circular(15))
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(15), topLeft: Radius.circular(15))),
-      margin: EdgeInsets.only(
-        top: 10,
-      ),
-      child: DefaultTabController(
-          length: 2,
-          child: new Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-            new Row(
-              children: <Widget>[
-                new Expanded(
-                    child: TabBar(
-                        labelStyle: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.w600),
-                        onTap: (index) {
-                          print(index);
-                          if (index == 0) {
-                            BlocProvider.of<LeaguesBloc>(context)
-                                .add(GetMatchByLeagueEvent(leagueId: leagueId));
-                          } else {
-                            BlocProvider.of<LeaguesBloc>(context)
-                                .add(GetRankingEvent(leagueId: leagueId));
-                          }
-                        },
-                        labelColor: Colors.white,
-                        unselectedLabelColor: Colors.black,
-                        tabs: [
-                      Tab(
-                        text: "Match à venir",
-                      ),
-                      Tab(
-                        text: "Classement",
-                      ),
-                    ])),
-              ],
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(15),
+                    topLeft: Radius.circular(15))),
+            margin: EdgeInsets.only(
+              top: 10,
             ),
-            Expanded(
-                child: TabBarView(children: [
-              ComingMatch(leagueId: leagueId),
-              LeagueRanking(leagueId: leagueId)
-            ]))
-          ])),
-    ));
+            child: Scaffold(
+              appBar: TabBar(
+                  labelStyle:
+                      TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                  labelColor: Colors.white,
+                  unselectedLabelColor: Colors.black,
+                  controller: _tabController,
+                  tabs: [
+                    Tab(
+                      text: "Match à venir",
+                    ),
+                    Tab(
+                      text: "Classement",
+                    ),
+                  ]),
+              body: TabBarView(controller: _tabController, children: [
+                ComingMatch(leagueId: widget.leagueId),
+                LeagueRanking(leagueId: widget.leagueId)
+              ]),
+            )));
   }
 }

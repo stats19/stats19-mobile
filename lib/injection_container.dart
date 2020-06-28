@@ -1,12 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stat19_app_mobile/features/navigation/data/datasources/forecast_remote_data_source.dart';
-import 'package:stat19_app_mobile/features/navigation/data/repositories/forecast_repository_impl.dart';
-import 'package:stat19_app_mobile/features/navigation/domain/repositories/forecast_repository.dart';
-import 'package:stat19_app_mobile/features/navigation/domain/usecases/CheckProcess.dart';
-import 'package:stat19_app_mobile/features/navigation/domain/usecases/RefreshForecast.dart';
-import 'package:stat19_app_mobile/features/navigation/presentation/bloc/navigation_bloc.dart';
 
 import 'features/authentication/data/datasources/user_local_data_source.dart';
 import 'features/authentication/data/datasources/user_remote_data_source.dart';
@@ -15,6 +9,11 @@ import 'features/authentication/domain/repositories/user_repository.dart';
 import 'features/authentication/domain/usecases/login_user.dart';
 import 'features/authentication/domain/usecases/register_user.dart';
 import 'features/authentication/presentation/bloc/user_bloc.dart';
+import 'features/fantasy/data/datasources/fantasy_remote_data_source.dart';
+import 'features/fantasy/data/repositories/FantasyRepositoryImpl.dart';
+import 'features/fantasy/domain/repositories/fantasy_repository.dart';
+import 'features/fantasy/domain/usecases/get_fantasy_players.dart';
+import 'features/fantasy/presentation/bloc/fantasy_bloc.dart';
 import 'features/league/data/datasources/league_remote_data_source.dart';
 import 'features/league/data/repositories/league_repository_impl.dart';
 import 'features/league/domain/repositories/league_repository.dart';
@@ -27,6 +26,12 @@ import 'features/match/data/repositories/soccer_match_repository_impl.dart';
 import 'features/match/domain/repositories/soccer_match_repository.dart';
 import 'features/match/domain/usecases/get_soccer_match.dart';
 import 'features/match/presentation/bloc/soccer_match_bloc.dart';
+import 'features/navigation/data/datasources/forecast_remote_data_source.dart';
+import 'features/navigation/data/repositories/forecast_repository_impl.dart';
+import 'features/navigation/domain/repositories/forecast_repository.dart';
+import 'features/navigation/domain/usecases/CheckProcess.dart';
+import 'features/navigation/domain/usecases/RefreshForecast.dart';
+import 'features/navigation/presentation/bloc/navigation_bloc.dart';
 import 'features/player/data/datasources/player_remote_data_source.dart';
 import 'features/player/data/repositories/player_repository_impl.dart';
 import 'features/player/domain/repositories/player_repository.dart';
@@ -142,6 +147,19 @@ Future<void> init() async {
 
   // data sources
   sl.registerLazySingleton<ForecastRemoteDataSource>(() => ForecastRemoteDataSourceImpl(client: sl(), sharedPreferences: sl()));
+
+  //! Features - Navigation
+  // Bloc
+  sl.registerFactory(() => FantasyBloc(getFantasy: sl()));
+
+  // Use cases
+  sl.registerLazySingleton(() => GetFantasy(sl()));
+
+  // repository
+  sl.registerLazySingleton<FantasyRepository>(() => FantasyRepositoryImpl(remoteDataSource: sl()));
+
+  // data sources
+  sl.registerLazySingleton<FantasyRemoteDataSource>(() => FantasyRemoteDataSourceImpl(client: sl(), sharedPreferences: sl()));
 
   //! Core
 
