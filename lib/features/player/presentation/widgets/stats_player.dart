@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/presentation/widgets/title_filter.dart';
+import 'package:stat19_app_mobile/features/player/presentation/widgets/title_filter.dart';
 import '../../../../core/presentation/widgets/info_square.dart';
 import '../bloc/player_bloc.dart';
 
@@ -47,7 +47,7 @@ class StatsPlayer extends StatelessWidget {
                       crossAxisCount: 3,
                       children: [
                     InfoSquare(type: "Age",value: state.player.age),
-                    InfoSquare(type: "Poid",value: LbsToKg(state.player.weight) ),
+                    InfoSquare(type: "Poid",value: lbsToKg(state.player.weight) ),
                     InfoSquare(type: "Taille",value: state.player.height),
                     InfoSquare(type: "But",value: state.player.goals),
                     InfoSquare(type: "Tir cadré",value: state.player.shotOnTarget),
