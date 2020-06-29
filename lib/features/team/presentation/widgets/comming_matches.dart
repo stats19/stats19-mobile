@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:intl/intl.dart';
 
 import '../../domain/entities/team.dart';
 import '../bloc/team_bloc.dart';
 
-class CommingMatches extends StatelessWidget {
-  const CommingMatches({
+class ComingMatches extends StatelessWidget {
+  const ComingMatches({
     Key key,
   }) : super(key: key);
 
@@ -50,6 +52,7 @@ class CommingMatch extends StatelessWidget {
         : nextMatch.forecastMatch == 'DRAW'
             ? Colors.yellow
             : nextMatch.forecastMatch == 'LOSE' ? Colors.red : Colors.black;
+    final String formatted = DateFormat.yMMMMEEEEd().format(DateTime.parse(nextMatch.date)) ;
     return FlatButton(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.8,
@@ -63,7 +66,7 @@ class CommingMatch extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              Text(nextMatch.date, style: TextStyle(color: Colors.white),),
+              Text(formatted, style: TextStyle(color: Colors.white),),
               Text(
       nextMatch.homeTeam + ' - ' + nextMatch.awayTeam,
       style: TextStyle(fontSize: 15, color: Colors.white),
