@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stat19_app_mobile/core/config/constant.dart';
-import 'package:stat19_app_mobile/features/league/presentation/pages/leagues_page.dart';
 
+import '../../../../core/config/constant.dart';
 import '../../../../injection_container.dart';
+import '../../../league/presentation/pages/leagues_page.dart';
 import '../bloc/user_bloc.dart';
 import '../widgets/widgets.dart';
 

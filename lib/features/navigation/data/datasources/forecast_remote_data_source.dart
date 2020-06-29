@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
+import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stat19_app_mobile/core/config/constant.dart';
-import 'package:stat19_app_mobile/core/error/exceptions.dart';
-import 'package:stat19_app_mobile/features/navigation/data/models/checked_process_model.dart';
-import 'package:stat19_app_mobile/features/navigation/data/models/forecast_model.dart';
-import 'package:stat19_app_mobile/features/navigation/domain/entities/checked_process.dart';
+
+import '../../../../core/config/constant.dart';
+import '../../../../core/error/exceptions.dart';
+import '../models/checked_process_model.dart';
+import '../models/forecast_model.dart';
 
 abstract class ForecastRemoteDataSource {
   Future<ForecastModel> refreshForecast();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../ressource/themes.dart';
+import '../../../../resources/themes.dart';
 
 class MessageDisplay extends StatelessWidget {
   final String message;

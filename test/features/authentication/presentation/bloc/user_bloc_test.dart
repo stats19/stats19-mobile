@@ -4,17 +4,21 @@ import 'package:mockito/mockito.dart';
 import 'package:stat19_app_mobile/core/error/failures.dart';
 import 'package:stat19_app_mobile/features/authentication/domain/entities/user.dart';
 import 'package:stat19_app_mobile/features/authentication/domain/usecases/login_user.dart';
+import 'package:stat19_app_mobile/features/authentication/domain/usecases/register_user.dart';
 import 'package:stat19_app_mobile/features/authentication/presentation/bloc/user_bloc.dart';
 
 class MockLoginUser extends Mock implements LoginUser {}
+class MockRegisterUser extends Mock implements RegisterUser {}
 
 void main() {
   MockLoginUser mockLoginUser;
+  MockRegisterUser mockRegisterUser;
   UserBloc bloc;
 
   setUp(() {
     mockLoginUser = MockLoginUser();
-    bloc = UserBloc(loginUser: mockLoginUser);
+    mockRegisterUser = MockRegisterUser();
+    bloc = UserBloc(loginUser: mockLoginUser, registerUser: mockRegisterUser);
   });
 
   final tUser = User(username: 'user', email: 's@s.fr');

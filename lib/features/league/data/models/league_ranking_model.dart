@@ -1,5 +1,6 @@
 import 'package:meta/meta.dart';
-import 'package:stat19_app_mobile/features/league/domain/entities/league_ranking.dart';
+
+import '../../domain/entities/league_ranking.dart';
 
 class LeagueRankingModel extends LeagueRanking {
   LeagueRankingModel(

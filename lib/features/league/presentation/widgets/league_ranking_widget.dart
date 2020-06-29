@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/league/presentation/bloc/leagues_bloc.dart';
-import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
+
+import '../../../team/presentation/pages/team_page.dart';
+import '../bloc/leagues_bloc.dart';
 
 class LeagueRanking extends StatelessWidget {
   const LeagueRanking({
@@ -10,9 +11,6 @@ class LeagueRanking extends StatelessWidget {
   }) : super(key: key);
 
   final int leagueId;
-
-  @override
-  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {

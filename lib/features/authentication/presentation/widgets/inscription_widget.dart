@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stat19_app_mobile/features/authentication/presentation/pages/registration_page.dart';
+
+import '../pages/registration_page.dart';
 
 class InscriptionWidget extends StatelessWidget {
   const InscriptionWidget({

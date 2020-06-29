@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/navigation/presentation/widgets/bottom_bar.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/info_square.dart';
-import 'package:stat19_app_mobile/features/team/presentation/bloc/team_bloc.dart';
-import 'package:stat19_app_mobile/features/team/presentation/widgets/title_team.dart';
-import 'package:stat19_app_mobile/features/team/presentation/widgets/widgets.dart';
 
 import '../../../../injection_container.dart';
+import '../../../navigation/presentation/widgets/bottom_bar.dart';
+import '../bloc/team_bloc.dart';
+import '../widgets/title_team.dart';
+import '../widgets/widgets.dart';
 
 class TeamPage extends StatelessWidget {
   @override

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/navigation/presentation/widgets/bottom_bar.dart';
-import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
-import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
 
 import '../../../../injection_container.dart';
+import '../../../navigation/presentation/widgets/bottom_bar.dart';
+import '../../../player/presentation/pages/player_page.dart';
+import '../../../team/presentation/pages/team_page.dart';
 import '../../domain/entities/soccer_search.dart';
 import '../bloc/soccer_search_bloc.dart';
 

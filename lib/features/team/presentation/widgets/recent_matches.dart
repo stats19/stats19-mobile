@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/match/presentation/pages/soccer_match_page.dart';
-import 'package:stat19_app_mobile/features/team/domain/entities/team.dart';
-import 'package:stat19_app_mobile/features/team/presentation/bloc/team_bloc.dart';
+
+import '../../../match/presentation/pages/soccer_match_page.dart';
+import '../../domain/entities/team.dart';
+import '../bloc/team_bloc.dart';
 
 class RecentMatches extends StatelessWidget {
   const RecentMatches({

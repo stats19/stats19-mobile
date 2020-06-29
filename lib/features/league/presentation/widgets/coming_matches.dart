@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/league/domain/entities/matches_by_league.dart';
-import 'package:stat19_app_mobile/features/league/presentation/bloc/leagues_bloc.dart';
-import 'package:stat19_app_mobile/features/match/presentation/pages/soccer_match_page.dart';
+
+import '../../../match/presentation/pages/soccer_match_page.dart';
+import '../../domain/entities/matches_by_league.dart';
+import '../bloc/leagues_bloc.dart';
 
 class ComingMatch extends StatelessWidget {
   const ComingMatch({

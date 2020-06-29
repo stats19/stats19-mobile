@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/league/presentation/pages/league_info_page.dart';
-import 'package:stat19_app_mobile/features/navigation/presentation/widgets/bottom_bar.dart';
 
 import '../../../../injection_container.dart';
+import '../../../navigation/presentation/widgets/bottom_bar.dart';
 import '../bloc/leagues_bloc.dart';
+import 'league_info_page.dart';
 
 class LeaguesPage extends StatelessWidget {
   @override

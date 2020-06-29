@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/league/presentation/bloc/leagues_bloc.dart';
+
+import '../bloc/leagues_bloc.dart';
 
 class TitleLeague extends StatelessWidget {
   const TitleLeague({
@@ -16,7 +17,6 @@ class TitleLeague extends StatelessWidget {
       if ((state is Empty)) {
         BlocProvider.of<LeaguesBloc>(context).add(GetLeaguesEvent());
         return Text("équipe");
-        return Container();
       } else if (state is LeaguesLoaded) {
         return Text(leagueId.toString());
       } else if (state is Error) {

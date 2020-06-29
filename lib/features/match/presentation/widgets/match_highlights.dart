@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/match/presentation/bloc/soccer_match_bloc.dart';
-import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
+
+import '../../../player/presentation/pages/player_page.dart';
+import '../bloc/soccer_match_bloc.dart';
 
 class MatchHighlights extends StatelessWidget {
   const MatchHighlights({
@@ -168,37 +168,35 @@ class IconAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double Iconwidth = 20;
+    double iconWidth = 20;
     if (type == 3){
       return Image.asset(
-      "lib/ressource/assets/goal.png",
-      width: Iconwidth);
-    return Container();
+      "lib/resources/assets/goal.png",
+      width: iconWidth);
     }
     else if (type == 2){
       return Row(
         children: <Widget>[
           Image.asset(
-              "lib/ressource/assets/yellow-card.png",
-              width: Iconwidth),
+              "lib/resources/assets/yellow-card.png",
+              width: iconWidth),
           Image.asset(
-              "lib/ressource/assets/yellow-card.png",
-              width: Iconwidth),
+              "lib/resources/assets/yellow-card.png",
+              width: iconWidth),
         ],
       );
-      return Container();
     }
     else if (type == 1){
       return Image.asset(
-          "lib/ressource/assets/red-card.png",
-          width: Iconwidth);
-      return Container();
+          "lib/resources/assets/red-card.png",
+          width: iconWidth);
     }
     else if (type == 0){
       return Image.asset(
-          "lib/ressource/assets/yellow-card.png",
-          width: Iconwidth);
-      return Container();
+          "lib/resources/assets/yellow-card.png",
+          width: iconWidth);
     }
+
+    return Container();
   }
 }

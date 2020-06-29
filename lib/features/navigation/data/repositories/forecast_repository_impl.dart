@@ -1,13 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
-import 'package:stat19_app_mobile/features/league/domain/entities/league_ranking.dart';
-import 'package:stat19_app_mobile/features/navigation/data/datasources/forecast_remote_data_source.dart';
-import 'package:stat19_app_mobile/features/navigation/domain/entities/checked_process.dart';
-import 'package:stat19_app_mobile/features/navigation/domain/entities/forecast.dart';
-import 'package:stat19_app_mobile/features/navigation/domain/repositories/forecast_repository.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
+import '../../domain/entities/checked_process.dart';
+import '../../domain/entities/forecast.dart';
+import '../../domain/repositories/forecast_repository.dart';
+import '../datasources/forecast_remote_data_source.dart';
 
 class ForecastRepositoryImpl extends ForecastRepository {
   final ForecastRemoteDataSource remoteDataSource;

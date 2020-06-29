@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/league/presentation/bloc/leagues_bloc.dart';
-import 'package:stat19_app_mobile/features/league/presentation/widgets/coming_matches.dart';
 
+import '../bloc/leagues_bloc.dart';
+import 'coming_matches.dart';
 import 'widgets.dart';
 
 class InfoLeague extends StatefulWidget {

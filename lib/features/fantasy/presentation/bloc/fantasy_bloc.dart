@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:stat19_app_mobile/features/fantasy/domain/entities/fantasy.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../../../authentication/presentation/bloc/user_bloc.dart';
+import '../../domain/entities/fantasy.dart';
 import '../../domain/usecases/get_fantasy_players.dart';
 
 part 'fantasy_event.dart';

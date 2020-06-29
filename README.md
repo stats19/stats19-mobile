@@ -33,7 +33,7 @@ samples, guidance on mobile development, and a full API reference.
 - Presentation: Configuration rajouté.
     * [Images](/images): rajouter une image de preference "jpg", "svg" ou "ico", ensuite rajouter l'image
     dans _pubspec.yaml_ pour la propriété le chemin vers image (ex:"images/image.jpg");
-    * [Ressources theme(style, couleur, animation) et contantes](/lib/ressource): pour mettre les valeurs constantes re-utilisable ou long; _.../themes.dart_ pour 
+    * [Ressources theme(style, couleur, animation) et contantes](/lib/resources): pour mettre les valeurs constantes re-utilisable ou long; _.../themes.dart_ pour 
      le style et _.../value.dart_ pour valeur en dur.
     * [Mini ou bloc de Composants intégrable](/lib/components)
     * [Model d'objet pour manipuler des données](/lib/models)
