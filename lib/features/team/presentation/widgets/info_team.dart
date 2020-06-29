@@ -41,7 +41,7 @@ class InfoTeam extends StatelessWidget {
                         children: [
                           TeamStats(),
                           EndedMatches(),
-                          CommingMatches(),
+                          ComingMatches(),
                         ]
                     )
                 )
