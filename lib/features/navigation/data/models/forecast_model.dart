@@ -1,5 +1,6 @@
-import 'package:stat19_app_mobile/features/navigation/domain/entities/forecast.dart';
 import 'package:meta/meta.dart';
+
+import '../../domain/entities/forecast.dart';
 class ForecastModel extends Forecast {
   ForecastModel({
     @required success

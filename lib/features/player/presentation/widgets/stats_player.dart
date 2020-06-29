@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/info_square.dart';
-import 'package:stat19_app_mobile/features/player/presentation/bloc/player_bloc.dart';
+
+import '../../../../core/presentation/widgets/info_square.dart';
+import '../bloc/player_bloc.dart';
 
 
 class StatsPlayer extends StatelessWidget {
@@ -20,7 +21,7 @@ class StatsPlayer extends StatelessWidget {
             return Expanded(
               child: GridView.count(crossAxisCount: 3, children: [
                 InfoSquare(type: "Age",value: state.player.age),
-                InfoSquare(type: "Poid",value: LbsToKg(state.player.weight) ),
+                InfoSquare(type: "Poids",value: lbsToKg(state.player.weight) ),
                 InfoSquare(type: "Taille",value: state.player.height),
                 InfoSquare(type: "But",value: state.player.goals),
                 InfoSquare(type: "Tir cadré",value: state.player.shotOnTarget),
@@ -35,8 +36,8 @@ class StatsPlayer extends StatelessWidget {
         });
   }
 
-  int LbsToKg(int weight) {
-    double KgWeight = weight / 2.2;
-    return KgWeight.round();
+  int lbsToKg(int weight) {
+    double kgWeight = weight / 2.2;
+    return kgWeight.round();
   }
 }

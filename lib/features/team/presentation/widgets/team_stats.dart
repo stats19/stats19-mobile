@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/info_square.dart';
-import 'package:stat19_app_mobile/features/team/presentation/bloc/team_bloc.dart';
+
+import '../../../../core/presentation/widgets/info_square.dart';
+import '../bloc/team_bloc.dart';
 
 class TeamStats extends StatelessWidget {
   const TeamStats({

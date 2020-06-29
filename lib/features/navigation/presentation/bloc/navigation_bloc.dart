@@ -2,14 +2,14 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:stat19_app_mobile/core/error/failures.dart';
-import 'package:stat19_app_mobile/core/usecases/usecase.dart';
-import 'package:stat19_app_mobile/features/authentication/presentation/bloc/user_bloc.dart';
-import 'package:stat19_app_mobile/features/navigation/domain/usecases/CheckProcess.dart';
-import 'package:stat19_app_mobile/features/navigation/domain/usecases/RefreshForecast.dart';
+
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../../../authentication/presentation/bloc/user_bloc.dart';
+import '../../domain/usecases/CheckProcess.dart';
+import '../../domain/usecases/RefreshForecast.dart';
 
 part 'navigation_event.dart';
-
 part 'navigation_state.dart';
 
 class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {

@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:stat19_app_mobile/features/navigation/domain/entities/checked_process.dart';
+import 'package:meta/meta.dart';
+
+import '../../domain/entities/checked_process.dart';
+
 
 class CheckedProcessModel extends CheckedProcess {
   CheckedProcessModel(

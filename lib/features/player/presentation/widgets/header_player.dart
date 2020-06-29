@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/player/presentation/bloc/player_bloc.dart';
+
+import '../bloc/player_bloc.dart';
 
 class HeaderPlayer extends StatefulWidget {
   const HeaderPlayer({

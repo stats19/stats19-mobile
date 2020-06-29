@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/league/presentation/pages/leagues_page.dart';
-import 'package:stat19_app_mobile/features/match/presentation/pages/soccer_match_page.dart';
-import 'package:stat19_app_mobile/features/navigation/presentation/bloc/navigation_bloc.dart';
-import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
-import 'package:stat19_app_mobile/features/soccer_search/presentation/pages/search_soccer_page.dart';
-import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
 
 import '../../../../injection_container.dart';
+import '../../../league/presentation/pages/leagues_page.dart';
+import '../../../player/presentation/pages/player_page.dart';
+import '../../../soccer_search/presentation/pages/search_soccer_page.dart';
+import '../../../team/presentation/pages/team_page.dart';
+import '../bloc/navigation_bloc.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({

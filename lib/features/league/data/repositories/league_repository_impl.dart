@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
-import 'package:stat19_app_mobile/features/league/domain/entities/league_ranking.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
 import '../../domain/entities/league.dart';
+import '../../domain/entities/league_ranking.dart';
 import '../../domain/entities/matches_by_league.dart';
 import '../../domain/repositories/league_repository.dart';
 import '../datasources/league_remote_data_source.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/player/presentation/bloc/player_bloc.dart';
+
+import '../bloc/player_bloc.dart';
 
 class TitlePlayer extends StatelessWidget {
   const TitlePlayer({
@@ -16,7 +17,6 @@ class TitlePlayer extends StatelessWidget {
       if ((state is Empty)) {
         BlocProvider.of<PlayerBloc>(context).add(GetPlayerEvent(playerId: playerId));
         return Text("Joueur");
-        return Container();
       } else if (state is Loaded) {
         return Text(state.player.name);
       } else if (state is Error) {

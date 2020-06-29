@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/match/presentation/bloc/soccer_match_bloc.dart';
 
+import '../bloc/soccer_match_bloc.dart';
 import 'match_stat.dart';
 
 class SoccerMatchStats extends StatelessWidget {

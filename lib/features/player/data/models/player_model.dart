@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:stat19_app_mobile/features/player/domain/entities/player.dart';
+import 'package:meta/meta.dart';
+
+import '../../domain/entities/player.dart';
 
 class PlayerModel extends Player {
   PlayerModel(

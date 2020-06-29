@@ -1,14 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:stat19_app_mobile/features/authentication/domain/usecases/register_user.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/usecases/login_user.dart';
+import '../../domain/usecases/register_user.dart';
 
 part 'user_event.dart';
-
 part 'user_state.dart';
 
 const String SERVER_FAILURE_MESSAGE = 'Server Failure';

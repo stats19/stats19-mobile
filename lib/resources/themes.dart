@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 //colors
@@ -16,8 +15,8 @@ const DecorationImage BODY_BACKGROUND_DECORATION_IMAGE = DecorationImage(
   );
 
 //Icons
-final Icon CLOSE_ARROW = new Icon(Icons.keyboard_arrow_right);
-final Icon OPEN_ARROW = new Icon(Icons.keyboard_arrow_down);
+final Icon closeArrow = new Icon(Icons.keyboard_arrow_right);
+final Icon openArrow = new Icon(Icons.keyboard_arrow_down);
 const Icon ICON_ACCOUNT = Icon(Icons.account_circle);
 const Icon ICON_EMAIL = Icon(Icons.email);
 const Icon ICON_SECURE = Icon(Icons.lock);

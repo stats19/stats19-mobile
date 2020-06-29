@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
-import 'package:stat19_app_mobile/features/team/data/datasources/team_remote_data_source.dart';
-import 'package:stat19_app_mobile/features/team/domain/entities/team.dart';
-import 'package:stat19_app_mobile/features/team/domain/repositories/team_repository.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
+import '../../domain/entities/team.dart';
+import '../../domain/repositories/team_repository.dart';
+import '../datasources/team_remote_data_source.dart';
 
 class TeamRepositoryImpl extends TeamRepository {
   final TeamRemoteDataSource remoteDataSource;

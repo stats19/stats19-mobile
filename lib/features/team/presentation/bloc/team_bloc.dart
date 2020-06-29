@@ -1,12 +1,13 @@
 import 'dart:async';
-import 'dart:math';
-import 'package:meta/meta.dart';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:stat19_app_mobile/core/error/failures.dart';
-import 'package:stat19_app_mobile/features/authentication/presentation/bloc/user_bloc.dart';
-import 'package:stat19_app_mobile/features/team/domain/entities/team.dart';
-import 'package:stat19_app_mobile/features/team/domain/usecases/GetTeam.dart';
+import 'package:meta/meta.dart';
+
+import '../../../../core/error/failures.dart';
+import '../../../authentication/presentation/bloc/user_bloc.dart';
+import '../../domain/entities/team.dart';
+import '../../domain/usecases/GetTeam.dart';
 
 part 'team_event.dart';
 part 'team_state.dart';

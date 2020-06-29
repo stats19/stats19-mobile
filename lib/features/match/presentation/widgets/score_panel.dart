@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/league/presentation/pages/league_info_page.dart';
-import 'package:stat19_app_mobile/features/match/presentation/bloc/soccer_match_bloc.dart';
-import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
+
+import '../../../league/presentation/pages/league_info_page.dart';
+import '../../../team/presentation/pages/team_page.dart';
+import '../bloc/soccer_match_bloc.dart';
 
 class HeaderPanel extends StatelessWidget {
   final int matchId;

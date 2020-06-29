@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/league/presentation/pages/league_info_page.dart';
-import 'package:stat19_app_mobile/features/team/domain/entities/team.dart';
-import 'package:stat19_app_mobile/features/team/presentation/bloc/team_bloc.dart';
+
+import '../../../league/presentation/pages/league_info_page.dart';
+import '../../domain/entities/team.dart';
+import '../bloc/team_bloc.dart';
 
 class TeamHeader extends StatelessWidget {
   final int teamId;
