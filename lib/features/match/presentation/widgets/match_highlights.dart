@@ -22,23 +22,23 @@ class MatchHighlights extends StatelessWidget {
             print(state.soccerMatch.matchId);
             return Column(
               children: <Widget>[
-                Expanded(
-                  child: ListView.separated(
-                    padding: const EdgeInsets.all(8),
-                    itemCount: state.soccerMatch.details.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return HighLight(
-                          name: state.soccerMatch.details[index].playerName,
-                          type: state.soccerMatch.details[index].type,
-                          id: state.soccerMatch.details[index].playerId,
-                          home: state.soccerMatch.details[index].home,
-                          elapsed: state.soccerMatch.details[index].elapsed,
-                          elapsedPlus:
-                              state.soccerMatch.details[index].elapsedPlus);
-                    },
-                    separatorBuilder: (BuildContext context, int index) =>
-                        const Divider(),
-                  ),
+                ListView.separated(
+                  shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
+                  padding: const EdgeInsets.all(8),
+                  itemCount: state.soccerMatch.details.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return HighLight(
+                        name: state.soccerMatch.details[index].playerName,
+                        type: state.soccerMatch.details[index].type,
+                        id: state.soccerMatch.details[index].playerId,
+                        home: state.soccerMatch.details[index].home,
+                        elapsed: state.soccerMatch.details[index].elapsed,
+                        elapsedPlus:
+                            state.soccerMatch.details[index].elapsedPlus);
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const Divider(),
                 ),
               ],
             );

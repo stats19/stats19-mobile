@@ -30,7 +30,6 @@ class TeamPage extends StatelessWidget {
     ),
     );
   }
-
 }
 
 class TeamWidget extends StatelessWidget {
@@ -41,10 +40,11 @@ class TeamWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.grey[300],
+    return SingleChildScrollView(
+//      color: Colors.grey[300],
       child: Column(
-        children: <Widget>[
+        crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
           TeamHeader(teamId: teamId),
           RecentMatches(),
           InfoTeam(),

@@ -17,6 +17,7 @@ class TeamHeader extends StatelessWidget {
       margin: EdgeInsets.only(
         right: 35,
         left: 35,
+        bottom: 15
       ),
       decoration: BoxDecoration(
         border: Border.all(color:  Colors.blueGrey[700], width: 0.5),
@@ -30,6 +31,7 @@ class TeamHeader extends StatelessWidget {
             color: Colors.black.withOpacity(0.4),
             blurRadius: 9,
             spreadRadius: 2.0,
+//            offset: (Offset(0, 5))
           )
         ],
       ),

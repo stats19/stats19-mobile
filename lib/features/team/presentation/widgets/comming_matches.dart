@@ -13,12 +13,13 @@ class CommingMatches extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TeamBloc, TeamState>(builder: (context, state) {
       if (state is Loading) {
-        return CircularProgressIndicator();
+        return Container();
       } else if (state is Loaded) {
         return Container(
             child: ListView(
-          shrinkWrap: true,
-          primary: false,
+              physics: const ClampingScrollPhysics(),
+              shrinkWrap: true,
+//          primary: false,
           children: <Widget>[
             Column(
                 children: state.team.nextMatches
