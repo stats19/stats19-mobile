@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../core/presentation/widgets/info_square.dart';
 import '../bloc/player_bloc.dart';
@@ -47,13 +48,13 @@ class StatsPlayer extends StatelessWidget {
                       physics: const ClampingScrollPhysics(),
                       crossAxisCount: 3,
                       children: [
-                    InfoSquare(type: "Age",value: state.player.age),
-                    InfoSquare(type: "Poid",value: lbsToKg(state.player.weight) ),
-                    InfoSquare(type: "Taille",value: state.player.height),
-                    InfoSquare(type: "But",value: state.player.goals),
-                    InfoSquare(type: "Tir cadré",value: state.player.shotOnTarget),
-                    InfoSquare(type: "Carton rouge",value: state.player.redCards),
-                    InfoSquare(type: "Carton jaune",value: state.player.yellowCards),
+                    InfoSquare(type: "age".tr(),value: state.player.age),
+                    InfoSquare(type: "weight".tr(),value: lbsToKg(state.player.weight) ),
+                    InfoSquare(type: "height".tr(),value: state.player.height),
+                    InfoSquare(type: "goals".tr(),value: state.player.goals),
+                    InfoSquare(type: "on_target".tr(),value: state.player.shotOnTarget),
+                    InfoSquare(type: "red_card".tr(),value: state.player.redCards),
+                    InfoSquare(type: "yellow_card".tr(),value: state.player.yellowCards),
                   ]),
                 ],
               ),

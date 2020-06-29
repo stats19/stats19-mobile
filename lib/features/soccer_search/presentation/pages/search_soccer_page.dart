@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../injection_container.dart';
 import '../../../navigation/presentation/widgets/bottom_bar.dart';
@@ -24,16 +25,16 @@ class SoccerSearchPage extends StatelessWidget {
             bottom: TabBar(
               tabs: [
 //                Tab(icon: Icon(Icons.directions_car)),
-                Tab(icon: Text("Joueur")),
+                Tab(icon: Text("players").tr()),
 //                Tab(icon: Icon(Icons.directions_transit)),
-                Tab(icon: Text("Equipe")),
+                Tab(icon: Text("teams").tr()),
               ],
             ),
             title: BlocBuilder<SoccerSearchBloc, SoccerSearchState>(
                 builder: (context, state) {
               return TextField(
                 decoration: InputDecoration(
-                  hintText: "Rechercher ...",
+                  hintText: "search".tr(),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(50),
                     borderSide: BorderSide(

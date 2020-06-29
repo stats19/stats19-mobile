@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'widgets.dart';
 
@@ -47,9 +48,9 @@ class InfoTeam extends StatelessWidget {
                                   labelColor: Colors.blueAccent,
                                   unselectedLabelColor: Colors.grey,
                                   tabs: [
-                                    Tab(text: "Stats", ),
-                                    Tab(text: "Matchs joués", ),
-                                    Tab(text: "Futurs matchs", ),
+                                    Tab(text: "statistics".tr()),
+                                    Tab(text: "played_matches".tr()),
+                                    Tab(text: "coming_matches".tr()),
                                   ]
                               ),
                             )

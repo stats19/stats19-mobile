@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../match/presentation/pages/soccer_match_page.dart';
 import '../../domain/entities/matches_by_league.dart';
@@ -85,7 +86,7 @@ class ComingMatch extends StatelessWidget {
   Container noMatchesFound() {
     return Container(
       child: Text(
-        "Aucun match à venir",
+        "no_coming_matches".tr(),
         style: TextStyle(color: Colors.red),
       ),
     );
@@ -111,11 +112,11 @@ class MatchLeagueFilter extends StatelessWidget {
       items: <DropdownMenuItem<bool>>[
         DropdownMenuItem<bool>(
           value: false,
-          child: Text('A venir'),
+          child: Text('coming_matches').tr(),
         ),
         DropdownMenuItem<bool>(
           value: true,
-          child: Text('Match joués'),
+          child: Text('played_matches').tr(),
         )
       ],
     );

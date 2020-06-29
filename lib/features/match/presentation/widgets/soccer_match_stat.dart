@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../bloc/soccer_match_bloc.dart';
 import 'match_stat.dart';
@@ -26,23 +27,23 @@ class SoccerMatchStats extends StatelessWidget {
                 return Column(
                   children: <Widget>[
                     MatchStat(
-                        title: 'Possession',
+                        title: 'possession'.tr(),
                         home: state.soccerMatch.homeTeam.possession,
                         away: state.soccerMatch.awayTeam.possession),
                     MatchStat(
-                        title: 'Tir cadrés',
+                        title: 'on_target'.tr(),
                         home: state.soccerMatch.homeTeam.shotOnTarget,
                         away: state.soccerMatch.awayTeam.shotOnTarget),
                     MatchStat(
-                        title: 'Fautes',
+                        title: 'fouls'.tr(),
                         home: state.soccerMatch.homeTeam.fouls,
                         away: state.soccerMatch.awayTeam.fouls),
                     MatchStat(
-                        title: 'Cartons jaunes',
+                        title: 'yellow_card'.tr(),
                         home: state.soccerMatch.homeTeam.yellowCard,
                         away: state.soccerMatch.awayTeam.yellowCard),
                     MatchStat(
-                        title: 'Cartons rouges',
+                        title: 'red_card'.tr(),
                         home: state.soccerMatch.homeTeam.redCard,
                         away: state.soccerMatch.awayTeam.redCard)
                   ],

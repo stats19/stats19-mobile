@@ -1,5 +1,49 @@
 {
-  "authentication": {
-    "connection": "Login in !"
-  }
+  "connection": "Login in !",
+  "connection_button": "Login",
+  "username_hint": "Username",
+  "password_hint": "Password",
+  "password_repeat_hint": "Confirm your password",
+  "email_hint": "Email",
+  "no_account": "No account yet?",
+  "register": "Register!",
+  "register_button": "Register",
+  "email_error": "Not valid email",
+  "password_error": "Your password must be at least 8 characters long (32 maximum) and contain at least one number and a letter",
+  "password_error2": "No password",
+  "password_error3": "The password doesn't match",
+
+  "leagues": "leagues",
+  "coming_matches": "Upcoming",
+  "ranking": "Ranking",
+  "played_matches": "Played",
+  "no_coming_matches": "No upcoming matches",
+
+  "highlights": "Highlights",
+  "statistics": "Statistics",
+  "possession": "Possession",
+  "on_target": "On target",
+  "fouls": "Fouls",
+  "yellow_card": "Yellow cards",
+  "red_card": "Red cards",
+
+  "weight": "Weight",
+  "age": "Age",
+  "height": "Height",
+  "goals": "Goals",
+
+  "last_matches": "the last matches",
+  "short_win": "W",
+  "short_draw": "D",
+  "short_lose": "L",
+  "wins": "Wins",
+  "draws": "Draws",
+  "loses": "Defeats",
+  "home_wins": "Home wins",
+  "away_wins": "Away wins",
+  "goals_conceded": "goals conceded",
+
+  "players": "Players",
+  "teams": "Teams",
+  "search": "Search"
 }

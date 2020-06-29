@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class TitlePage extends StatelessWidget {
   const TitlePage({
@@ -13,10 +14,10 @@ class TitlePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Text(
-            'Connectez-vous !',
+              'connection',
             style: TextStyle(fontSize: 25),
             textAlign: TextAlign.center,
-          ),
+          ).tr(),
         ),
       ),
     );

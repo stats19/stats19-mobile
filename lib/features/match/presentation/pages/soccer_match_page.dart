@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../injection_container.dart';
 import '../../../navigation/presentation/widgets/bottom_bar.dart';
@@ -90,10 +91,10 @@ class MatchDetailsWidget extends StatelessWidget {
                                         unselectedLabelColor: Colors.grey,
                                         tabs: [
                                       Tab(
-                                        text: "Temps fort",
+                                        text: "highlights".tr(),
                                       ),
                                       Tab(
-                                        text: "Stats",
+                                        text: "statistics".tr(),
                                       ),
                                     ])),
                               ],

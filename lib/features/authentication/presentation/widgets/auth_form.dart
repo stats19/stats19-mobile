@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../app_router.dart';
 import '../bloc/user_bloc.dart';
@@ -28,7 +29,7 @@ class _AuthFormState extends State<AuthForm> {
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
               border: OutlineInputBorder(),
-              hintText: 'Votre nom d\'utilisateur'),
+              hintText: 'username_hint'.tr()),
           onChanged: (value) {
             username = value;
           },
@@ -39,7 +40,7 @@ class _AuthFormState extends State<AuthForm> {
           keyboardType: TextInputType.visiblePassword,
           decoration: InputDecoration(
               border: OutlineInputBorder(),
-              hintText: 'Votre mot de passe'),
+              hintText: 'password_hint'.tr()),
           onChanged: (value) {
             password = value;
           },
@@ -64,7 +65,7 @@ class _AuthFormState extends State<AuthForm> {
             Expanded(child: ButtonTheme(
               height: 60,
               child: RaisedButton(
-                child: Text('Me connecter'),
+                child: Text('connection_button').tr(),
                 color: Theme.of(context).primaryColor,
                 textTheme: ButtonTextTheme.primary,
                 onPressed: () {
