@@ -15,68 +15,41 @@ class HeaderPlayer extends StatefulWidget {
 class _HeaderPlayerState extends State<HeaderPlayer> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-                child: BlocBuilder<PlayerBloc, PlayerState>(
-                    builder: (context, state) {
-                      if (state is Loading) {
-                        return CircularProgressIndicator();
-                      } else if (state is Loaded) {
-                        return Column(
-                          children: <Widget>[
-                            Text(state.player.name,
-                                style:
-                                TextStyle(color: Colors.white, fontSize: 40)),
-                            PlayerFilter(season: state.season, playerId: state.player.playerId)
-                          ],
-                        );
-                      } else if (state is Error) {
-                        return Text('there is error' + state.message);
-                      }
-                      return Container();
-                    })
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class PlayerFilter extends StatelessWidget {
-  final String season;
-  final int playerId;
-
-  const PlayerFilter({Key key, this.season, this.playerId}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: season,
-      elevation: 16,
-      onChanged: (String newValue) {
-        BlocProvider.of<PlayerBloc>(context)
-            .add(GetPlayerEvent(playerId: playerId, season: newValue));
-      },
-      items: [
-        '2015/2016',
-        '2014/2015',
-        '2013/2014',
-        '2012/2013',
-        '2011/2012',
-        '2010/2011',
-        '2009/2010',
-        '2008/2009'
-      ]
-          .map<DropdownMenuItem<String>>((e) => DropdownMenuItem<String>(
-        value: e,
-        child: Text(e),
-      ))
-          .toList(),
-    );
+    return BlocBuilder<PlayerBloc, PlayerState>(
+        builder: (context, state) {
+          if (state is Loading) {
+            return CircularProgressIndicator();
+          } else if (state is Loaded) {
+            return Container(
+              margin: new EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                border: Border.all(color:  Colors.blueGrey[700], width: 0.5),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20.0)
+                ),
+                color: Colors.blueGrey[500],
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.4),
+                    blurRadius: 9,
+                    spreadRadius: 2.0,
+                  )
+                ],
+              ),
+              child: Column(
+                children: <Widget>[
+                  Text(state.player.name,
+                      style:
+                      TextStyle(color: Colors.white, fontSize: 40)),
+                ],
+              ),
+            );
+          } else if (state is Error) {
+            return Text('there is error' + state.message);
+          }
+          return Container();
+        });
   }
 }

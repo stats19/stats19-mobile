@@ -23,23 +23,14 @@ class PlayerPage extends StatelessWidget {
           appBar: AppBar(
             title: TitlePlayer(playerId: playerId),
           ),
-          backgroundColor: Colors.blueGrey[900],
-          body: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: <Widget>[
-                  HeaderPlayer(),
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text("Statistiques",
-                          style: TextStyle(color: Colors.white, fontSize: 20)),
-                    ),
-                  ),
-                  StatsPlayer(),
-                ],
-              ),
+          backgroundColor: Colors.grey[300],
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                HeaderPlayer(),
+                StatsPlayer(),
+              ],
             ),
           ),
           bottomNavigationBar: BottomBar()),
