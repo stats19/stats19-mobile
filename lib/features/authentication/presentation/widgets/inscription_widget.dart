@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../pages/registration_page.dart';
 
@@ -12,7 +13,7 @@ class InscriptionWidget extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
-          Text("Pas encore de compte ?"),
+          Text("no_account").tr(),
           FlatButton(
             onPressed: () {
               Navigator.push(context,
@@ -21,7 +22,7 @@ class InscriptionWidget extends StatelessWidget {
                     );
                   }));
             },
-            child: Text("Inscrivez vous ! "),
+            child: Text("register").tr(),
           ),
         ],
       ),

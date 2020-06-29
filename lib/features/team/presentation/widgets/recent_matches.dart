@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../match/presentation/pages/soccer_match_page.dart';
 import '../../domain/entities/team.dart';
@@ -27,7 +28,7 @@ class RecentMatches extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          Text("Les derniers matchs",
+          Text("last_matches".tr(),
               style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700)),
           BlocBuilder<TeamBloc, TeamState>(builder: (context, state) {
             if (state is Loading) {
@@ -95,8 +96,8 @@ class ResultBubble extends StatelessWidget {
               textColor: Colors.white,
               child: Text(
                 recentMatch.result == "LOSE"
-                    ? "D"
-                    : recentMatch.result == "DRAW" ? "N" : "V",
+                    ? "short_lose".tr()
+                    : recentMatch.result == "DRAW" ? "short_draw".tr() : "short_win".tr(),
                 textAlign: TextAlign.center,
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.w800),

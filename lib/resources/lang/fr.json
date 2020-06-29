@@ -1,5 +1,49 @@
 {
-  "authentication": {
-    "connection": "Connectez-vous !"
-  }
+  "connection": "Connectez-vous !",
+  "connection_button": "Me connecter",
+  "username_hint": "Votre nom d'utilisateur",
+  "password_hint": "Votre mot de passe",
+  "password_repeat_hint": "Confirmez votre mot de passe",
+  "email_hint": "Votre email",
+  "no_account": "Pas encore de compte ?",
+  "register": "Inscrivez vous !",
+  "register_button": "S'inscrire",
+  "email_error": "email non valide",
+  "password_error": "Votre mot de passe doit comporter au moins 8 caractères (32 au maximum) et au moins un chiffre et une lettre",
+  "password_error2": "Aucun mot de passe",
+  "password_error3": "Le mot de passe ne correspond pas",
+
+  "leagues": "Les ligues",
+  "ranking": "Classement",
+  "league_match_filter1": "A venir",
+  "played_matches": "Joués",
+  "no_coming_matches": "Aucun match à venir",
+
+  "highlights": "Temps fort",
+  "statistics": "Statistiques",
+  "possession": "Possession",
+  "on_target": "Tir cadrés",
+  "fouls": "Fautes",
+  "yellow_card": "Cartons jaunes",
+  "red_card": "Cartons rouges",
+
+  "weight": "Poids",
+  "age": "Age",
+  "height": "Taille",
+  "goals": "Buts",
+
+  "last_matches": "Les derniers matchs",
+  "short_win": "V",
+  "short_draw": "N",
+  "short_lose": "D",
+  "wins": "Victoires",
+  "draws": "Nuls",
+  "loses": "Défaites",
+  "home_wins": "Victoire à domicile",
+  "away_wins": "Victoire à l'exterieur",
+  "goals_conceded": "Buts encaissés",
+
+  "players": "Joueurs",
+  "teams": "Equipes",
+  "search": "Recherche"
 }

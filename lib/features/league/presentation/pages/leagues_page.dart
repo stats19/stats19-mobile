@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../injection_container.dart';
@@ -11,7 +12,7 @@ class LeaguesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Les ligues'),
+        title: Text('leagues').tr(),
         automaticallyImplyLeading: false,
       ),
       backgroundColor: Colors.blueGrey[900],
