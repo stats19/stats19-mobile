@@ -24,7 +24,7 @@ class FantasyRemoteDataSourceImpl extends FantasyRemoteDataSource {
   @override
   Future<FantasyModel> getFantasyPlayers() async {
     final String token = this.sharedPreferences.getString(CACHED_AUTH_TOKEN);
-    final response = await client.get(HOST + '/api/leagues',
+    final response = await client.get(HOST + '/api/players/fantasy',
         headers: {'Content-Type': 'application/json', 'authorization': token});
 
     if (response.statusCode == 200) {

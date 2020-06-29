@@ -26,8 +26,6 @@ class TeamPage extends StatelessWidget {
         ),
 
         body: TeamWidget(teamId: teamId),
-//          backgroundColor: Colors.grey[300],
-
           bottomNavigationBar: BottomBar(),
     ),
     );

@@ -5,7 +5,7 @@ import '../../../../injection_container.dart';
 import '../../../league/presentation/pages/leagues_page.dart';
 import '../../../player/presentation/pages/player_page.dart';
 import '../../../soccer_search/presentation/pages/search_soccer_page.dart';
-import '../../../team/presentation/pages/team_page.dart';
+import '../../../fantasy/presentation/pages/fantasy_page.dart';
 import '../bloc/navigation_bloc.dart';
 
 class BottomBar extends StatelessWidget {
@@ -44,7 +44,7 @@ class BottomBar extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => TeamPage(teamId: 3457,)),
+                        builder: (context) => FantasyPage()),
                   );
                 }),
             IconButton(
