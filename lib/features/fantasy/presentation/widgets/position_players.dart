@@ -18,19 +18,31 @@ class PositionPlayers extends StatelessWidget {
         right: 20,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: Colors.white,
+        border: Border.all(color:  Colors.blueGrey[700], width: 0.7),
+        borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.5),
-            blurRadius: 11,
-            spreadRadius: 2.0,
-          )
+            color: Colors.black.withOpacity(0.7),
+//              spreadRadius: 5,
+            blurRadius: 6,
+          ),
         ],
+        color: Colors.blueGrey,
       ),
+//      decoration: BoxDecoration(
+//        borderRadius: BorderRadius.all(Radius.circular(10)),
+//        color: Colors.white,
+//        boxShadow: [
+//          BoxShadow(
+//            color: Colors.black.withOpacity(0.5),
+//            blurRadius: 11,
+//            spreadRadius: 2.0,
+//          )
+//        ],
+//      ),
       child: Column(
         children: <Widget>[
-          Text(title),
+          Text(title, style: TextStyle(color: Colors.white)),
           Container(
               child: Wrap(
                   children: position
@@ -67,7 +79,7 @@ class PlayerList extends StatelessWidget {
           },
           child: Container(
               child: Text(
-                fantasyPlayer.name,
+                fantasyPlayer.name, style: TextStyle(color: Colors.white),
               ))),
     );
   }
