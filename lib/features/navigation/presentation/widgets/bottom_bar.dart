@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stat19_app_mobile/features/league/presentation/pages/leagues_page.dart';
 import 'package:stat19_app_mobile/features/match/presentation/pages/soccer_match_page.dart';
 import 'package:stat19_app_mobile/features/navigation/presentation/bloc/navigation_bloc.dart';
+import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
 import 'package:stat19_app_mobile/features/soccer_search/presentation/pages/search_soccer_page.dart';
+import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
 
 import '../../../../injection_container.dart';
 
@@ -43,7 +45,7 @@ class BottomBar extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SoccerMatchPage(matchId: 1729)),
+                        builder: (context) => TeamPage(teamId: 3457,)),
                   );
                 }),
             IconButton(
@@ -52,7 +54,7 @@ class BottomBar extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SoccerMatchPage(matchId: 1729)),
+                        builder: (context) => PlayerPage(playerId: 10749)),
                   );
                 }),
 

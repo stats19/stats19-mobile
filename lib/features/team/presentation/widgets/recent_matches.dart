@@ -12,13 +12,22 @@ class RecentMatches extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(5),
+      margin: EdgeInsets.only(top: 18),
+      decoration: BoxDecoration(
+        color: Colors.grey.withOpacity(0.2),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.8),
+            blurRadius: 10,
+            spreadRadius: 6.0,
+          )
+        ],
+      ),
       child: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text("Les derniers matchs",
-                style: TextStyle(color: Colors.white, fontSize: 18)),
-          ),
+          Text("Les derniers matchs",
+              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700)),
           BlocBuilder<TeamBloc, TeamState>(builder: (context, state) {
             if (state is Loading) {
               return CircularProgressIndicator();
@@ -56,6 +65,14 @@ class ResultBubble extends StatelessWidget {
       width: 25,
       height: 25,
       decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 6.0,
+              color: Colors.black.withOpacity(.7),
+//              offset: Offset(6.0, 7.0),
+            ),
+          ],
+//          border: Border.all(color:  Colors.white, width: 0.5),
           color: recentMatch.result == "LOSE"
               ? Colors.redAccent
               : recentMatch.result == "DRAW" ? Colors.grey : Colors.green,

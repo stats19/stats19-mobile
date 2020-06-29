@@ -28,7 +28,6 @@ class MatchHighlights extends StatelessWidget {
                     itemCount: state.soccerMatch.details.length,
                     itemBuilder: (BuildContext context, int index) {
                       return HighLight(
-
                           name: state.soccerMatch.details[index].playerName,
                           type: state.soccerMatch.details[index].type,
                           id: state.soccerMatch.details[index].playerId,
@@ -72,7 +71,6 @@ class HighLight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-//      margin: EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -80,7 +78,6 @@ class HighLight extends StatelessWidget {
             flex: 2,
             child: Container(
               padding: EdgeInsets.all(0.0),
-//              color: Colors.red,
               child: Row(
                 children: <Widget>[
                   home
@@ -90,6 +87,7 @@ class HighLight extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) {
+                                    print(id);
                                     return PlayerPage(
                                       playerId: id,
                                     );

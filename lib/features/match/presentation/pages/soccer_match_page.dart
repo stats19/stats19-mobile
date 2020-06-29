@@ -25,7 +25,8 @@ class SoccerMatchPage extends StatelessWidget {
           appBar: AppBar(
             title: TitleMatch(matchId: matchId),
           ),
-          backgroundColor: Colors.blueGrey[900],
+//          backgroundColor: Colors.blueGrey[900],
+          backgroundColor: Colors.grey[300],
           body: MatchDetailsWidget(
             matchId: matchId,
           ),
@@ -47,17 +48,25 @@ class MatchDetailsWidget extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
-          Padding(
-              padding: EdgeInsets.all(15),
-              child: MatchLeagueButton()
-          ),
-
-          ScorePanel(matchId: matchId),
+          HeaderPanel(matchId: matchId),
           Expanded(
               child: DefaultTabController(
                   length: 2,
                   child: Container(
-
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10)
+                      ),
+                      color: Colors.white70,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.5),
+                          blurRadius: 8,
+                          spreadRadius: 2.0,
+                        )
+                      ],
+                    ),
                     margin: const EdgeInsets.only(
                           left: 20,
                           top: 0,
@@ -67,18 +76,19 @@ class MatchDetailsWidget extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20)
-                              ),
-                            color: Colors.white30,
+                          decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10)
+                          ),
+
+                            color: Colors.white70,
                             ),
                             child: new Row(
                               children: <Widget>[
                                 new Expanded(
                                     child: TabBar(
-                                        labelColor: Colors.white,
+                                        labelColor: Colors.blueAccent,
                                         unselectedLabelColor: Colors.grey,
                                         tabs: [
                                       Tab(
@@ -106,48 +116,4 @@ class MatchDetailsWidget extends StatelessWidget {
 
 
 
-class MatchLeagueButton extends StatelessWidget {
 
-  const MatchLeagueButton({
-    Key key,
-    @required this.matchId,
-  }) : super(key: key);
-
-  final int matchId;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<SoccerMatchBloc, SoccerMatchState>(builder: (context, state) {
-      if ((state is Empty)) {
-        BlocProvider.of<SoccerMatchBloc>(context).add(GetSoccerMatchEvent(matchId));
-        return Text("league");
-      } else if (state is Loaded) {
-        return RaisedButton(
-            padding: EdgeInsets.only(
-              top: 5,
-              left: 10,
-              right: 10,
-              bottom: 5,
-            ),
-            color: Colors.blueGrey,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(15.0)),
-//                side: BorderSide(color: Colors.red)
-            ),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                    return LeagueInfoPage(
-                      leagueId: state.soccerMatch.league.leagueId,
-                    );
-                  }));
-            },
-            child: Text(state.soccerMatch.league.name, style : TextStyle(color: Colors.white,  fontSize: 18,), textAlign: TextAlign.center,));
-
-      } else if (state is Error) {
-        return Text('there is error' + state.message);
-      }
-      return Container();
-    });
-  }
-}

@@ -13,7 +13,6 @@ class TeamStats extends StatelessWidget {
     return BlocBuilder<TeamBloc, TeamState>(
         builder: (context, state) {
           if (state is Loading) {
-//            return CircularProgressIndicator();
             return Container();
           } else if (state is Loaded) {
             return Container(

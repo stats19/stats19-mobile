@@ -12,13 +12,13 @@ class InfoSquare extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
+          border: Border.all(color:  Colors.blueGrey[700], width: 0.7),
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.black45.withOpacity(0.2),
-              spreadRadius: 1,
-              blurRadius: 10,
-              offset: Offset(0, 0),
+              color: Colors.black.withOpacity(0.7),
+//              spreadRadius: 5,
+              blurRadius: 6,
             ),
           ],
           color: Colors.blueGrey,
@@ -31,13 +31,13 @@ class InfoSquare extends StatelessWidget {
               children: <Widget>[
                 Align(
                   child: Text(type,
-                      style: TextStyle(color: Colors.white, fontSize: 15)),
+                      style: TextStyle(color: Colors.white, fontSize: 13)),
                   alignment: Alignment.topLeft,
                 ),
                 Expanded(
                   child: Align(
                     child: Text(value.toString(),
-                        style: TextStyle(color: Colors.white, fontSize: 25)),
+                        style: TextStyle(color: Colors.white, fontSize: 23)),
                     alignment: Alignment.bottomRight,
                   ),
                 ),

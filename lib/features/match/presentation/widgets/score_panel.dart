@@ -1,23 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/league/presentation/pages/league_info_page.dart';
 import 'package:stat19_app_mobile/features/match/presentation/bloc/soccer_match_bloc.dart';
 import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
 
-class ScorePanel extends StatelessWidget {
+class HeaderPanel extends StatelessWidget {
   final int matchId;
-  const ScorePanel({
+  const HeaderPanel({
     Key key, this.matchId,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: Colors.blueGrey[700],
+    return
+      Container(
+          decoration: BoxDecoration(
+            border: Border.all(color:  Colors.blueGrey[700], width: 0.5),
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20.0),
+                bottomRight: Radius.circular(20.0)
+            ),
+            color: Colors.blueGrey[500],
             boxShadow: [
-              BoxShadow(color: Colors.grey, spreadRadius: 3)
-            ]
-        ),
+              BoxShadow(
+                color: Colors.black.withOpacity(0.4),
+                blurRadius: 9,
+                spreadRadius: 2.0,
+              )
+            ],
+          ),
 //        margin: new EdgeInsets.symmetric(horizontal: 20.0),
         margin: new EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
         child: BlocBuilder<SoccerMatchBloc, SoccerMatchState>(
@@ -32,6 +43,7 @@ class ScorePanel extends StatelessWidget {
           } else if (state is Loaded) {
             return Column(
               children: <Widget>[
+                MatchLeagueButton(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -76,6 +88,7 @@ class TeamScorePanel extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) {
+                print(teamId);
                 return TeamPage(
                   teamId: teamId,
                 );
@@ -88,7 +101,7 @@ class TeamScorePanel extends StatelessWidget {
                   child: Text(
                     name,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white,  fontSize: 17),
+                    style: TextStyle(color: Colors.white,  fontSize: 15),
                   )),
             ],
           )),
@@ -96,5 +109,51 @@ class TeamScorePanel extends StatelessWidget {
       height: 70,
     );
 
+  }
+}
+
+class MatchLeagueButton extends StatelessWidget {
+
+  const MatchLeagueButton({
+    Key key,
+    @required this.matchId,
+  }) : super(key: key);
+
+  final int matchId;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SoccerMatchBloc, SoccerMatchState>(builder: (context, state) {
+      if ((state is Empty)) {
+        BlocProvider.of<SoccerMatchBloc>(context).add(GetSoccerMatchEvent(matchId));
+        return Text("league");
+      } else if (state is Loaded) {
+        return RaisedButton(
+            elevation: 4,
+            padding: EdgeInsets.only(
+              top: 5,
+              left: 10,
+              right: 10,
+              bottom: 5,
+            ),
+            color: Colors.blueGrey[400],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20.0)),
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (BuildContext context) {
+                    return LeagueInfoPage(
+                      leagueId: state.soccerMatch.league.leagueId,
+                    );
+                  }));
+            },
+            child: Text(state.soccerMatch.league.name, style : TextStyle(color: Colors.white,  fontSize: 12,), textAlign: TextAlign.center,));
+
+      } else if (state is Error) {
+        return Text('there is error' + state.message);
+      }
+      return Container();
+    });
   }
 }

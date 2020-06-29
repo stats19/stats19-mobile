@@ -11,16 +11,24 @@ class InfoTeam extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: Container(
-          decoration: BoxDecoration(
-              color: Colors.white30,
-//              borderRadius: BorderRadius.all(Radius.circular(15))
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(15),
-                topLeft: Radius.circular(15)
-              )
+          margin: const EdgeInsets.only(
+            left: 20,
+            top: 18,
+            right: 20,
           ),
-          margin: EdgeInsets.only(
-            top: 10,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10)
+            ),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.5),
+                blurRadius: 11,
+                spreadRadius: 2.0,
+              )
+            ],
           ),
           child: DefaultTabController(
               length: 3,
@@ -30,15 +38,20 @@ class InfoTeam extends StatelessWidget {
                     new Row(
                       children: <Widget>[
                         new Expanded(
-                            child: TabBar(
-                                labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-                                labelColor: Colors.white,
-                                unselectedLabelColor: Colors.black,
-                                tabs: [
-                                  Tab(text: "Stats", ),
-                                  Tab(text: "Matchs joués", ),
-                                  Tab(text: "Futurs matchs", ),
-                                ]
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(bottom: BorderSide(color:  Colors.grey, width: 0.6)),
+                              ),
+                              child: TabBar(
+                                  labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                                  labelColor: Colors.blueAccent,
+                                  unselectedLabelColor: Colors.grey,
+                                  tabs: [
+                                    Tab(text: "Stats", ),
+                                    Tab(text: "Matchs joués", ),
+                                    Tab(text: "Futurs matchs", ),
+                                  ]
+                              ),
                             )
                         ),
                       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/league/presentation/pages/league_info_page.dart';
 import 'package:stat19_app_mobile/features/team/domain/entities/team.dart';
 import 'package:stat19_app_mobile/features/team/presentation/bloc/team_bloc.dart';
 
@@ -17,15 +18,20 @@ class TeamHeader extends StatelessWidget {
         left: 35,
       ),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+        border: Border.all(color:  Colors.blueGrey[700], width: 0.5),
+        borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20.0),
-              bottomRight: Radius.circular(20.0)),
-          color: Colors.blueGrey[700],
-          boxShadow: [
-            BoxShadow(color: Colors.grey, spreadRadius: 3)
-          ]
+              bottomRight: Radius.circular(20.0)
+        ),
+        color: Colors.blueGrey[500],
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.4),
+            blurRadius: 9,
+            spreadRadius: 2.0,
+          )
+        ],
       ),
-
       padding: EdgeInsets.all(10),
       child:
       BlocBuilder<TeamBloc, TeamState>(
@@ -36,8 +42,12 @@ class TeamHeader extends StatelessWidget {
               return  Column(
                 children: <Widget>[
                   TeamName(teamName: state.team.name),
-                  TeamLeagueWidget(league: state.team.league),
-                  TeamFilter(teamId: state.team.teamId, season: state.season)
+                  Row(
+                    children: <Widget>[
+                      TeamLeagueWidget(league: state.team.league),
+                      TeamFilter(teamId: state.team.teamId, season: state.season)
+                    ],
+                  ),
                 ],
               );
             } else if (state is Error) {
@@ -59,18 +69,28 @@ class TeamLeagueWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return
+    RaisedButton(
+        elevation: 4,
         padding: EdgeInsets.only(
           top: 5,
           left: 10,
           right: 10,
           bottom: 5,
         ),
-        decoration: BoxDecoration(
-            color: Colors.blueGrey,
-            borderRadius: BorderRadius.all(Radius.circular(15))
+        color: Colors.blueGrey[400],
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20.0)),
         ),
-        child: Text(league.name, style : TextStyle(color: Colors.white,  fontSize: 18,), textAlign: TextAlign.center,));
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext context) {
+                return LeagueInfoPage(
+                  leagueId: league.leagueId,
+                );
+              }));
+        },
+        child: Text(league.name, style : TextStyle(color: Colors.white,  fontSize: 12), textAlign: TextAlign.center,));
   }
 }
 
@@ -82,26 +102,10 @@ class TeamName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-
-        Expanded(
-          flex: 1,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.tag_faces,
-              size: 80,
-            ),
-          ),
-        ),
-        Expanded(
-            flex : 3,
-            child: Text(teamName,
-              style : TextStyle(color: Colors.white,  fontSize: 35,),
-              textAlign: TextAlign.center,)),
-      ],
-    );
+    return Container(
+        child: Text(teamName,
+          style : TextStyle(color: Colors.white,  fontSize: 25,),
+          textAlign: TextAlign.center,));
   }
 }
 
@@ -113,28 +117,31 @@ class TeamFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: season,
-      elevation: 16,
-      onChanged: (String newValue) {
-        BlocProvider.of<TeamBloc>(context)
-            .add(GetTeamEvent(teamId: teamId, season: newValue));
-      },
-      items: [
-        '2015/2016',
-        '2014/2015',
-        '2013/2014',
-        '2012/2013',
-        '2011/2012',
-        '2010/2011',
-        '2009/2010',
-        '2008/2009'
-      ]
-          .map<DropdownMenuItem<String>>((e) => DropdownMenuItem<String>(
-        value: e,
-        child: Text(e),
-      ))
-          .toList(),
+    return Container(
+      margin: EdgeInsets.only(left: 10),
+      child: DropdownButton<String>(
+        value: season,
+        elevation: 16,
+        onChanged: (String newValue) {
+          BlocProvider.of<TeamBloc>(context)
+              .add(GetTeamEvent(teamId: teamId, season: newValue));
+        },
+        items: [
+          '2015/2016',
+          '2014/2015',
+          '2013/2014',
+          '2012/2013',
+          '2011/2012',
+          '2010/2011',
+          '2009/2010',
+          '2008/2009'
+        ]
+            .map<DropdownMenuItem<String>>((e) => DropdownMenuItem<String>(
+          value: e,
+          child: Text(e, style: TextStyle(color: Colors.blueAccent, fontSize: 15, fontWeight: FontWeight.w700),),
+        ))
+            .toList(),
+      ),
     );
   }
 }
