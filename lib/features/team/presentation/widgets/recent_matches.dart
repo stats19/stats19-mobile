@@ -14,7 +14,7 @@ class RecentMatches extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: EdgeInsets.all(10),
       margin: EdgeInsets.only(top: 18),
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(0.2),
@@ -23,6 +23,7 @@ class RecentMatches extends StatelessWidget {
             color: Colors.grey.withOpacity(0.8),
             blurRadius: 10,
             spreadRadius: 6.0,
+            offset: Offset(5,0)
           )
         ],
       ),

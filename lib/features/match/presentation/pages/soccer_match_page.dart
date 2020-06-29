@@ -44,69 +44,38 @@ class MatchDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       child: Column(
+//        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           HeaderPanel(matchId: matchId),
-          Expanded(
+
+          Container(
               child: DefaultTabController(
                   length: 2,
                   child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10)
-                      ),
-                      color: Colors.white70,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.5),
-                          blurRadius: 8,
-                          spreadRadius: 2.0,
-                        )
-                      ],
-                    ),
-                    margin: const EdgeInsets.only(
-                          left: 20,
-                          top: 0,
-                          right: 20,
-                        ),
                     child: new Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Container(
-                          decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10)
-                          ),
+                          TabBar(
+                              labelColor: Colors.blueAccent,
+                              unselectedLabelColor: Colors.grey,
+                              tabs: [
+                                Tab(text: "highlights".tr()),
+                                Tab(text: "statistics".tr()),
 
-                            color: Colors.white70,
-                            ),
-                            child: new Row(
-                              children: <Widget>[
-                                new Expanded(
-                                    child: TabBar(
-                                        labelColor: Colors.blueAccent,
-                                        unselectedLabelColor: Colors.grey,
-                                        tabs: [
-                                      Tab(
-                                        text: "highlights".tr(),
-                                      ),
-                                      Tab(
-                                        text: "statistics".tr(),
-                                      ),
-                                    ])),
-                              ],
-                            ),
-                          ),
-                          Expanded(
+                              ]),
+                          Container(
+                              height:MediaQuery.of(context).size.height,
                               child: TabBarView(children: [
-                            MatchHighlights(),
-                            SoccerMatchStats()
+//                                Text("toto"),
+//                                Text("toto")
+                                MatchHighlights(),
+                                SoccerMatchStats()
                           ]))
                         ]),
-                  )))
+                  ))
+          )
         ],
       ),
     );

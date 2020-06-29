@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/match/domain/entities/soccer_match.dart';
+import 'package:stat19_app_mobile/features/match/presentation/pages/soccer_match_page.dart';
+import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
 
 import '../../../../injection_container.dart';
 import '../../../league/presentation/pages/leagues_page.dart';
@@ -53,7 +56,7 @@ class BottomBar extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => PlayerPage(playerId: 10749)),
+                        builder: (context) => TeamPage(teamId: 3457)),
                   );
                 }),
 

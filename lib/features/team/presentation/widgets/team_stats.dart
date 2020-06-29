@@ -18,7 +18,10 @@ class TeamStats extends StatelessWidget {
       } else if (state is Loaded) {
         return Container(
           padding: const EdgeInsets.all(8.0),
-          child: GridView.count(crossAxisCount: 3, children: [
+          child: GridView.count(
+              physics: const ClampingScrollPhysics(),
+              crossAxisCount: 3,
+              children: [
             InfoSquare(
                 type: "played_matches".tr(), value: state.team.matchesPlayed),
             InfoSquare(type: "wins".tr(), value: state.team.matchesWin),
