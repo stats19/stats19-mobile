@@ -20,6 +20,8 @@ class InfoTeam extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Container(
+                  color: Colors.grey.withOpacity(0.2),
+
 //                  decoration: BoxDecoration(
 //                    border: Border(bottom: BorderSide(color:  Colors.grey, width: 0.6)),
 //                  ),
