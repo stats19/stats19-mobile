@@ -44,8 +44,8 @@ class InfoTeam extends StatelessWidget {
                       ),),
                     ]
                 ),
-                Expanded(
-//                    height:MediaQuery.of(context).size.height,
+                Container(
+                    height:MediaQuery.of(context).size.height,
                     child: TabBarView(
                         children: [
                           TeamStats(),
