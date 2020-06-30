@@ -17,6 +17,7 @@ class TeamStats extends StatelessWidget {
         return Container();
       } else if (state is Loaded) {
         return Container(
+          color: Colors.white30,
           padding: const EdgeInsets.all(8.0),
           child: GridView.count(
               physics: const ClampingScrollPhysics(),

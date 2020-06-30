@@ -14,9 +14,10 @@ class TeamHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        width:MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(
-        right: 35,
-        left: 35,
+        right: 30,
+        left: 30,
         bottom: 15
       ),
       decoration: BoxDecoration(
@@ -76,10 +77,10 @@ class TeamLeagueWidget extends StatelessWidget {
     RaisedButton(
         elevation: 4,
         padding: EdgeInsets.only(
-          top: 5,
-          left: 10,
-          right: 10,
-          bottom: 5,
+          top: 3,
+          left: 7,
+          right: 7,
+          bottom: 3,
         ),
         color: Colors.blueGrey[400],
         shape: RoundedRectangleBorder(

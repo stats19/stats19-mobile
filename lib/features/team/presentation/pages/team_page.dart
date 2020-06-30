@@ -24,7 +24,7 @@ class TeamPage extends StatelessWidget {
         appBar: AppBar(
           title: TitleTeam(teamId: teamId)
         ),
-
+        backgroundColor: Colors.grey[300],
         body: TeamWidget(teamId: teamId),
           bottomNavigationBar: BottomBar(),
     ),
@@ -41,7 +41,6 @@ class TeamWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-//      color: Colors.grey[300],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

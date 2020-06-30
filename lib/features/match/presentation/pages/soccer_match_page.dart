@@ -24,8 +24,7 @@ class SoccerMatchPage extends StatelessWidget {
           appBar: AppBar(
             title: TitleMatch(matchId: matchId),
           ),
-//          backgroundColor: Colors.blueGrey[900],
-          backgroundColor: Colors.grey[300],
+            backgroundColor: Colors.grey[300],
           body: MatchDetailsWidget(
             matchId: matchId,
           ),
@@ -53,28 +52,26 @@ class MatchDetailsWidget extends StatelessWidget {
           Container(
               child: DefaultTabController(
                   length: 2,
-                  child: Container(
-                    child: new Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          TabBar(
-                              labelColor: Colors.blueAccent,
-                              unselectedLabelColor: Colors.grey,
-                              tabs: [
-                                Tab(text: "highlights".tr()),
-                                Tab(text: "statistics".tr()),
+                  child: new Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        TabBar(
+                            labelColor: Colors.blueAccent,
+                            unselectedLabelColor: Colors.grey,
+                            tabs: [
+                              Tab(text: "highlights".tr()),
+                              Tab(text: "statistics".tr()),
 
-                              ]),
-                          Container(
-                              height:MediaQuery.of(context).size.height,
-                              child: TabBarView(children: [
+                            ]),
+                        Container(
+                            height:MediaQuery.of(context).size.height,
+                            child: TabBarView(children: [
 //                                Text("toto"),
 //                                Text("toto")
-                                MatchHighlights(),
-                                SoccerMatchStats()
-                          ]))
-                        ]),
-                  ))
+                              MatchHighlights(),
+                              SoccerMatchStats()
+                        ]))
+                      ]))
           )
         ],
       ),

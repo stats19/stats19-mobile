@@ -14,39 +14,30 @@ class RecentMatches extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.only(top: 18),
-      decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.2),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.8),
-            blurRadius: 10,
-            spreadRadius: 6.0,
-            offset: Offset(5,0)
-          )
-        ],
-      ),
-      child: Column(
-        children: <Widget>[
-          Text("last_matches".tr(),
-              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700)),
-          BlocBuilder<TeamBloc, TeamState>(builder: (context, state) {
-            if (state is Loading) {
-              return CircularProgressIndicator();
-            } else if (state is Loaded) {
-              return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: state.team.recentMatches
-                      .map((e) => ResultBubble(recentMatch: e))
-                      .toList());
-            } else if (state is Error) {
-              // return MessageDisplay(message: state.message);
-              return Text('there is error' + state.message);
-            }
-            return Container();
-          }),
-        ],
+      width:MediaQuery.of(context).size.width,
+      padding: EdgeInsets.only(top: 5, bottom: 5),
+
+      child: Center(
+        child: Column(
+          children: <Widget>[
+            Text("last_matches".tr(),
+                style: TextStyle(color: Colors.blueGrey[700], fontSize: 18, fontWeight: FontWeight.w700)),
+            BlocBuilder<TeamBloc, TeamState>(builder: (context, state) {
+              if (state is Loading) {
+                return CircularProgressIndicator();
+              } else if (state is Loaded) {
+                return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: state.team.recentMatches
+                        .map((e) => ResultBubble(recentMatch: e))
+                        .toList());
+              } else if (state is Error) {
+                return Text('there is error' + state.message);
+              }
+              return Container();
+            }),
+          ],
+        ),
       ),
     );
   }
@@ -103,7 +94,6 @@ class ResultBubble extends StatelessWidget {
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
               )
-//              child: Text("N", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),)
               ),
         ),
       ),
