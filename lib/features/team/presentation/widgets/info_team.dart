@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 
 import 'widgets.dart';
 
 class InfoTeam extends StatelessWidget {
+  final ValueChanged<OnPushValue> onPush;
   const InfoTeam({
-    Key key,
+    Key key, this.onPush,
   }) : super(key: key);
 
 
@@ -49,7 +51,7 @@ class InfoTeam extends StatelessWidget {
                     child: TabBarView(
                         children: [
                           TeamStats(),
-                          EndedMatches(),
+                          EndedMatches(onPush: onPush),
                           ComingMatches(),
                         ]
                     )

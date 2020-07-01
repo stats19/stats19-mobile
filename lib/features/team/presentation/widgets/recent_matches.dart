@@ -78,6 +78,7 @@ class ResultBubble extends StatelessWidget {
         child: Align(
           child: FlatButton(
               onPressed: () {
+                print("hehe");
                 Navigator.push(context,
                     MaterialPageRoute(builder: (BuildContext context) {
                   return SoccerMatchPage(

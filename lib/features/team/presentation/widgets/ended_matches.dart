@@ -2,13 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 
 import '../../domain/entities/team.dart';
 import '../bloc/team_bloc.dart';
 
 class EndedMatches extends StatelessWidget {
+  final ValueChanged<OnPushValue> onPush;
   const EndedMatches({
-    Key key,
+    Key key, this.onPush,
   }) : super(key: key);
 
   @override
@@ -26,7 +29,7 @@ class EndedMatches extends StatelessWidget {
               children: <Widget>[
                 Column(
                     children: state.team.playedMatches
-                        .map((e) => EndedMatch(playedMatch: e))
+                        .map((e) => EndedMatch(playedMatch: e, onPush: onPush))
                         .toList())
               ],
             ));
@@ -40,10 +43,11 @@ class EndedMatches extends StatelessWidget {
 
 class EndedMatch extends StatelessWidget {
   final PlayedMatch playedMatch;
+  final ValueChanged<OnPushValue> onPush;
 
   const EndedMatch({
     Key key,
-    this.playedMatch,
+    this.playedMatch, this.onPush,
   }) : super(key: key);
 
   @override
@@ -103,6 +107,7 @@ class EndedMatch extends StatelessWidget {
     final String formatted =
     DateFormat.yMMMMEEEEd().format(DateTime.parse(playedMatch.date));
     return FlatButton(
+        onPressed: () => onPush(OnPushValue(type: TabNavigatorRoutes.match, id: playedMatch.matchId)),
         child: Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
