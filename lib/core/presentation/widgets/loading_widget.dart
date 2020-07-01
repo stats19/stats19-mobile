@@ -7,6 +7,13 @@ class LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: CircularProgressIndicator());
+    return Container(
+        child:
+        Image.asset(
+          "lib/resources/assets/ball_loading.gif",
+        height: 100.0,
+        width: 100.0,
+        ));
+//        CircularProgressIndicator());
   }
 }

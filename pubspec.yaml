@@ -64,6 +64,7 @@ flutter:
     - lib/resources/assets/yellow-card.png
     - lib/resources/assets/goal.png
     - lib/resources/assets/splash.png
+    - lib/resources/assets/ball_loading.gif
     - lib/resources/lang/
     - images/football-player-icon.jpg
   #  - images/a_dot_ham.jpeg
