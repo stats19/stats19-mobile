@@ -31,17 +31,34 @@ class AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(children: <Widget>[
-        _buildOffstageNavigator(TabItem.home),
-        _buildOffstageNavigator(TabItem.search),
-        _buildOffstageNavigator(TabItem.refresh),
-        _buildOffstageNavigator(TabItem.fantasy),
-        _buildOffstageNavigator(TabItem.profile)
-      ],),
-      bottomNavigationBar: BottomNavigation(
-        currentTab: _currentTab,
-        onSelectTab: _selectTab,
+    return WillPopScope(
+      onWillPop: () async {
+        final isFirstRouteInCurrentTab =
+        !await _navigatorKeys[_currentTab].currentState.maybePop();
+        if (isFirstRouteInCurrentTab) {
+          // if not on the 'main' tab
+          if (_currentTab != TabItem.home) {
+            // select 'main' tab
+            _selectTab(TabItem.home);
+            // back button handled by app
+            return false;
+          }
+        }
+        // let system handle back button if we're on the first route
+        return isFirstRouteInCurrentTab;
+      },
+      child: Scaffold(
+        body: Stack(children: <Widget>[
+          _buildOffstageNavigator(TabItem.home),
+          _buildOffstageNavigator(TabItem.search),
+          _buildOffstageNavigator(TabItem.refresh),
+          _buildOffstageNavigator(TabItem.fantasy),
+          _buildOffstageNavigator(TabItem.profile)
+        ],),
+        bottomNavigationBar: BottomNavigation(
+          currentTab: _currentTab,
+          onSelectTab: _selectTab,
+        ),
       ),
     );
   }
