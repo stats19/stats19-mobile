@@ -23,12 +23,10 @@ class LeagueInfoPage extends StatelessWidget {
       create: (_) => sl<LeaguesBloc>(),
       child: Scaffold(
         appBar: AppBar(
-            title: Text("toto")
         ),
         body: Container(
           child: Material(child: Column(
             children: <Widget>[
-              Text("LEAGUE NAME"),
               InfoLeague(leagueId: leagueId)
             ],
           )),
