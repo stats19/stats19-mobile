@@ -19,6 +19,7 @@ class LeagueRanking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        color: Colors.white30,
         alignment: Alignment.topCenter,
         child: Column(
           children: <Widget>[
@@ -31,7 +32,6 @@ class LeagueRanking extends StatelessWidget {
             }),
             BlocBuilder<LeaguesBloc, LeaguesState>(builder: (context, state) {
               double tabletxtsize = 17;
-
               if (state is Loading) {
                 return Center(child: CircularProgressIndicator());
               } else if (state is RankingLoaded) {
@@ -41,7 +41,6 @@ class LeagueRanking extends StatelessWidget {
                     scrollDirection: Axis.vertical,
                     child: (DataTable(
                       columnSpacing: 10,
-//                      horizontalMargin: 5,
                       columns: [
                         DataColumn(
                           label: Text('Club',

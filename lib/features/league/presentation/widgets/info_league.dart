@@ -52,35 +52,32 @@ class _InfoLeagueState extends State<InfoLeague>
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Container(
-            decoration: BoxDecoration(
-                color: Colors.grey[300],
-//              borderRadius: BorderRadius.all(Radius.circular(15))
+        child: Scaffold(
+          backgroundColor: Colors.grey[300],
+          appBar: TabBar(
+              labelColor: Colors.blueAccent,
+              unselectedLabelColor: Colors.grey,
+              indicator: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(15),
-                    topLeft: Radius.circular(15))),
-            margin: EdgeInsets.only(
-              top: 10,
-            ),
-            child: Scaffold(
-              appBar: TabBar(
-                  labelStyle:
-                      TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-                  labelColor: Colors.white,
-                  unselectedLabelColor: Colors.black,
-                  controller: _tabController,
-                  tabs: [
-                    Tab(
-                      text: "coming_matches".tr(),
-                    ),
-                    Tab(
-                      text: "ranking".tr(),
-                    ),
-                  ]),
-              body: TabBarView(controller: _tabController, children: [
-                ComingMatch(leagueId: widget.leagueId, onPush: onPush),
-                LeagueRanking(leagueId: widget.leagueId, onPush: onPush)
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10)),
+                color: Colors.white30,
+              ),
+              controller: _tabController,
+              tabs: [
+                Tab(child: Align(
+                  alignment: Alignment.center,
+                  child: Text("coming_matches".tr()),
+                ),),
+                Tab(child: Align(
+                  alignment: Alignment.center,
+                  child: Text("ranking".tr()),
+                ),),
               ]),
-            )));
+          body: TabBarView(controller: _tabController, children: [
+            ComingMatch(leagueId: widget.leagueId, onPush: onPush),
+            LeagueRanking(leagueId: widget.leagueId, onPush: onPush)
+          ]),
+        ));
   }
 }
