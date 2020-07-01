@@ -29,7 +29,7 @@ class LeagueInfoPage extends StatelessWidget {
         body: Container(
           child: Material(child: Column(
             children: <Widget>[
-              InfoLeague(leagueId: leagueId)
+              InfoLeague(leagueId: leagueId, onPush: onPush)
             ],
           )),
         )
