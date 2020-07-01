@@ -13,7 +13,7 @@
   "password_error2": "No password",
   "password_error3": "The password doesn't match",
 
-  "leagues": "leagues",
+  "leagues": "Leagues",
   "coming_matches": "Upcoming",
   "ranking": "Ranking",
   "played_matches": "Played",
@@ -32,7 +32,7 @@
   "height": "Height",
   "goals": "Goals",
 
-  "last_matches": "the last matches",
+  "last_matches": "The last matches",
   "short_win": "W",
   "short_draw": "D",
   "short_lose": "L",
@@ -41,7 +41,7 @@
   "loses": "Defeats",
   "home_wins": "Home wins",
   "away_wins": "Away wins",
-  "goals_conceded": "goals conceded",
+  "goals_conceded": "Goals conceded",
 
   "players": "Players",
   "teams": "Teams",
