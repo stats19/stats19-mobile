@@ -54,7 +54,7 @@ class _InfoLeagueState extends State<InfoLeague>
     return Expanded(
         child: Container(
             decoration: BoxDecoration(
-                color: Colors.white30,
+                color: Colors.grey[300],
 //              borderRadius: BorderRadius.all(Radius.circular(15))
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(15),
