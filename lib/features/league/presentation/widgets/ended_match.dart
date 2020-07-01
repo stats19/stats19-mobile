@@ -147,3 +147,4 @@ class EndedMatch extends StatelessWidget {
           ),
         ));
   }
+}
