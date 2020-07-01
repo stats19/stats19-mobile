@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/loading_widget.dart';
 
 import '../bloc/player_bloc.dart';
 
@@ -18,7 +19,7 @@ class _HeaderPlayerState extends State<HeaderPlayer> {
     return BlocBuilder<PlayerBloc, PlayerState>(
         builder: (context, state) {
           if (state is Loading) {
-            return CircularProgressIndicator();
+            return LoadingWidget();
           } else if (state is Loaded) {
             return Center(
               child: Container(

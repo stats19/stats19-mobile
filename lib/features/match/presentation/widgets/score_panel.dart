@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/loading_widget.dart';
 
 import '../../../league/presentation/pages/league_info_page.dart';
 import '../../../team/presentation/pages/team_page.dart';
@@ -34,7 +35,7 @@ class HeaderPanel extends StatelessWidget {
           if (state is Loading) {
             return Padding(
               padding: const EdgeInsets.all(20.0),
-              child: CircularProgressIndicator(),
+              child: LoadingWidget(),
             );
           } else if (state is Loaded) {
             return Column(

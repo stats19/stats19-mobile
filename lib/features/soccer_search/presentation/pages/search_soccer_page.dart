@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/loading_widget.dart';
 
 import '../../../../core/presentation/widgets/navigation.dart';
 import '../../../../core/presentation/widgets/on_push_value.dart';
@@ -66,7 +67,7 @@ class SoccerSearchPage extends StatelessWidget {
                 } else if (state is Error) {
                   return Text(state.message);
                 } else if (state is Loading) {
-                  return Center(child: CircularProgressIndicator());
+                  return Center(child: LoadingWidget());
                 } else if (state is Loaded) {
                   return Column(
                     children: <Widget>[
@@ -91,7 +92,7 @@ class SoccerSearchPage extends StatelessWidget {
                 } else if (state is Error) {
                   return Text(state.message);
                 } else if (state is Loading) {
-                  return Center(child: CircularProgressIndicator());
+                  return Center(child: LoadingWidget());
                 } else if (state is Loaded) {
                   return Expanded(
                     child: ListView.builder(

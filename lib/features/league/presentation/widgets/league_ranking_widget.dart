@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/loading_widget.dart';
 
 import '../../../../core/presentation/widgets/navigation.dart';
 import '../../../../core/presentation/widgets/on_push_value.dart';
@@ -33,7 +34,7 @@ class LeagueRanking extends StatelessWidget {
             BlocBuilder<LeaguesBloc, LeaguesState>(builder: (context, state) {
               double tabletxtsize = 17;
               if (state is Loading) {
-                return Center(child: CircularProgressIndicator());
+                return Center(child: LoadingWidget());
               } else if (state is RankingLoaded) {
                 print(state.toString());
                 return Expanded(

@@ -20,7 +20,7 @@ class MatchHighlights extends StatelessWidget {
             builder: (context, state) {
           if (state is Loading) {
             return Container();
-//            return CircularProgressIndicator();
+//            return LoadingWidget();
           } else if (state is Loaded) {
             print(state.soccerMatch.matchId);
             return Column(

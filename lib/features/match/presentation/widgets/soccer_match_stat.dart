@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/loading_widget.dart';
 
 import '../bloc/soccer_match_bloc.dart';
 import 'match_stat.dart';
@@ -22,7 +23,7 @@ class SoccerMatchStats extends StatelessWidget {
             BlocBuilder<SoccerMatchBloc, SoccerMatchState>(
                 builder: (context, state) {
               if (state is Loading) {
-                return CircularProgressIndicator();
+                return LoadingWidget();
               } else if (state is Loaded) {
                 return Column(
                   children: <Widget>[

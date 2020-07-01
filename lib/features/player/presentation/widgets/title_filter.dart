@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/loading_widget.dart';
 
 import '../bloc/player_bloc.dart';
 
@@ -15,7 +16,7 @@ class TitleFilter extends StatelessWidget {
       BlocBuilder<PlayerBloc, PlayerState>(
           builder: (context, state) {
             if (state is Loading) {
-              return CircularProgressIndicator();
+              return LoadingWidget();
             } else if (state is Loaded) {
               return Container(
                 padding: EdgeInsets.only(left: 20, bottom: 10),

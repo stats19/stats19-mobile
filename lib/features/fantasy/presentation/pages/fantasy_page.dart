@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/loading_widget.dart';
 
 import '../../../../core/presentation/widgets/on_push_value.dart';
 import '../../../../injection_container.dart';
@@ -52,7 +53,7 @@ class FantasyTeam extends StatelessWidget {
             } else if(state is Loading) {
               return Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: CircularProgressIndicator(),
+                child: LoadingWidget(),
               );
             } else if (state is Loaded) {
               print(state.fantasy.middleFielders.toString());
