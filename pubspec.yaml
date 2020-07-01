@@ -38,6 +38,7 @@ dependencies:
   easy_localization: 2.3.2
   intl: ^0.16.1
   ez_flutter: ^0.4.2
+  splashscreen: ^1.2.0
 
 
 dev_dependencies:
@@ -62,6 +63,7 @@ flutter:
     - lib/resources/assets/red-card.png
     - lib/resources/assets/yellow-card.png
     - lib/resources/assets/goal.png
+    - lib/resources/assets/splash.png
     - lib/resources/lang/
     - images/football-player-icon.jpg
   #  - images/a_dot_ham.jpeg
