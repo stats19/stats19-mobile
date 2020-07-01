@@ -69,7 +69,7 @@ class LeagueRanking extends StatelessWidget {
                           numeric: false,
                         ),
                         DataColumn(
-                          label: Text('S',
+                          label: Text('DB',
                               style: TextStyle(fontSize: tabletxtsize)),
                           numeric: false,
                         ),

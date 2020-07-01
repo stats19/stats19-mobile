@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../app.dart';
 import '../../../../core/config/constant.dart';
 import '../../../../injection_container.dart';
 import '../../../league/presentation/pages/leagues_page.dart';
@@ -16,7 +17,7 @@ class AuthenticationPage extends StatelessWidget {
       if (token != null) {
         Navigator.push(context,
             MaterialPageRoute(builder: (BuildContext context) {
-          return LeaguesPage();
+          return App();
         }));
       }
     });

@@ -62,9 +62,9 @@ class FantasyTeam extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     PositionPlayers(position: state.fantasy.forwards, title: "Attaquants", onPush: onPush),
-                    PositionPlayers(position: state.fantasy.middleFielders, title: "Milieus de terrain", onPush: onPush),
+                    PositionPlayers(position: state.fantasy.middleFielders, title: "Milieux de terrain", onPush: onPush),
                     PositionPlayers(position: state.fantasy.defenders, title: "Défenseurs", onPush: onPush),
-                    PositionPlayers(position: state.fantasy.defenders, title: "Gardiens", onPush: onPush),
+                    PositionPlayers(position: state.fantasy.goalKeepers, title: "Gardiens", onPush: onPush),
                   ],
                 ),
               );
