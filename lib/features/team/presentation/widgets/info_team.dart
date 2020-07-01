@@ -22,7 +22,6 @@ class InfoTeam extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 TabBar(
-//                  indicatorColor: Colors.grey[300],
                     labelColor: Colors.blueAccent,
                     unselectedLabelColor: Colors.grey,
                     indicator: BoxDecoration(

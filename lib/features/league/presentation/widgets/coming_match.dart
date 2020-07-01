@@ -54,11 +54,14 @@ class ComingLeagueMatch extends StatelessWidget {
       end: Alignment.centerRight,
     );
 
-    Gradient gradient = nextMatch.forecast == 'WIN'
+    final String homewin  = (nextMatch.homeName.toString() + "_HOME");
+    final String awaywin  = (nextMatch.homeName.toString() + "_AWAY");
+
+    Gradient gradient = (nextMatch.homeName + '_' + nextMatch.forecast).toString() == homewin
         ? win
-        : nextMatch.forecast == 'DRAW'
+        :  nextMatch.forecast == 'DRAW'
         ? draw
-        : nextMatch.forecast == 'LOSE' ? lose: notyet;
+        : (nextMatch.homeName + '_' + nextMatch.forecast) == awaywin ? lose: notyet;
 
     final String formatted =
     DateFormat.yMMMMEEEEd().format(DateTime.parse(nextMatch.date));

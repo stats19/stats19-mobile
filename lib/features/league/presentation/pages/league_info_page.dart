@@ -25,6 +25,7 @@ class LeagueInfoPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
         ),
+        backgroundColor: Colors.grey[300],
         body: Container(
           child: Material(child: Column(
             children: <Widget>[
