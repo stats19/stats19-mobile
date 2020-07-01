@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 import 'package:stat19_app_mobile/features/fantasy/presentation/bloc/fantasy_bloc.dart';
 import 'package:stat19_app_mobile/features/fantasy/presentation/widgets/widgets.dart';
-import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
-import '../../domain/entities/fantasy.dart';
 
 import '../../../../injection_container.dart';
-import '../../../navigation/presentation/widgets/bottom_bar.dart';
 
 class FantasyPage extends StatelessWidget {
+  final ValueChanged<OnPushValue> onPush;
+
+  const FantasyPage({Key key, this.onPush}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return buildBody(context);
@@ -26,18 +28,18 @@ class FantasyPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                FantasyTeam()
+                FantasyTeam(onPush: onPush)
               ],
             ),
-          ),
-          bottomNavigationBar: BottomBar()),
+          )),
     );
   }
 }
 
 class FantasyTeam extends StatelessWidget {
+  final ValueChanged<OnPushValue> onPush;
   const FantasyTeam({
-    Key key,
+    Key key, this.onPush,
   }) : super(key: key);
 
   @override
@@ -58,10 +60,10 @@ class FantasyTeam extends StatelessWidget {
               return Center(
                 child: Column(
                   children: <Widget>[
-                    PositionPlayers(position: state.fantasy.forwards, title: "Attaquants"),
-                    PositionPlayers(position: state.fantasy.middleFielders, title: "Milieus de terrain"),
-                    PositionPlayers(position: state.fantasy.defenders, title: "Défenseurs"),
-                    PositionPlayers(position: state.fantasy.defenders, title: "Gardiens"),
+                    PositionPlayers(position: state.fantasy.forwards, title: "Attaquants", onPush: onPush),
+                    PositionPlayers(position: state.fantasy.middleFielders, title: "Milieus de terrain", onPush: onPush),
+                    PositionPlayers(position: state.fantasy.defenders, title: "Défenseurs", onPush: onPush),
+                    PositionPlayers(position: state.fantasy.defenders, title: "Gardiens", onPush: onPush),
                   ],
                 ),
               );

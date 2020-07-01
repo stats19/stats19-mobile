@@ -37,6 +37,7 @@ dependencies:
   percent_indicator: ^2.1.5
   easy_localization: 2.3.2
   intl: ^0.16.1
+  ez_flutter: ^0.4.2
 
 
 dev_dependencies:

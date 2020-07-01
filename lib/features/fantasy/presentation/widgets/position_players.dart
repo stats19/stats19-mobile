@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 import 'package:stat19_app_mobile/features/fantasy/domain/entities/fantasy.dart';
 import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
 
 class PositionPlayers extends StatelessWidget {
+  final ValueChanged<OnPushValue> onPush;
   final List position;
   final String title;
   const PositionPlayers({
-    Key key, this.position, this.title,
+    Key key, this.position, this.title, this.onPush,
   }) : super(key: key);
 
   @override
@@ -46,7 +49,7 @@ class PositionPlayers extends StatelessWidget {
           Container(
               child: Wrap(
                   children: position
-                      .map((fantasyPlayer) => PlayerList(fantasyPlayer: fantasyPlayer))
+                      .map((fantasyPlayer) => PlayerList(fantasyPlayer: fantasyPlayer, onPush: onPush))
                       .toList())),
         ],
       ),
@@ -56,10 +59,11 @@ class PositionPlayers extends StatelessWidget {
 
 class PlayerList extends StatelessWidget {
   final FantasyPlayer fantasyPlayer;
+  final ValueChanged<OnPushValue> onPush;
 
   const PlayerList({
     Key key,
-    this.fantasyPlayer,
+    this.fantasyPlayer, this.onPush,
   }) : super(key: key);
 
   @override
@@ -67,16 +71,7 @@ class PlayerList extends StatelessWidget {
     return Container(
       width: 100,
       child: FlatButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return PlayerPage(
-                  playerId: fantasyPlayer.playerId,
-                );
-              }),
-            );
-          },
+          onPressed: () => onPush(OnPushValue(type: TabNavigatorRoutes.player, id: fantasyPlayer.playerId)),
           child: Container(
               child: Text(
                 fantasyPlayer.name, style: TextStyle(color: Colors.white),

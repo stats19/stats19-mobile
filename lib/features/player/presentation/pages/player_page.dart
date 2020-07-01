@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../injection_container.dart';
-import '../../../navigation/presentation/widgets/bottom_bar.dart';
 import '../bloc/player_bloc.dart';
 import '../widgets/widgets.dart';
 
@@ -32,8 +31,7 @@ class PlayerPage extends StatelessWidget {
                 StatsPlayer(),
               ],
             ),
-          ),
-          bottomNavigationBar: BottomBar()),
+          )),
     );
   }
 }

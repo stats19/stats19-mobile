@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 
 import '../../../../injection_container.dart';
-import '../../../navigation/presentation/widgets/bottom_bar.dart';
 import '../bloc/leagues_bloc.dart';
-import 'league_info_page.dart';
 
 class LeaguesPage extends StatelessWidget {
+  final ValueChanged<OnPushValue> onPush;
+
+  const LeaguesPage({this.onPush});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,8 +20,7 @@ class LeaguesPage extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       backgroundColor: Colors.blueGrey[900],
-      body: buildBody(context),
-      bottomNavigationBar: BottomBar(),
+      body: buildBody(context)
     );
   }
 
@@ -51,15 +54,9 @@ class LeaguesPage extends StatelessWidget {
                               return RaisedButton(
                                   child: new Text(state.leagues[index].name),
                                   splashColor: Colors.grey[900],
-                                  onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) {
-                                      print(state.leagues[index].leagueId);
-                                      return LeagueInfoPage(leagueId: state.leagues[index].leagueId,);
-                                    }),
-                                  );
-                                  });
+                                  onPressed: () => onPush(OnPushValue(
+                                      type: TabNavigatorRoutes.league,
+                                      id: state.leagues[index].leagueId)));
                             },
                           )));
                     } else if (state is Error) {

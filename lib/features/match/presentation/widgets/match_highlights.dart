@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 
 import '../../../player/presentation/pages/player_page.dart';
 import '../bloc/soccer_match_bloc.dart';
 
 class MatchHighlights extends StatelessWidget {
+  final ValueChanged<OnPushValue> onPush;
   const MatchHighlights({
-    Key key,
+    Key key, this.onPush,
   }) : super(key: key);
 
   @override
@@ -29,6 +32,7 @@ class MatchHighlights extends StatelessWidget {
                   itemCount: state.soccerMatch.details.length,
                   itemBuilder: (BuildContext context, int index) {
                     return HighLight(
+                        onTap: onPush,
                         name: state.soccerMatch.details[index].playerName,
                         type: state.soccerMatch.details[index].type,
                         id: state.soccerMatch.details[index].playerId,
@@ -51,6 +55,7 @@ class MatchHighlights extends StatelessWidget {
 }
 
 class HighLight extends StatelessWidget {
+  final ValueChanged<OnPushValue> onTap;
   final int id;
   final String name;
   final int type;
@@ -65,7 +70,7 @@ class HighLight extends StatelessWidget {
       @required this.home,
       @required this.elapsed,
       @required this.elapsedPlus,
-      @required this.id})
+      @required this.id, this.onTap})
       : super(key: key);
 
   @override
@@ -83,17 +88,7 @@ class HighLight extends StatelessWidget {
                   home
                       ? Flexible(
                           child: FlatButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) {
-                                    print(id);
-                                    return PlayerPage(
-                                      playerId: id,
-                                    );
-                                  }),
-                                );
-                              },
+                              onPressed: () => onTap(OnPushValue(type: TabNavigatorRoutes.player, id: id)),
                               child: Row(
                                 children: <Widget>[
                                   Container(

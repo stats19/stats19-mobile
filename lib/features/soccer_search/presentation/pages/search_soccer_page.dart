@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 
 import '../../../../injection_container.dart';
-import '../../../navigation/presentation/widgets/bottom_bar.dart';
 import '../../../player/presentation/pages/player_page.dart';
 import '../../../team/presentation/pages/team_page.dart';
 import '../../domain/entities/soccer_search.dart';
 import '../bloc/soccer_search_bloc.dart';
 
 class SoccerSearchPage extends StatelessWidget {
+  final ValueChanged<OnPushValue> onPush;
+
+  const SoccerSearchPage({Key key, this.onPush}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(home: buildApp(context));
@@ -55,7 +59,6 @@ class SoccerSearchPage extends StatelessWidget {
               );
             }),
           ),
-          bottomNavigationBar: BottomBar(),
           body: TabBarView(
             children: [
               BlocBuilder<SoccerSearchBloc, SoccerSearchState>(
@@ -74,7 +77,7 @@ class SoccerSearchPage extends StatelessWidget {
                           itemCount: state.results.players.length,
                           itemBuilder: (BuildContext context, int index) {
                             return BuildItem(
-                                item: state.results.players[index], type: 'player');
+                                item: state.results.players[index], type: 'player', onPush: onPush,);
                           },
                         ),
                       ),
@@ -97,7 +100,7 @@ class SoccerSearchPage extends StatelessWidget {
                       itemCount: state.results.teams.length,
                       itemBuilder: (BuildContext context, int index) {
                         return BuildItem(
-                            item: state.results.teams[index], type: 'team');
+                            item: state.results.teams[index], type: 'team', onPush: onPush,);
                       },
                     ),
                   );
@@ -113,10 +116,11 @@ class SoccerSearchPage extends StatelessWidget {
 }
 
 class BuildItem extends StatelessWidget {
+  final ValueChanged<OnPushValue> onPush;
   final SoccerSearchResult item;
   final String type;
 
-  BuildItem({this.item, this.type});
+  BuildItem({this.item, this.type, @required this.onPush});
 
   @override
   Widget build(BuildContext context) {
@@ -130,23 +134,9 @@ class BuildItem extends StatelessWidget {
       ),
       onPressed: () {
         if (type == 'team') {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return new TeamPage(teamId: item.id,);
-                  }
-              )
-          );
+         onPush(OnPushValue(type: TabNavigatorRoutes.team, id: item.id));
         } else if (type == 'player') {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return PlayerPage(playerId: item.id,);
-                  }
-              )
-          );
+          onPush(OnPushValue(type: TabNavigatorRoutes.player, id: item.id));
         }
       },
     );

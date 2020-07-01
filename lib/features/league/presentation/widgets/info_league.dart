@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 
 import '../bloc/leagues_bloc.dart';
 import 'coming_matches.dart';
@@ -8,22 +9,24 @@ import 'widgets.dart';
 
 class InfoLeague extends StatefulWidget {
   final int leagueId;
+  final ValueChanged<OnPushValue> onPush;
 
   const InfoLeague({
     Key key,
-    this.leagueId,
+    this.leagueId, this.onPush,
   }) : super(key: key);
 
   @override
-  _InfoLeagueState createState() => _InfoLeagueState(leagueId: leagueId);
+  _InfoLeagueState createState() => _InfoLeagueState(leagueId: leagueId, onPush: onPush);
 }
 
 class _InfoLeagueState extends State<InfoLeague>
     with SingleTickerProviderStateMixin {
   final int leagueId;
+  final ValueChanged<OnPushValue> onPush;
   TabController _tabController;
 
-  _InfoLeagueState({@required this.leagueId});
+  _InfoLeagueState({@required this.leagueId, this.onPush});
 
   @override
   void initState() {
@@ -75,8 +78,8 @@ class _InfoLeagueState extends State<InfoLeague>
                     ),
                   ]),
               body: TabBarView(controller: _tabController, children: [
-                ComingMatch(leagueId: widget.leagueId),
-                LeagueRanking(leagueId: widget.leagueId)
+                ComingMatch(leagueId: widget.leagueId, onPush: onPush),
+                LeagueRanking(leagueId: widget.leagueId, onPush: onPush)
               ]),
             )));
   }

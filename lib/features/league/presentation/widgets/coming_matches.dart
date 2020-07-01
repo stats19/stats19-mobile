@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
+import 'package:stat19_app_mobile/features/league/presentation/widgets/widgets.dart';
 
 import '../../../match/presentation/pages/soccer_match_page.dart';
 import '../../domain/entities/matches_by_league.dart';
 import '../bloc/leagues_bloc.dart';
 
 class ComingMatch extends StatelessWidget {
+  final ValueChanged<OnPushValue> onPush;
   const ComingMatch({
     Key key,
-    @required this.leagueId,
+    @required this.leagueId, this.onPush,
   }) : super(key: key);
 
   final int leagueId;
@@ -77,7 +81,7 @@ class ComingMatch extends StatelessWidget {
         primary: false,
         children: <Widget>[
           Column(
-              children: matches.map((e) => EndedMatch(playedMatch: e)).toList())
+              children: matches.map((e) => EndedMatch(playedMatch: e, onPush: onPush)).toList())
         ],
       ),
     ));
@@ -123,66 +127,21 @@ class MatchLeagueFilter extends StatelessWidget {
   }
 }
 
-class ComingLeagueMatch extends StatelessWidget {
-  final LeagueMatch nextMatch;
-
-  const ComingLeagueMatch({
-    Key key,
-    this.nextMatch,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    //TODO add background for potential match result
-//    Color color = nextMatch.forecast == 'WIN'
-//        ? Colors.green
-//        : nextMatch.forecast == 'DRAW'
-//        ? Colors.yellow
-//        : nextMatch.forecast == 'LOSE' ? Colors.red : Colors.black;
-    return FlatButton(
-        child: Container(
-      width: MediaQuery.of(context).size.width * 0.8,
-      decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.5),
-          borderRadius: BorderRadius.all(Radius.circular(15)),
-          border: Border.all(width: 0.5),
-          boxShadow: [BoxShadow(color: Colors.grey, spreadRadius: 1)]),
-      child: Column(
-        children: <Widget>[
-          Text(
-            nextMatch.date,
-            style: TextStyle(color: Colors.white),
-          ),
-          Text(
-            nextMatch.homeName + ' - ' + nextMatch.awayName,
-            style: TextStyle(fontSize: 15, color: Colors.white),
-          ),
-        ],
-      ),
-    ));
-  }
-}
 
 class EndedMatch extends StatelessWidget {
   final PlayedMatch playedMatch;
+  final ValueChanged<OnPushValue> onPush;
 
   const EndedMatch({
     Key key,
-    this.playedMatch,
+    this.playedMatch, this.onPush,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Color color = Colors.black;
     return FlatButton(
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (BuildContext context) {
-            return SoccerMatchPage(
-              matchId: playedMatch.matchId,
-            );
-          }));
-        },
+        onPressed: () => onPush(OnPushValue(type: TabNavigatorRoutes.match, id: playedMatch.matchId)),
         child: Container(
           width: MediaQuery.of(context).size.width * 0.8,
           decoration: BoxDecoration(

@@ -42,12 +42,12 @@ class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
       if (!p.retry) {
         return Loaded();
       }
+      await Future.delayed(const Duration(seconds: 2));
       return waitProcess();
     });
   }
 
   String _mapFailureToMessage(Failure failure) {
-    print(failure);
     switch (failure.runtimeType) {
       case BadCredentialsFailure:
         return BAD_CREDENTIALS_FAILURE_MESSAGE;

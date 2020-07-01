@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 
 import '../../../../injection_container.dart';
-import '../../../navigation/presentation/widgets/bottom_bar.dart';
 import '../bloc/team_bloc.dart';
 import '../widgets/title_team.dart';
 import '../widgets/widgets.dart';
@@ -14,7 +14,8 @@ class TeamPage extends StatelessWidget {
   }
 
   final int teamId;
-  TeamPage({this.teamId});
+  final ValueChanged<OnPushValue> onPush;
+  TeamPage({this.teamId, this.onPush});
 
 
   BlocProvider<TeamBloc> buildBody(BuildContext context) {
@@ -24,9 +25,8 @@ class TeamPage extends StatelessWidget {
         appBar: AppBar(
           title: TitleTeam(teamId: teamId)
         ),
-
-        body: TeamWidget(teamId: teamId),
-          bottomNavigationBar: BottomBar(),
+        backgroundColor: Colors.grey[300],
+        body: TeamWidget(teamId: teamId)
     ),
     );
   }
@@ -41,7 +41,6 @@ class TeamWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-//      color: Colors.grey[300],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
