@@ -23,7 +23,6 @@ class EndedMatches extends StatelessWidget {
               primary: false,
               physics: const ClampingScrollPhysics(),
               shrinkWrap: true,
-//          primary: false,
               children: <Widget>[
                 Column(
                     children: state.team.playedMatches

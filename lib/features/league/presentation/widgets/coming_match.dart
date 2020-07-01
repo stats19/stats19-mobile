@@ -59,15 +59,10 @@ class ComingLeagueMatch extends StatelessWidget {
         : nextMatch.forecast == 'DRAW'
         ? draw
         : nextMatch.forecast == 'LOSE' ? lose: notyet;
-    Color color = nextMatch.forecast == 'WIN'
-        ? Colors.green
-        : nextMatch.forecast == 'DRAW'
-        ? Colors.yellow
-        : nextMatch.forecast == 'LOSE' ? Colors.red : Colors.black;
+
     final String formatted =
     DateFormat.yMMMMEEEEd().format(DateTime.parse(nextMatch.date));
     return FlatButton(
-
         child: Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
@@ -120,7 +115,7 @@ class ComingLeagueMatch extends StatelessWidget {
                       child: Center(
                         child: Text(
                           nextMatch.homeName,
-                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),
+                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.white),
                         ),
                       ),
                     ),
@@ -129,7 +124,7 @@ class ComingLeagueMatch extends StatelessWidget {
                       child: Center(
                         child: Text(
                           nextMatch.awayName,
-                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),
+                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.white),
                         ),
                       ),
                     ),
