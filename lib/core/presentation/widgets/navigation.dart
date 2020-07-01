@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:stat19_app_mobile/features/fantasy/presentation/pages/fantasy_page.dart';
-import 'package:stat19_app_mobile/features/league/presentation/pages/league_info_page.dart';
-import 'package:stat19_app_mobile/features/league/presentation/pages/leagues_page.dart';
-import 'package:stat19_app_mobile/features/match/presentation/pages/soccer_match_page.dart';
-import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
-import 'package:stat19_app_mobile/features/soccer_search/presentation/pages/search_soccer_page.dart';
-import 'package:stat19_app_mobile/features/team/presentation/pages/team_page.dart';
 
+import '../../../features/fantasy/presentation/pages/fantasy_page.dart';
+import '../../../features/league/presentation/pages/league_info_page.dart';
+import '../../../features/league/presentation/pages/leagues_page.dart';
+import '../../../features/match/presentation/pages/soccer_match_page.dart';
+import '../../../features/player/presentation/pages/player_page.dart';
+import '../../../features/soccer_search/presentation/pages/search_soccer_page.dart';
+import '../../../features/team/presentation/pages/team_page.dart';
 import 'bottom_navigation.dart';
 
 enum TabNavigatorRoutes {

@@ -45,5 +45,10 @@
 
   "players": "Players",
   "teams": "Teams",
-  "search": "Search"
+  "search": "Search",
+
+  "home": "Home",
+  "refresh": "Forecast",
+  "fantasy": "Fantasy",
+  "profile": "Profile"
 }

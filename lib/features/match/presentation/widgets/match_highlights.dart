@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 
+import '../../../../core/presentation/widgets/navigation.dart';
+import '../../../../core/presentation/widgets/on_push_value.dart';
 import '../../../player/presentation/pages/player_page.dart';
 import '../bloc/soccer_match_bloc.dart';
 

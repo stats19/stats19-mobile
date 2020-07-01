@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 
+import '../../../../core/presentation/widgets/on_push_value.dart';
 import '../../../../injection_container.dart';
 import '../bloc/team_bloc.dart';
 import '../widgets/title_team.dart';

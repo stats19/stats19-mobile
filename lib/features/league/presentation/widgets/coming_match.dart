@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:stat19_app_mobile/features/league/domain/entities/matches_by_league.dart';
+
+import '../../domain/entities/matches_by_league.dart';
 
 class ComingLeagueMatch extends StatelessWidget {
   final LeagueMatch nextMatch;

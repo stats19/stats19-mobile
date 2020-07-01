@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
-import 'package:stat19_app_mobile/features/fantasy/presentation/bloc/fantasy_bloc.dart';
-import 'package:stat19_app_mobile/features/fantasy/presentation/widgets/widgets.dart';
 
+import '../../../../core/presentation/widgets/on_push_value.dart';
 import '../../../../injection_container.dart';
+import '../bloc/fantasy_bloc.dart';
+import '../widgets/widgets.dart';
 
 class FantasyPage extends StatelessWidget {
   final ValueChanged<OnPushValue> onPush;

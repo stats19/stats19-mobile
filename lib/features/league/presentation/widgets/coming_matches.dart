@@ -1,13 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
-import 'package:stat19_app_mobile/features/league/presentation/widgets/widgets.dart';
 
-import '../../../match/presentation/pages/soccer_match_page.dart';
+import '../../../../core/presentation/widgets/navigation.dart';
+import '../../../../core/presentation/widgets/on_push_value.dart';
 import '../../domain/entities/matches_by_league.dart';
 import '../bloc/leagues_bloc.dart';
+import 'widgets.dart';
 
 class ComingMatch extends StatelessWidget {
   final ValueChanged<OnPushValue> onPush;

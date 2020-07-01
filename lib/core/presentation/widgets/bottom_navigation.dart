@@ -1,16 +1,17 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stat19_app_mobile/features/navigation/presentation/bloc/navigation_bloc.dart';
 
+import '../../../features/navigation/presentation/bloc/navigation_bloc.dart';
 import '../../../injection_container.dart';
 enum TabItem { home, search, refresh, fantasy, profile }
 
 Map<TabItem, String> tabName = {
-  TabItem.home: 'black',
-  TabItem.search: 'black',
-  TabItem.refresh: 'black',
-  TabItem.fantasy: 'black',
-  TabItem.profile: 'black',
+  TabItem.home: 'home'.tr(),
+  TabItem.search: 'search'.tr(),
+  TabItem.refresh: 'refresh'.tr(),
+  TabItem.fantasy: 'fantasy'.tr(),
+  TabItem.profile: 'profile'.tr(),
 };
 
 Map<TabItem, MaterialColor> activeTabColor = {
@@ -65,14 +66,6 @@ class BottomNavigation extends StatelessWidget {
 
               },
             );
-            return IconButton(
-                icon: Icon(Icons.refresh),
-                color: color,
-                onPressed: () {
-                  if (color != Colors.grey) {
-                    BlocProvider.of<NavigationBloc>(context).add(RefreshForecastEvent());
-                  }
-                });
           }),
     );
   }

@@ -45,5 +45,10 @@
 
   "players": "Joueurs",
   "teams": "Equipes",
-  "search": "Recherche"
+  "search": "Recherche",
+
+  "home": "Accueil",
+  "refresh": "Prédire",
+  "fantasy": "Fantasy",
+  "profile": "Profil"
 }

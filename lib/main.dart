@@ -2,9 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stat19_app_mobile/features/authentication/data/datasources/user_local_data_source.dart';
-import 'package:stat19_app_mobile/features/authentication/presentation/pages/authentication_page.dart';
+
 import 'app.dart';
+import 'features/authentication/data/datasources/user_local_data_source.dart';
+import 'features/authentication/presentation/pages/authentication_page.dart';
 import 'injection_container.dart' as di;
 
 void main() async {

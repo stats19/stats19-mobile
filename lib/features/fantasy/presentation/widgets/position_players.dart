@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
-import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
-import 'package:stat19_app_mobile/features/fantasy/domain/entities/fantasy.dart';
-import 'package:stat19_app_mobile/features/player/presentation/pages/player_page.dart';
+
+import '../../../../core/presentation/widgets/navigation.dart';
+import '../../../../core/presentation/widgets/on_push_value.dart';
+import '../../domain/entities/fantasy.dart';
 
 class PositionPlayers extends StatelessWidget {
   final ValueChanged<OnPushValue> onPush;
