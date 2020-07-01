@@ -50,5 +50,6 @@
   "home": "Home",
   "refresh": "Forecast",
   "fantasy": "Fantasy",
-  "profile": "Profile"
+  "profile": "Profile",
+  "update": "The data has been updated."
 }

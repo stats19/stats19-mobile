@@ -8,8 +8,10 @@ import '../bloc/soccer_match_bloc.dart';
 
 class MatchHighlights extends StatelessWidget {
   final ValueChanged<OnPushValue> onPush;
+
   const MatchHighlights({
-    Key key, this.onPush,
+    Key key,
+    this.onPush,
   }) : super(key: key);
 
   @override
@@ -70,7 +72,8 @@ class HighLight extends StatelessWidget {
       @required this.home,
       @required this.elapsed,
       @required this.elapsedPlus,
-      @required this.id, this.onTap})
+      @required this.id,
+      this.onTap})
       : super(key: key);
 
   @override
@@ -88,7 +91,8 @@ class HighLight extends StatelessWidget {
                   home
                       ? Flexible(
                           child: FlatButton(
-                              onPressed: () => onTap(OnPushValue(type: TabNavigatorRoutes.player, id: id)),
+                              onPressed: () => onTap(OnPushValue(
+                                  type: TabNavigatorRoutes.player, id: id)),
                               child: Row(
                                 children: <Widget>[
                                   Container(
@@ -122,28 +126,28 @@ class HighLight extends StatelessWidget {
                 children: <Widget>[
                   !home
                       ? Flexible(
-                      child: FlatButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return PlayerPage(
-                                  playerId: id,
+                          child: FlatButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return PlayerPage(
+                                      playerId: id,
+                                    );
+                                  }),
                                 );
-                              }),
-                            );
-                          },
-                          child: Row(
-                            children: <Widget>[
-                              IconAction(type: type),
-                              Container(
-                                  child: Flexible(
-                                      child: Text(
-                                        name,
-                                        textAlign: TextAlign.right,
-                                      ))),
-                            ],
-                          )))
+                              },
+                              child: Row(
+                                children: <Widget>[
+                                  IconAction(type: type),
+                                  Container(
+                                      child: Flexible(
+                                          child: Text(
+                                    name,
+                                    textAlign: TextAlign.right,
+                                  ))),
+                                ],
+                              )))
                       : Container()
                 ],
               ),
@@ -157,38 +161,28 @@ class HighLight extends StatelessWidget {
 
 class IconAction extends StatelessWidget {
   final int type;
+
   const IconAction({
-    Key key, this.type,
+    Key key,
+    this.type,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double iconWidth = 20;
-    if (type == 3){
-      return Image.asset(
-      "lib/resources/assets/goal.png",
-      width: iconWidth);
-    }
-    else if (type == 2){
+    if (type == 3) {
+      return Image.asset("lib/resources/assets/goal.png", width: iconWidth);
+    } else if (type == 2) {
       return Row(
         children: <Widget>[
-          Image.asset(
-              "lib/resources/assets/yellow-card.png",
-              width: iconWidth),
-          Image.asset(
-              "lib/resources/assets/yellow-card.png",
-              width: iconWidth),
+          Image.asset("lib/resources/assets/yellow-card.png", width: iconWidth),
+          Image.asset("lib/resources/assets/yellow-card.png", width: iconWidth),
         ],
       );
-    }
-    else if (type == 1){
-      return Image.asset(
-          "lib/resources/assets/red-card.png",
-          width: iconWidth);
-    }
-    else if (type == 0){
-      return Image.asset(
-          "lib/resources/assets/yellow-card.png",
+    } else if (type == 1) {
+      return Image.asset("lib/resources/assets/red-card.png", width: iconWidth);
+    } else if (type == 0) {
+      return Image.asset("lib/resources/assets/yellow-card.png",
           width: iconWidth);
     }
 

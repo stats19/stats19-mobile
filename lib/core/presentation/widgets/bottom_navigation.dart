@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../features/navigation/presentation/bloc/navigation_bloc.dart';
 import '../../../injection_container.dart';
+
 enum TabItem { home, search, refresh, fantasy, profile }
 
 Map<TabItem, String> tabName = {
@@ -24,53 +25,67 @@ Map<TabItem, MaterialColor> activeTabColor = {
 
 class BottomNavigation extends StatelessWidget {
   BottomNavigation({this.currentTab, this.onSelectTab});
+
   final TabItem currentTab;
   final ValueChanged<TabItem> onSelectTab;
 
+//  final snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
+//
+//// Find the Scaffold in the widget tree and use it to show a SnackBar.
+//  Scaffold.of(context).showSnackBar(snackBar);
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<NavigationBloc>(),
-      child: BlocBuilder<NavigationBloc, NavigationState>(
-          builder: (context, state) {
-            Color color = Colors.black;
-            if (state is NavigationInitial || state is Loaded) {
-              color = Colors.black;
-            } else if (state is Loading) {
-              color = Colors.grey;
-            } else if (state is Error) {
-              color = Colors.red;
-            }
+      child: BlocListener<NavigationBloc, NavigationState>(
+        listener: (context, state) {
+          if (state is Loaded) {
+            final snackBar = SnackBar(content: Text('Les données on été mise à jour'));
+            Scaffold.of(context).showSnackBar(snackBar);
+          }
+        },
+        child: BlocBuilder<NavigationBloc, NavigationState>(
+            builder: (context, state) {
+          Color color = Colors.black;
+          if (state is NavigationInitial || state is Loaded) {
+            color = Colors.black;
+          } else if (state is Loading) {
+            color = Colors.grey;
+          } else if (state is Error) {
+            color = Colors.red;
+          }
 
-            if (currentTab == TabItem.refresh) {
-              print("hehe");
-            }
-            return BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              items: [
-                _buildItem(tabItem: TabItem.home, icon: Icons.home),
-                _buildItem(tabItem: TabItem.search, icon: Icons.search),
-                _buildItem(tabItem: TabItem.refresh, icon: Icons.refresh, color: color),
-                _buildItem(tabItem: TabItem.fantasy, icon: Icons.group),
-                _buildItem(tabItem: TabItem.profile, icon: Icons.account_circle),
-              ],
-              onTap: (index) {
-                if (index == 2) {
-                  BlocProvider.of<NavigationBloc>(context)
-                      .add(RefreshForecastEvent());
-                }  else {
-                  return onSelectTab(
-                    TabItem.values[index],
-                  );
-                }
-
-              },
-            );
-          }),
+          if (currentTab == TabItem.refresh) {
+            print("hehe");
+          }
+          return BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            items: [
+              _buildItem(tabItem: TabItem.home, icon: Icons.home),
+              _buildItem(tabItem: TabItem.search, icon: Icons.search),
+              _buildItem(
+                  tabItem: TabItem.refresh, icon: Icons.refresh, color: color),
+              _buildItem(tabItem: TabItem.fantasy, icon: Icons.group),
+              _buildItem(tabItem: TabItem.profile, icon: Icons.account_circle),
+            ],
+            onTap: (index) {
+              if (index == 2) {
+                BlocProvider.of<NavigationBloc>(context)
+                    .add(RefreshForecastEvent());
+              } else {
+                return onSelectTab(
+                  TabItem.values[index],
+                );
+              }
+            },
+          );
+        }),
+      ),
     );
   }
 
-  BottomNavigationBarItem _buildItem({TabItem tabItem, IconData icon, Color color}) {
+  BottomNavigationBarItem _buildItem(
+      {TabItem tabItem, IconData icon, Color color}) {
     color = color != null ? color : _colorTabMatching(item: tabItem);
     String text = tabName[tabItem];
     return BottomNavigationBarItem(
@@ -86,7 +101,6 @@ class BottomNavigation extends StatelessWidget {
       ),
     );
   }
-
 
   Color _colorTabMatching({TabItem item}) {
     return currentTab == item ? activeTabColor[item] : Colors.black;
