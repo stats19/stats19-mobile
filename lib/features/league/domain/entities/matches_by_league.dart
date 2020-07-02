@@ -24,6 +24,7 @@ class MatchesByLeague extends Equatable {
 class PlayedMatch extends Equatable {
   final int matchId;
   final String date;
+  final String forecast;
   final PlayedMatchTeam home;
   final PlayedMatchTeam away;
 
@@ -31,6 +32,7 @@ class PlayedMatch extends Equatable {
       {@required this.matchId,
         @required this.date,
         @required this.home,
+        @required this.forecast,
         @required this.away});
 
   @override

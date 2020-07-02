@@ -74,12 +74,13 @@ class LeagueMatchModelList {
 
 class PlayedMatchModel extends PlayedMatch {
   PlayedMatchModel(
-      {@required matchId, @required date, @required home, @required away})
-      : super(matchId: matchId, date: date, home: home, away: away);
+      {@required matchId, @required date, @required home, @required away, @required forecast})
+      : super(matchId: matchId, date: date, home: home, away: away, forecast: forecast);
 
   factory PlayedMatchModel.fromJson(Map<String, dynamic> json) {
     return PlayedMatchModel(
         matchId: json['matchId'],
+        forecast: json['forecast'],
         date: json['date'],
         home: PlayedMatchTeamModel.fromJson(json['home']),
         away: PlayedMatchTeamModel.fromJson(json['away']));

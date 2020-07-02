@@ -4,6 +4,7 @@ import 'package:meta/meta.dart';
 class SoccerMatch extends Equatable {
   final int matchId;
   final MatchLeague league;
+  final String forecast;
   final TeamMatch homeTeam;
   final TeamMatch awayTeam;
   final List<MatchDetails> details;
@@ -13,6 +14,7 @@ class SoccerMatch extends Equatable {
       @required this.homeTeam,
       @required this.awayTeam,
       @required this.league,
+      @required this.forecast,
       @required this.details});
 
   @override

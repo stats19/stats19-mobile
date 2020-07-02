@@ -6,6 +6,7 @@ class SoccerMatchModel extends SoccerMatch {
   SoccerMatchModel(
       {@required matchId,
       @required league,
+      @required forecast,
       @required homeTeam,
       @required awayTeam,
       @required details})
@@ -13,12 +14,14 @@ class SoccerMatchModel extends SoccerMatch {
             matchId: matchId,
             league: league,
             homeTeam: homeTeam,
+            forecast: forecast,
             awayTeam: awayTeam,
             details: details);
 
   factory SoccerMatchModel.fromJson(Map<String, dynamic> json) {
     return SoccerMatchModel(
         matchId: json['matchId'],
+        forecast: json['forecast'],
         league: MatchLeagueModel.fromJson(json['league']),
         homeTeam: TeamMatchModel.fromJson(json['homeTeam']),
         awayTeam: TeamMatchModel.fromJson(json['awayTeam']),

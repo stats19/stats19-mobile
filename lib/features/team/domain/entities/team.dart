@@ -89,6 +89,7 @@ class PlayedMatch extends Equatable {
   final int matchId;
   final String date;
   final String result;
+  final String forecast;
   final PlayedMatchTeam home;
   final PlayedMatchTeam away;
 
@@ -96,11 +97,12 @@ class PlayedMatch extends Equatable {
       {@required this.matchId,
       @required this.date,
       @required this.result,
+      @required this.forecast,
       @required this.home,
       @required this.away});
 
   @override
-  List<Object> get props => [matchId, date, result, home, away];
+  List<Object> get props => [matchId, date, result, forecast, home, away];
 }
 
 class PlayedMatchTeam extends Equatable {
