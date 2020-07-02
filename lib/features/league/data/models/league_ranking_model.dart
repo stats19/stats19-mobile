@@ -28,6 +28,7 @@ class RankingModel extends RankingItem {
       {@required teamId,
       @required name,
       @required matchPlayed,
+      @required picture,
       @required win,
       @required draw,
       @required lose,
@@ -41,7 +42,7 @@ class RankingModel extends RankingItem {
             draw: draw,
             lose: lose,
             score: score,
-            points: points);
+            points: points, picture: picture);
 
   factory RankingModel.fromJson(Map<String, dynamic> json) {
     return RankingModel(
@@ -53,6 +54,7 @@ class RankingModel extends RankingItem {
       lose: json['lose'],
       score: json['score'],
       points: json['points'],
+      picture: json['picture']
     );
   }
 }

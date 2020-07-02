@@ -7,13 +7,15 @@ class League extends Equatable {
   final String country;
   final String matches;
   final String teams;
+  final String picture;
 
   League({
     @required this.leagueId, 
     @required this.name, 
     @required this.country, 
     @required this.matches, 
-    @required this.teams
+    @required this.teams,
+    @required this.picture
   });
 
   @override

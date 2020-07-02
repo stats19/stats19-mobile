@@ -56,6 +56,8 @@ class LeagueMatch extends Equatable {
   final String date;
   final String forecast;
   final int stage;
+  final int homePicture;
+  final int awayPicture;
 
    LeagueMatch({
     @required this.matchId, 
@@ -64,6 +66,8 @@ class LeagueMatch extends Equatable {
     @required this.date,
     @required this.forecast,
     @required this.stage,
+    @required this.homePicture,
+    @required this.awayPicture,
   });
   @override
   List<Object> get props => [matchId, homeName, awayName, date, forecast, stage];

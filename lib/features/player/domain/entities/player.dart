@@ -14,6 +14,11 @@ class Player extends Equatable {
   final int shotOnTarget;
   final double score;
   final int goals;
+  final String picture;
+  final String countryName;
+  final String countryPicture;
+  final String teamPicture;
+  final int teamId;
 
   Player(
       {@required this.playerId,
@@ -27,7 +32,12 @@ class Player extends Equatable {
       @required this.yellowCards,
       @required this.shotOnTarget,
       @required this.score,
-      @required this.goals});
+      @required this.goals,
+      @required this.picture,
+      @required this.countryName,
+      @required this.countryPicture,
+      @required this.teamPicture,
+      @required this.teamId});
 
   @override
   List<Object> get props => [

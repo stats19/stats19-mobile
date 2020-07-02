@@ -7,6 +7,7 @@ class TeamModel extends Team {
       {@required teamId,
       @required name,
       @required shortName,
+      @required picture,
       @required matchesPlayed,
       @required league,
       @required matchesWin,
@@ -24,6 +25,7 @@ class TeamModel extends Team {
             teamId: teamId,
             name: name,
             shortName: shortName,
+            picture: picture,
             league: league,
             matchesPlayed: matchesPlayed,
             matchesWin: matchesWin,
@@ -42,6 +44,7 @@ class TeamModel extends Team {
     return TeamModel(
         teamId: json['teamId'],
         name: json['name'],
+        picture: json['picture'],
         shortName: json['shortName'],
         matchesPlayed: json['matchesPlayed'],
         league: TeamLeagueModel.fromJson(json['league']),
@@ -63,12 +66,14 @@ class TeamModel extends Team {
 }
 
 class TeamLeagueModel extends TeamLeague {
-  TeamLeagueModel({@required leagueId, @required name})
-      : super(leagueId: leagueId, name: name);
+  TeamLeagueModel({@required leagueId, @required name, @required leaguePicture})
+      : super(leagueId: leagueId, name: name, leaguePicture: leaguePicture);
 
   factory TeamLeagueModel.fromJson(Map<String, dynamic> json) {
     return TeamLeagueModel(
-        leagueId: json['leagueId'], name: json['leagueName']);
+        leagueId: json['leagueId'],
+        name: json['leagueName'],
+        leaguePicture: json['leaguePicture']);
   }
 }
 
@@ -122,12 +127,16 @@ class PlayedMatchModel extends PlayedMatch {
 }
 
 class PlayedMatchTeamModel extends PlayedMatchTeam {
-  PlayedMatchTeamModel({@required teamId, @required name, @required goals})
-      : super(teamId: teamId, name: name, goals: goals);
+  PlayedMatchTeamModel(
+      {@required teamId, @required name, @required goals, @required picture})
+      : super(teamId: teamId, name: name, goals: goals, picture: picture);
 
   factory PlayedMatchTeamModel.fromJson(Map<String, dynamic> json) {
     return PlayedMatchTeamModel(
-        teamId: json['teamId'], name: json['name'], goals: json['goals']);
+        teamId: json['teamId'],
+        name: json['name'],
+        goals: json['goals'],
+        picture: json['picture']);
   }
 }
 
@@ -154,6 +163,8 @@ class NextMatchModel extends NextMatch {
       @required awayTeam,
       @required homeTeamId,
       @required awayTeamId,
+      @required homePicture,
+      @required awayPicture,
       @required forecastMatch})
       : super(
             date: date,
@@ -162,7 +173,9 @@ class NextMatchModel extends NextMatch {
             awayTeam: awayTeam,
             homeTeamId: homeTeamId,
             awayTeamId: awayTeamId,
-            forecastMatch: forecastMatch);
+            forecastMatch: forecastMatch,
+            homePicture: homePicture,
+            awayPicture: awayPicture);
 
   factory NextMatchModel.fromJson(Map<String, dynamic> json) {
     return NextMatchModel(
@@ -172,6 +185,8 @@ class NextMatchModel extends NextMatch {
         awayTeam: json['awayTeam'],
         homeTeamId: json['homeTeamId'],
         awayTeamId: json['awayTeamId'],
+        homePicture: json['homePicture'],
+        awayPicture: json['awayPicture'],
         forecastMatch: json['forecastMatch']);
   }
 }

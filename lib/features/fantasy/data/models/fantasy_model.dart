@@ -32,6 +32,7 @@ class FantasyPlayerModel extends FantasyPlayer {
   FantasyPlayerModel(
       {@required playerId,
       @required name,
+      @required picture,
       @required leagueName,
       @required leagueId,
       @required score,
@@ -40,6 +41,7 @@ class FantasyPlayerModel extends FantasyPlayer {
       : super(
             playerId: playerId,
             name: name,
+            picture: picture,
             leagueName: leagueName,
             leagueId: leagueId,
             score: score,
@@ -50,7 +52,8 @@ class FantasyPlayerModel extends FantasyPlayer {
     return FantasyPlayerModel(
         playerId: json['playerId'],
         name: json['name'],
-        leagueName: json['leagueName'],
+        picture: json['picture'],
+        leagueName: json['leagueName'], 
         leagueId: json['leagueId'],
         score: json['score'],
         teamName: json['teamName'],
