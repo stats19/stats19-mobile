@@ -35,6 +35,7 @@ class MatchLeague extends Equatable {
 class TeamMatch extends Equatable {
   final int teamId;
   final String name;
+  final String picture;
   final int goals;
   final int possession;
   final int shotOnTarget;
@@ -45,6 +46,7 @@ class TeamMatch extends Equatable {
   TeamMatch(
       {@required this.teamId,
       @required this.name,
+      @required this.picture,
       @required this.goals,
       @required this.possession,
       @required this.shotOnTarget,

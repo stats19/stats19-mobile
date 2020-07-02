@@ -6,6 +6,7 @@ import 'package:meta/meta.dart';
 class Team extends Equatable {
   final int teamId;
   final String name;
+  final String picture;
   final String shortName;
   final TeamLeague league;
   final int matchesPlayed;
@@ -24,6 +25,7 @@ class Team extends Equatable {
   Team(
       {@required this.name,
       @required this.shortName,
+      @required this.picture,
       @required this.league,
       @required this.matchesPlayed,
       @required this.matchesWin,
@@ -62,8 +64,12 @@ class Team extends Equatable {
 class TeamLeague extends Equatable {
   final int leagueId;
   final String name;
+  final String leaguePicture;
 
-  TeamLeague({@required this.leagueId, @required this.name});
+  TeamLeague(
+      {@required this.leagueId,
+      @required this.name,
+      @required this.leaguePicture});
 
   @override
   List<Object> get props => [leagueId, name];
@@ -101,9 +107,13 @@ class PlayedMatchTeam extends Equatable {
   final int teamId;
   final String name;
   final int goals;
+  final String picture;
 
   PlayedMatchTeam(
-      {@required this.teamId, @required this.name, @required this.goals});
+      {@required this.teamId,
+      @required this.name,
+      @required this.goals,
+      @required this.picture});
 
   @override
   List<Object> get props => [teamId, name, goals];
@@ -113,6 +123,8 @@ class NextMatch extends Equatable {
   final String date;
   final int stage;
   final String homeTeam;
+  final String homePicture;
+  final String awayPicture;
   final String awayTeam;
   final int homeTeamId;
   final int awayTeamId;
@@ -125,7 +137,9 @@ class NextMatch extends Equatable {
       @required this.awayTeam,
       @required this.homeTeamId,
       @required this.awayTeamId,
-      @required this.forecastMatch});
+      @required this.forecastMatch,
+      @required this.homePicture,
+      @required this.awayPicture});
 
   @override
   List<Object> get props =>

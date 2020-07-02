@@ -40,6 +40,7 @@ class TeamMatchModel extends TeamMatch {
   TeamMatchModel(
       {@required teamId,
       @required name,
+      @required picture,
       @required goals,
       @required possession,
       @required shotOnTarget,
@@ -49,6 +50,7 @@ class TeamMatchModel extends TeamMatch {
       : super(
             teamId: teamId,
             name: name,
+            picture: picture,
             goals: goals,
             possession: possession,
             shotOnTarget: shotOnTarget,
@@ -60,6 +62,7 @@ class TeamMatchModel extends TeamMatch {
     return TeamMatchModel(
       teamId: json['teamId'],
       name: json['name'],
+      picture: json['picture'],
       goals: json['goals'],
       possession: json['possession'],
       shotOnTarget: json['shotOnTarget'],

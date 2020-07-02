@@ -29,6 +29,8 @@ class LeagueMatchModel extends LeagueMatch {
       {@required matchId,
       @required homeName,
       @required awayName,
+      @required homePicture,
+      @required awayPicture,
       @required forecast,
       @required stage,
       @required date})
@@ -38,7 +40,7 @@ class LeagueMatchModel extends LeagueMatch {
             awayName: awayName,
             stage: stage,
             forecast: forecast,
-            date: date);
+            date: date, homePicture: homePicture, awayPicture: awayPicture);
 
   factory LeagueMatchModel.fromJson(Map<String, dynamic> json) {
     return LeagueMatchModel(
@@ -46,6 +48,8 @@ class LeagueMatchModel extends LeagueMatch {
         homeName: json['homeName'],
         awayName: json['awayName'],
         stage: json['step'],
+        homePicture: json['homePicture'],
+        awayPicture: json['awayPicture'],
         forecast: json['resultMatch'],
         date: json['date']);
   }

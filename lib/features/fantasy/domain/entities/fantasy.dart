@@ -22,6 +22,7 @@ class Fantasy extends Equatable {
 class FantasyPlayer extends Equatable {
   final int playerId;
   final String name;
+  final String picture;
   final String leagueName;
   final int leagueId;
   final double score;
@@ -32,6 +33,7 @@ class FantasyPlayer extends Equatable {
       {@required this.playerId,
       @required this.name,
       @required this.leagueName,
+      @required this.picture,
       @required this.leagueId,
       @required this.score,
       @required this.teamName,

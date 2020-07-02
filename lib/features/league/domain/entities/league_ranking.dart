@@ -24,6 +24,7 @@ class LeagueRanking extends Equatable {
 class RankingItem extends Equatable {
   final int teamId;
   final String name;
+  final String picture;
   final int matchPlayed;
   final int win;
   final int draw;
@@ -39,6 +40,7 @@ class RankingItem extends Equatable {
     @required this.draw,
     @required this.lose,
     @required this.score,
+    @required this.picture,
     @required this.points,
   });
   @override
