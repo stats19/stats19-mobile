@@ -58,8 +58,8 @@ class LeagueMatch extends Equatable {
   final String date;
   final String forecast;
   final int stage;
-  final int homePicture;
-  final int awayPicture;
+  final String homePicture;
+  final String awayPicture;
 
    LeagueMatch({
     @required this.matchId, 
