@@ -22,7 +22,7 @@ class RecentMatches extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text("last_matches".tr(),
-                style: TextStyle(color: Colors.blueGrey[700], fontSize: 18, fontWeight: FontWeight.w700)),
+                style: TextStyle(color: Colors.blueGrey[700], fontSize: 15, fontWeight: FontWeight.w700)),
             BlocBuilder<TeamBloc, TeamState>(builder: (context, state) {
               if (state is Loading) {
                 return LoadingWidget();
