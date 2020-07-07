@@ -96,6 +96,7 @@ class EndedMatch extends StatelessWidget {
                 ),
               ),
               Container(
+                height: 40,
                 padding: EdgeInsets.all(5),
                 width : MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
