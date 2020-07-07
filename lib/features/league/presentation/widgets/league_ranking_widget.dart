@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stat19_app_mobile/core/presentation/widgets/loading_widget.dart';
@@ -32,7 +33,7 @@ class LeagueRanking extends StatelessWidget {
               return RankingFilter(season: '2015/2016', leagueId: leagueId);
             }),
             BlocBuilder<LeaguesBloc, LeaguesState>(builder: (context, state) {
-              double tabletxtsize = 17;
+              double tabletxtsize = 15;
               if (state is Loading) {
                 return Center(child: LoadingWidget());
               } else if (state is RankingLoaded) {
@@ -41,7 +42,7 @@ class LeagueRanking extends StatelessWidget {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: (DataTable(
-                      columnSpacing: 10,
+                      columnSpacing: 15,
                       columns: [
                         DataColumn(
                           label: Text('Club',
@@ -90,10 +91,23 @@ class LeagueRanking extends StatelessWidget {
                                             type: TabNavigatorRoutes.team,
                                             id: element.teamId)),
                                         child: Container(
-                                            width: 80,
-                                            child: Text(element.name,
-                                                style: TextStyle(
-                                                    fontSize: tabletxtsize))))),
+                                            alignment: Alignment.centerLeft,
+                                            child: Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  padding: EdgeInsets.only(right: 5),
+                                                    alignment: Alignment.centerRight,
+                                                    child: Image.network(element.picture, width: 25)
+                                                ),
+                                                Container(
+                                                  width: 70,
+                                                  child: Text(element.name,
+                                                      style: TextStyle(
+                                                          fontSize: 13), textAlign: TextAlign.left,),
+                                                ),
+
+                                              ],
+                                            )))),
                                     DataCell(Text(
                                         element.matchPlayed.toString(),
                                         style:

@@ -28,7 +28,7 @@ class MatchStat extends StatelessWidget {
                   width: 130.0,
                   lineHeight: 8.0,
                   percent: home + away > 0 ? home / (home + away) : 0.0,
-                  progressColor: Colors.green,
+                  progressColor: Colors.orange,
                 ),
               ],
             ),
@@ -39,7 +39,7 @@ class MatchStat extends StatelessWidget {
                   width: 130.0,
                   lineHeight: 8.0,
                   percent: home + away > 0 ? away / (home + away) : 0.0,
-                  progressColor: Colors.red,
+                  progressColor: Colors.lightBlue,
                 ),
               ],
             )

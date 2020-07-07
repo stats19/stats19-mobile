@@ -151,12 +151,21 @@ class CommingMatch extends StatelessWidget {
                       child: Center(
                         child: Padding(
                           padding: const EdgeInsets.only(left:8.0, right: 8.0),
-                          child: Text(
-                            nextMatch.homeTeam,
-                            style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white,
-                            ),
-                            textAlign: TextAlign.justify,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: Image.network(nextMatch.homePicture, width: 25),
+                              ),
+                              Text(
+                                nextMatch.homeTeam,
+                                style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white,
+                                ),
+                                textAlign: TextAlign.justify,
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -166,10 +175,19 @@ class CommingMatch extends StatelessWidget {
                       child: Center(
                         child: Padding(
                           padding: const EdgeInsets.only(left:8.0, right: 8.0),
-                          child: Text(
-                            nextMatch.awayTeam,
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
-                            textAlign: TextAlign.justify,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                nextMatch.awayTeam,
+                                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
+                                textAlign: TextAlign.justify,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Image.network(nextMatch.awayPicture, width: 25),
+                              ),
+                            ],
                           ),
                         ),
                       ),

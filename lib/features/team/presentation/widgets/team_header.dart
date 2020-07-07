@@ -19,7 +19,7 @@ class TeamHeader extends StatelessWidget {
       margin: EdgeInsets.only(
         right: 30,
         left: 30,
-        bottom: 15
+        bottom: 5
       ),
       decoration: BoxDecoration(
         border: Border.all(color:  Colors.blueGrey[700], width: 0.5),
@@ -46,7 +46,16 @@ class TeamHeader extends StatelessWidget {
             } else if (state is Loaded) {
               return  Column(
                 children: <Widget>[
-                  TeamName(teamName: state.team.name),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only( right: 8),
+                        child: Image.network(state.team.picture, width: 35),
+                      ),
+                      TeamName(teamName: state.team.name),
+                    ],
+                  ),
                   Row(
                     children: <Widget>[
                       TeamLeagueWidget(league: state.team.league),
