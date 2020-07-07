@@ -51,5 +51,10 @@
   "refresh": "Forecast",
   "fantasy": "Fantasy",
   "profile": "Profile",
-  "update": "The data has been updated."
+  "update": "The data has been updated.",
+
+  "goalKeepers": "GoalKeepers",
+  "defenders": "Defenders",
+  "middleFielders": "Midfielder",
+  "forwards": "Forwards"
 }

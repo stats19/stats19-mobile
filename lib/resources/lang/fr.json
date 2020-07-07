@@ -51,5 +51,10 @@
   "refresh": "Prédire",
   "fantasy": "Fantasy",
   "profile": "Profil",
-  "update": "Les données ont été mises à jour."
+  "update": "Les données ont été mises à jour.",
+
+  "goalKeepers": "Gardiens",
+  "defenders": "Défenseurs",
+  "middleFielders": "Milieux",
+  "forwards": "Attaquants"
 }
