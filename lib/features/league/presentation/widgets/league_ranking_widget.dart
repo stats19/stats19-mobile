@@ -42,7 +42,7 @@ class LeagueRanking extends StatelessWidget {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: (DataTable(
-                      columnSpacing: 10,
+                      columnSpacing: 15,
                       columns: [
                         DataColumn(
                           label: Text('Club',

@@ -60,6 +60,7 @@ class EndedMatch extends StatelessWidget {
                 ),
               ),
               Container(
+                height: 30,
                 padding: EdgeInsets.all(5),
                 width : MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
@@ -80,12 +81,21 @@ class EndedMatch extends StatelessWidget {
                       child: Center(
                         child: Padding(
                           padding: const EdgeInsets.only(left:8.0, right: 8.0),
-                          child: Text(
-                            playedMatch.home.name,
-                            style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white,
-                            ),
-                            textAlign: TextAlign.justify,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+//                              Padding(
+//                                padding: const EdgeInsets.only(right: 8.0),
+//                                child: Image.network(playedMatch., width: 25),
+//                              ),
+                              Text(
+                                playedMatch.home.name,
+                                style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white,
+                                ),
+                                textAlign: TextAlign.justify,
+                              ),
+                            ],
                           ),
                         ),
                       ),

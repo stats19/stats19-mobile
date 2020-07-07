@@ -47,6 +47,7 @@ class HeaderPanel extends StatelessWidget {
                     TeamScorePanel(
                       name: state.soccerMatch.homeTeam.name,
                       teamId: state.soccerMatch.homeTeam.teamId,
+                      teamImage: state.soccerMatch.homeTeam.picture,
                     ),
                     Container(
                         child: Text(
@@ -57,7 +58,8 @@ class HeaderPanel extends StatelessWidget {
                                 TextStyle(fontSize: 20, color: Colors.white))),
                     TeamScorePanel(
                       name: state.soccerMatch.awayTeam.name,
-                      teamId: state.soccerMatch.homeTeam.teamId,
+                      teamId: state.soccerMatch.awayTeam.teamId,
+                      teamImage: state.soccerMatch.awayTeam.picture,
                     ),
                   ],
                 ),
@@ -77,11 +79,12 @@ class HeaderPanel extends StatelessWidget {
 class TeamScorePanel extends StatelessWidget {
   final String name;
   final int teamId;
+  final String teamImage;
 
   const TeamScorePanel({
     Key key,
     @required this.name,
-    this.teamId,
+    this.teamId, this.teamImage,
   }) : super(key: key);
 
   @override
@@ -99,18 +102,20 @@ class TeamScorePanel extends StatelessWidget {
               }),
             );
           },
-          child: Row(
+          child: Column(
             children: <Widget>[
-              Flexible(
-                  child: Text(
+              Container(
+                width: 35,
+                  child: Image.network(teamImage)),
+              Text(
                 name,
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white, fontSize: 15),
-              )),
+              ),
             ],
           )),
       width: 120,
-      height: 70,
+      height: 80,
     );
   }
 }
