@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stat19_app_mobile/core/presentation/widgets/loading_widget.dart';
@@ -42,9 +43,11 @@ class _HeaderPlayerState extends State<HeaderPlayer> {
                 ),
                 child: Column(
                   children: <Widget>[
+                    Container(width: 80,
+                    child: Image.network(state.player.picture),),
                     Text(state.player.name,
                         style:
-                        TextStyle(color: Colors.white, fontSize: 40)),
+                        TextStyle(color: Colors.white, fontSize: 35)),
                   ],
                 ),
               ),

@@ -83,7 +83,7 @@ class HighLight extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Expanded(
-            flex: 2,
+            flex: 3,
             child: Container(
               padding: EdgeInsets.all(0.0),
               child: Row(
@@ -94,6 +94,7 @@ class HighLight extends StatelessWidget {
                               onPressed: () => onTap(OnPushValue(
                                   type: TabNavigatorRoutes.player, id: id)),
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Container(
                                       child: Flexible(
@@ -120,7 +121,7 @@ class HighLight extends StatelessWidget {
                     textAlign: TextAlign.center)),
           ),
           Expanded(
-            flex: 2,
+            flex: 3,
             child: Container(
               child: Row(
                 children: <Widget>[
@@ -138,6 +139,7 @@ class HighLight extends StatelessWidget {
                                 );
                               },
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   IconAction(type: type),
                                   Container(
