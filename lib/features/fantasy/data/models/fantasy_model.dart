@@ -35,17 +35,21 @@ class FantasyPlayerModel extends FantasyPlayer {
       @required picture,
       @required leagueName,
       @required leagueId,
+      @required leaguePicture,
       @required score,
       @required teamName,
+      @required teamPicture,
       @required teamId})
       : super(
             playerId: playerId,
             name: name,
             picture: picture,
             leagueName: leagueName,
+            leaguePicture: leaguePicture,
             leagueId: leagueId,
             score: score,
             teamName: teamName,
+            teamPicture: teamPicture,
             teamId: teamId);
 
   factory FantasyPlayerModel.fromJson(Map<String, dynamic> json) {
@@ -53,11 +57,13 @@ class FantasyPlayerModel extends FantasyPlayer {
         playerId: json['playerId'],
         name: json['name'],
         picture: json['picture'],
-        leagueName: json['leagueName'], 
+        leagueName: json['leagueName'],
         leagueId: json['leagueId'],
         score: json['score'],
         teamName: json['teamName'],
-        teamId: json['teamId']);
+        teamId: json['teamId'],
+        leaguePicture: json['leaguePicture'],
+        teamPicture: json['teamPicture']);
   }
 }
 
