@@ -88,12 +88,12 @@ class PlayedMatchModel extends PlayedMatch {
 }
 
 class PlayedMatchTeamModel extends PlayedMatchTeam {
-  PlayedMatchTeamModel({@required teamId, @required name, @required goals})
-      : super(teamId: teamId, name: name, goals: goals);
+  PlayedMatchTeamModel({@required teamId, @required name, @required goals, @required picture})
+      : super(teamId: teamId, name: name, goals: goals, picture: picture);
 
   factory PlayedMatchTeamModel.fromJson(Map<String, dynamic> json) {
     return PlayedMatchTeamModel(
-        teamId: json['teamId'], name: json['name'], goals: json['goals']);
+        teamId: json['teamId'], name: json['name'], goals: json['goals'], picture: json['picture']);
   }
 }
 

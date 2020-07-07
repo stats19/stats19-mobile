@@ -43,9 +43,10 @@ class PlayedMatchTeam extends Equatable {
   final int teamId;
   final String name;
   final int goals;
+  final String picture;
 
   PlayedMatchTeam(
-      {@required this.teamId, @required this.name, @required this.goals});
+      {@required this.teamId, @required this.name, @required this.goals, @required this.picture});
 
   @override
   List<Object> get props => [teamId, name, goals];

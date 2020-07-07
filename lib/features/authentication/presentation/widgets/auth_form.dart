@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import '../../../../app.dart';
 import '../../../../app_router.dart';
 import '../bloc/user_bloc.dart';
 import 'message_display.dart';
@@ -52,9 +53,8 @@ class _AuthFormState extends State<AuthForm> {
           } else if (state is Error) {
             return MessageDisplay(message: state.message);
           } else if (state is Loaded) {
-            SchedulerBinding.instance.addPostFrameCallback((_) {
-              Navigator.of(context).pushNamed(NamedRoute.HOME_ROUTE);
-            });
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => App()));
             return Container();
           }
           return Container();
