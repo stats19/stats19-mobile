@@ -11,7 +11,7 @@ import '../../../../core/error/exceptions.dart';
 import '../models/fantasy_model.dart';
 
 abstract class FantasyRemoteDataSource {
-  Future<FantasyModel> getFantasyPlayers();
+  Future<FantasyModel> getFantasyPlayers(int page);
 }
 
 
@@ -22,9 +22,9 @@ class FantasyRemoteDataSourceImpl extends FantasyRemoteDataSource {
   FantasyRemoteDataSourceImpl({@required this.client, @required this.sharedPreferences});
 
   @override
-  Future<FantasyModel> getFantasyPlayers() async {
+  Future<FantasyModel> getFantasyPlayers(int page) async {
     final String token = this.sharedPreferences.getString(CACHED_AUTH_TOKEN);
-    final response = await client.get(HOST + '/api/players/fantasy',
+    final response = await client.get(HOST + '/api/players/fantasy?page=$page',
         headers: {'Content-Type': 'application/json', 'authorization': token});
 
     if (response.statusCode == 200) {

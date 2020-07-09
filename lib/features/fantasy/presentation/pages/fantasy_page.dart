@@ -7,23 +7,51 @@ import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
 import '../../../../core/presentation/widgets/on_push_value.dart';
 import '../../../../injection_container.dart';
 import '../bloc/fantasy_bloc.dart';
-import '../widgets/widgets.dart';
 import 'package:stat19_app_mobile/features/fantasy/domain/entities/fantasy.dart';
 
-class FantasyPage extends StatelessWidget {
+class FantasyPage extends StatefulWidget {
   final ValueChanged<OnPushValue> onPush;
-  final tabs = ['goalKeepers', 'defenders', 'middleFielders', 'forwards'];
 
   FantasyPage({this.onPush});
+
+  @override
+  _FantasyPageState createState() => _FantasyPageState();
+}
+
+class _FantasyPageState extends State<FantasyPage> {
+  final tabs = ['goalKeepers', 'defenders', 'middleFielders', 'forwards'];
+  final _scrollController = ScrollController();
+  final FantasyBloc _fantasyBloc = sl<FantasyBloc>();
+  final _scrollThreshold = 100.0;
+
+  _FantasyPageState() {
+    _fantasyBloc.add(GetFantasyEvent());
+    _scrollController.addListener(_onScroll);
+  }
 
   @override
   Widget build(BuildContext context) {
     return buildBody(context);
   }
 
+  @override
+  void dispose() {
+    _fantasyBloc.close();
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.position.pixels;
+    if (maxScroll - currentScroll <= _scrollThreshold) {
+      _fantasyBloc.add(GetFantasyEvent());
+    }
+  }
+
   BlocProvider<FantasyBloc> buildBody(BuildContext context) {
     return BlocProvider(
-        create: (_) => sl<FantasyBloc>(),
+        create: (_) => _fantasyBloc,
         child:
             BlocBuilder<FantasyBloc, FantasyState>(builder: (context, state) {
           if (state is FantasyInitial) {
@@ -48,7 +76,7 @@ class FantasyPage extends StatelessWidget {
                   backgroundColor: Colors.grey[300],
                   body: TabBarView(
                       children: tabs
-                          .map((e) => buildListView(state.fantasy.get(e)))
+                          .map((e) => buildListView(state.fantasy.get(e), state.hasReachedMax))
                           .toList())),
             );
           } else if (state is Error) {
@@ -58,13 +86,17 @@ class FantasyPage extends StatelessWidget {
         }));
   }
 
-  ListView buildListView(List<FantasyPlayer> fantasyPlayers) =>
+  ListView buildListView(List<FantasyPlayer> fantasyPlayers, bool ended) =>
       ListView.separated(
         padding: const EdgeInsets.all(8),
-        itemCount: fantasyPlayers.length,
+        itemCount: ended ? fantasyPlayers.length : fantasyPlayers.length + 1,
         itemBuilder: (BuildContext context, int index) {
+          if (index == fantasyPlayers.length) {
+            return BottomLoader();
+          }  
           return buildListItem(fantasyPlayers[index]);
         },
+        controller: _scrollController,
         separatorBuilder: (BuildContext context, int index) => const Divider(),
       );
 
@@ -75,36 +107,34 @@ class FantasyPage extends StatelessWidget {
             child: Row(
           children: <Widget>[
             Expanded(
-              flex: 1,
-              child: Container(
-                padding: const EdgeInsets.all(4),
-                child: GestureDetector(
-                  onTap: () => onPush(OnPushValue(type: TabNavigatorRoutes.league, id: e.leagueId)),
-                  child: Image.network(
-                      e.leaguePicture,
-                      width: 10),
-                ),
-              )
-            ),
+                flex: 1,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  child: GestureDetector(
+                    onTap: () => widget.onPush(OnPushValue(
+                        type: TabNavigatorRoutes.league, id: e.leagueId)),
+                    child: Image.network(e.leaguePicture, width: 10),
+                  ),
+                )),
             Expanded(
               flex: 2,
               child: Container(
-                alignment: Alignment.centerLeft,
+                  alignment: Alignment.centerLeft,
                   padding: const EdgeInsets.all(6),
                   child: GestureDetector(
-                    onTap: () => onPush(OnPushValue(type: TabNavigatorRoutes.team, id: e.teamId)),
-                    child: Image.network(
-                        e.teamPicture,
-                        width: 25),
+                    onTap: () => widget.onPush(OnPushValue(
+                        type: TabNavigatorRoutes.team, id: e.teamId)),
+                    child: Image.network(e.teamPicture, width: 25),
                   )),
             ),
             Expanded(
               flex: 5,
               child: GestureDetector(
-                onTap: () => onPush(OnPushValue(type: TabNavigatorRoutes.player, id: e.playerId)),
+                onTap: () => widget.onPush(OnPushValue(
+                    type: TabNavigatorRoutes.player, id: e.playerId)),
                 child: Row(
                   children: <Widget>[
-                    Image.network(e.picture, width: 25),
+                    Image.network(e.picture != null ? e.picture : 'https://www.crazyhit.fr/img/icone_commentaire.jpg', width: 25),
                     Text(e.name)
                   ],
                 ),
@@ -114,4 +144,22 @@ class FantasyPage extends StatelessWidget {
           ],
         )),
       );
+}
+
+class BottomLoader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: Center(
+        child: SizedBox(
+          width: 33,
+          height: 33,
+          child: CircularProgressIndicator(
+            strokeWidth: 1.5,
+          ),
+        ),
+      ),
+    );
+  }
 }

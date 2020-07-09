@@ -13,9 +13,9 @@ class FantasyRepositoryImpl extends FantasyRepository {
   FantasyRepositoryImpl({@required this.remoteDataSource});
 
   @override
-  Future<Either<Failure, Fantasy>> getFantasyPlayers() async {
+  Future<Either<Failure, Fantasy>> getFantasyPlayers(int page) async {
     try {
-      final players = await remoteDataSource.getFantasyPlayers();
+      final players = await remoteDataSource.getFantasyPlayers(page);
       return right(players);
     } on ServerException {
       return Left(ServerFailure());
