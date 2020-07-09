@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stat19_app_mobile/core/presentation/widgets/loading_widget.dart';
+import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 
 import '../../../../injection_container.dart';
 import '../bloc/player_bloc.dart';
@@ -13,8 +14,9 @@ class PlayerPage extends StatelessWidget {
   }
 
   final int playerId;
+  final ValueChanged<OnPushValue> onPush;
 
-  PlayerPage({this.playerId});
+  PlayerPage({this.playerId, this.onPush});
 
   BlocProvider<PlayerBloc> buildBody(BuildContext context) {
     return BlocProvider(
@@ -45,7 +47,7 @@ class PlayerPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              HeaderPlayer(),
+              HeaderPlayer(onPush: onPush),
               StatsPlayer(),
             ],
           ),

@@ -31,8 +31,10 @@ class TabNavigator extends StatelessWidget {
       {int id: 500, TabNavigatorRoutes type: TabNavigatorRoutes.root}) {
     var routeBuilders = _routeBuilders(context, id: id, type: type);
     print(routeBuilders[type.toString()]);
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => routeBuilders[type.toString()](context)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => routeBuilders[type.toString()](context)));
   }
 
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context,
@@ -57,8 +59,9 @@ class TabNavigator extends StatelessWidget {
       TabNavigatorRoutes.team.toString(): (context) => TeamPage(
           teamId: id,
           onPush: (param) => _push(context, id: param.id, type: param.type)),
-      TabNavigatorRoutes.player.toString(): (context) =>
-          PlayerPage(playerId: id)
+      TabNavigatorRoutes.player.toString(): (context) => PlayerPage(
+          playerId: id,
+          onPush: (param) => _push(context, id: param.id, type: param.type))
     };
   }
 
@@ -74,9 +77,8 @@ class TabNavigator extends StatelessWidget {
         });
   }
 
-
   String getInitRoute() {
-    switch(tabItem) {
+    switch (tabItem) {
       case TabItem.home:
         return TabNavigatorRoutes.root.toString();
       case TabItem.search:
@@ -87,7 +89,7 @@ class TabNavigator extends StatelessWidget {
       case TabItem.fantasy:
         return TabNavigatorRoutes.fantasy.toString();
       case TabItem.profile:
-      // TODO: Handle this case.
+        // TODO: Handle this case.
         break;
     }
     return TabNavigatorRoutes.root.toString();
