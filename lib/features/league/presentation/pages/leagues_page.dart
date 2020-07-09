@@ -52,17 +52,34 @@ class LeaguesPage extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Container(
               margin: const EdgeInsets.all(10.0),
-              child: (new ListView.builder(
+              child: (new ListView.separated(
                 shrinkWrap: true,
                 itemCount: state.leagues == null ? 0 : state.leagues.length,
                 itemBuilder: (BuildContext context, int index) {
                   return RaisedButton(
-                      child: new Text(state.leagues[index].name),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                              flex: 1,
+                              child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  padding: const EdgeInsets.all(4),
+                                  child: Image.network(
+                                    state.leagues[index].picture,
+                                    width: 50,
+                                    height: 50,
+                                  ))),
+                          Expanded(
+                            flex: 3,
+                            child: Text(state.leagues[index].name),
+                          )
+                        ],
+                      ),
                       splashColor: Colors.grey[900],
                       onPressed: () => onPush(OnPushValue(
                           type: TabNavigatorRoutes.league,
                           id: state.leagues[index].leagueId)));
-                },
+                }, separatorBuilder: (BuildContext context, int index) => const Divider(),
               ))),
         ));
   }

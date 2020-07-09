@@ -6,8 +6,6 @@ import '../../../../injection_container.dart';
 import '../bloc/leagues_bloc.dart';
 import '../widgets/widgets.dart';
 
-
-
 class LeagueInfoPage extends StatelessWidget {
   final int leagueId;
   final ValueChanged<OnPushValue> onPush;
@@ -23,19 +21,26 @@ class LeagueInfoPage extends StatelessWidget {
     return BlocProvider(
       create: (_) => sl<LeaguesBloc>(),
       child: Scaffold(
-        appBar: AppBar(
-        ),
-        backgroundColor: Colors.grey[300],
-        body: Container(
-          child: Material(child: Column(
-            children: <Widget>[
-              InfoLeague(leagueId: leagueId, onPush: onPush)
-            ],
+          appBar: AppBar(
+            title: BlocBuilder<LeaguesBloc, LeaguesState>(
+                builder: (context, state) {
+              if (state is MatchesByLeagueLoaded) {
+                return Text(state.matchesByLeague.leagueName);
+              } else if (state is RankingLoaded) {
+                return Text(state.ranking.leagueName);
+              }
+              return Container();
+            }),
+          ),
+          backgroundColor: Colors.grey[300],
+          body: Container(
+            child: Material(
+                child: Column(
+              children: <Widget>[
+                InfoLeague(leagueId: leagueId, onPush: onPush)
+              ],
+            )),
           )),
-        )
-      ),
     );
   }
-
 }
-
