@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../app.dart';
 import '../../../../core/config/constant.dart';
 import '../../../../injection_container.dart';
-import '../../../league/presentation/pages/leagues_page.dart';
 import '../bloc/user_bloc.dart';
 import '../widgets/widgets.dart';
 

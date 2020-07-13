@@ -5,7 +5,6 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../core/error/failures.dart';
-import '../../../../core/usecases/usecase.dart';
 import '../../../authentication/presentation/bloc/user_bloc.dart';
 import '../../domain/entities/fantasy.dart';
 import '../../domain/usecases/get_fantasy_players.dart';
