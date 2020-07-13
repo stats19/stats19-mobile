@@ -73,6 +73,12 @@ class MatchDetailsWidget extends StatelessWidget {
                         TabBar(
                             labelColor: Colors.blueAccent,
                             unselectedLabelColor: Colors.grey,
+                            indicator: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10)),
+                              color: Colors.white30,
+                            ),
                             tabs: [
                               Tab(text: "highlights".tr()),
                               Tab(text: "statistics".tr()),

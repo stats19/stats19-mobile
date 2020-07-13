@@ -26,12 +26,16 @@ class StatsPlayer extends StatelessWidget {
                 left: 20,
                 top: 18,
                 right: 20,
+                bottom: 20
               ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10)
+                borderRadius: BorderRadius.all(
+                    Radius.circular(10)
                 ),
+//                borderRadius: BorderRadius.only(
+//                    topLeft: Radius.circular(10),
+//                    topRight: Radius.circular(10)
+//                ),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
