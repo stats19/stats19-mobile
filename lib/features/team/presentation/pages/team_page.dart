@@ -52,15 +52,13 @@ class TeamWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          TeamHeader(teamId: teamId),
-          RecentMatches(),
-          InfoTeam(onPush: onPush),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        TeamHeader(teamId: teamId),
+        RecentMatches(),
+        InfoTeam(onPush: onPush),
+      ],
     );
   }
 }
