@@ -32,6 +32,7 @@ class ComingLeagueMatch extends StatelessWidget {
     final String formatted =
     DateFormat.yMMMMEEEEd().format(DateTime.parse(nextMatch.date));
     return FlatButton(
+        onPressed: () {  },
         child: Container(
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(

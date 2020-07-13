@@ -39,99 +39,102 @@ class LeagueRanking extends StatelessWidget {
               } else if (state is RankingLoaded) {
                 print(state.toString());
                 return Expanded(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: (DataTable(
-                      columnSpacing: 15,
-                      columns: [
-                        DataColumn(
-                          label: Text('Club',
-                              style: TextStyle(fontSize: tabletxtsize)),
-                          numeric: false,
-                        ),
-                        DataColumn(
-                          label: Text('MJ',
-                              style: TextStyle(fontSize: tabletxtsize)),
-                          numeric: false,
-                        ),
-                        DataColumn(
-                          label: Text('G',
-                              style: TextStyle(fontSize: tabletxtsize)),
-                          numeric: false,
-                        ),
-                        DataColumn(
-                          label: Text('N',
-                              style: TextStyle(fontSize: tabletxtsize)),
-                          numeric: false,
-                        ),
-                        DataColumn(
-                          label: Text('P',
-                              style: TextStyle(fontSize: tabletxtsize)),
-                          numeric: false,
-                        ),
-                        DataColumn(
-                          label: Text('DB',
-                              style: TextStyle(fontSize: tabletxtsize)),
-                          numeric: false,
-                        ),
-                        DataColumn(
-                          label: Text('Pts',
-                              style: TextStyle(fontSize: tabletxtsize)),
-                          numeric: false,
-                        ),
-                      ],
-                      rows: state.ranking
-                          .rankingItems // Loops through dataColumnText, each iteration assigning the value to element
-                          .map(
-                            ((element) => DataRow(
-                                  cells: <DataCell>[
-                                    DataCell(FlatButton(
-                                        padding: EdgeInsets.only(left: 0),
-                                        onPressed: () => onPush(OnPushValue(
-                                            type: TabNavigatorRoutes.team,
-                                            id: element.teamId)),
-                                        child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Row(
-                                              children: <Widget>[
-                                                Container(
-                                                  padding: EdgeInsets.only(right: 5),
-                                                    alignment: Alignment.centerRight,
-                                                    child: Image.network(element.picture, width: 25)
-                                                ),
-                                                Container(
-                                                  width: 70,
-                                                  child: Text(element.name,
-                                                      style: TextStyle(
-                                                          fontSize: 13), textAlign: TextAlign.left,),
-                                                ),
+                  child: Container(
+                    width: double.infinity,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: (DataTable(
+                        columnSpacing: 15,
+                        columns: [
+                          DataColumn(
+                            label: Text('Club',
+                                style: TextStyle(fontSize: tabletxtsize)),
+                            numeric: false,
+                          ),
+                          DataColumn(
+                            label: Text('MJ',
+                                style: TextStyle(fontSize: tabletxtsize)),
+                            numeric: false,
+                          ),
+                          DataColumn(
+                            label: Text('G',
+                                style: TextStyle(fontSize: tabletxtsize)),
+                            numeric: false,
+                          ),
+                          DataColumn(
+                            label: Text('N',
+                                style: TextStyle(fontSize: tabletxtsize)),
+                            numeric: false,
+                          ),
+                          DataColumn(
+                            label: Text('P',
+                                style: TextStyle(fontSize: tabletxtsize)),
+                            numeric: false,
+                          ),
+                          DataColumn(
+                            label: Text('DB',
+                                style: TextStyle(fontSize: tabletxtsize)),
+                            numeric: false,
+                          ),
+                          DataColumn(
+                            label: Text('Pts',
+                                style: TextStyle(fontSize: tabletxtsize)),
+                            numeric: false,
+                          ),
+                        ],
+                        rows: state.ranking
+                            .rankingItems // Loops through dataColumnText, each iteration assigning the value to element
+                            .map(
+                              ((element) => DataRow(
+                                    cells: <DataCell>[
+                                      DataCell(FlatButton(
+                                          padding: EdgeInsets.only(left: 0),
+                                          onPressed: () => onPush(OnPushValue(
+                                              type: TabNavigatorRoutes.team,
+                                              id: element.teamId)),
+                                          child: Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Container(
+                                                    padding: EdgeInsets.only(right: 5),
+                                                      alignment: Alignment.centerRight,
+                                                      child: Image.network(element.picture, width: 25)
+                                                  ),
+                                                  Container(
+                                                    width: 70,
+                                                    child: Text(element.name,
+                                                        style: TextStyle(
+                                                            fontSize: 13), textAlign: TextAlign.left,),
+                                                  ),
 
-                                              ],
-                                            )))),
-                                    DataCell(Text(
-                                        element.matchPlayed.toString(),
-                                        style:
-                                            TextStyle(fontSize: tabletxtsize))),
-                                    DataCell(Text(element.win.toString(),
-                                        style:
-                                            TextStyle(fontSize: tabletxtsize))),
-                                    DataCell(Text(element.draw.toString(),
-                                        style:
-                                            TextStyle(fontSize: tabletxtsize))),
-                                    DataCell(Text(element.lose.toString(),
-                                        style:
-                                            TextStyle(fontSize: tabletxtsize))),
-                                    DataCell(Text(element.score.toString(),
-                                        style:
-                                            TextStyle(fontSize: tabletxtsize))),
-                                    DataCell(Text(element.points.toString(),
-                                        style:
-                                            TextStyle(fontSize: tabletxtsize))),
-                                  ],
-                                )),
-                          )
-                          .toList(),
-                    )),
+                                                ],
+                                              )))),
+                                      DataCell(Text(
+                                          element.matchPlayed.toString(),
+                                          style:
+                                              TextStyle(fontSize: tabletxtsize))),
+                                      DataCell(Text(element.win.toString(),
+                                          style:
+                                              TextStyle(fontSize: tabletxtsize))),
+                                      DataCell(Text(element.draw.toString(),
+                                          style:
+                                              TextStyle(fontSize: tabletxtsize))),
+                                      DataCell(Text(element.lose.toString(),
+                                          style:
+                                              TextStyle(fontSize: tabletxtsize))),
+                                      DataCell(Text(element.score.toString(),
+                                          style:
+                                              TextStyle(fontSize: tabletxtsize))),
+                                      DataCell(Text(element.points.toString(),
+                                          style:
+                                              TextStyle(fontSize: tabletxtsize))),
+                                    ],
+                                  )),
+                            )
+                            .toList(),
+                      )),
+                    ),
                   ),
                 );
               } else if (state is Error) {

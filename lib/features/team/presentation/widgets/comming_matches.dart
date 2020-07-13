@@ -102,6 +102,7 @@ class CommingMatch extends StatelessWidget {
     final String formatted =
     DateFormat.yMMMMEEEEd().format(DateTime.parse(nextMatch.date));
     return FlatButton(
+        onPressed: () {  },
         child: Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
