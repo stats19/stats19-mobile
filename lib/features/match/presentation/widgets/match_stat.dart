@@ -17,7 +17,7 @@ class MatchStat extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Padding(padding: EdgeInsets.only(top: 10), child: Text(title)),
+        Padding(padding: EdgeInsets.only(top: 20), child: Text(title)),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[

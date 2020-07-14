@@ -24,6 +24,7 @@ class SoccerSearchPage extends StatelessWidget {
       child: DefaultTabController(
         length: 2,
         child: Scaffold(
+          resizeToAvoidBottomPadding: false,
           appBar: AppBar(
             bottom: TabBar(
               tabs: [

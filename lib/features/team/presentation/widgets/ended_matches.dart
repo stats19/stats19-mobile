@@ -64,8 +64,8 @@ class EndedMatch extends StatelessWidget {
         ? draw
         : playedMatch.home.goals < playedMatch.away.goals ? lose: notyet;
 
-    final String homewin  = (playedMatch.forecast.toString() + "_HOME");
-    final String awaywin  = (playedMatch.forecast.toString() + "_AWAY");
+    final String homewin  = (playedMatch.home.name + "_HOME");
+    final String awaywin  = (playedMatch.home.name + "_AWAY");
 
     Gradient forcastedgradient = playedMatch.forecast == null
         ? notyet

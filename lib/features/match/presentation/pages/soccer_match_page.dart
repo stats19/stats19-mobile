@@ -58,38 +58,42 @@ class MatchDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
+    return Column(
 //        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          HeaderPanel(),
+      children: <Widget>[
+        HeaderPanel(),
 
-          Container(
-              child: DefaultTabController(
-                  length: 2,
-                  child: new Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        TabBar(
-                            labelColor: Colors.blueAccent,
-                            unselectedLabelColor: Colors.grey,
-                            tabs: [
-                              Tab(text: "highlights".tr()),
-                              Tab(text: "statistics".tr()),
+        Expanded(
+          child: DefaultTabController(
+              length: 2,
+              child: new Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    TabBar(
+                        labelColor: Colors.blueAccent,
+                        unselectedLabelColor: Colors.grey,
+                        indicator: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              topRight: Radius.circular(10)),
+                          color: Colors.white30,
+                        ),
+                        tabs: [
+                          Tab(text: "highlights".tr()),
+                          Tab(text: "statistics".tr()),
 
-                            ]),
-                        Container(
-                            height:MediaQuery.of(context).size.height,
-                            child: TabBarView(children: [
-//                                Text("toto"),
-//                                Text("toto")
+                        ]),
+                    Expanded(
+//                            height:MediaQuery.of(context).size.height,
+                        child: TabBarView(children: [
+//                            Text("toto"),
+//                            Text("toto")
                               MatchHighlights(onPush: onPush),
                               SoccerMatchStats()
-                        ]))
-                      ]))
-          )
-        ],
-      ),
+                    ]))
+                  ])),
+        )
+      ],
     );
   }
 }
