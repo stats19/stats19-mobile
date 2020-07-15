@@ -41,7 +41,6 @@ class ComingMatch extends StatelessWidget {
               } else if (state is Loading) {
                 return LoadingWidget();
               } else if (state is MatchesByLeagueLoaded) {
-//                print(state.matchesByLeague.toString());
                 if (state.matchesByLeague.matches.length == 0 &&
                     state.matchesByLeague.playedMatches.length == 0) {
                   return noMatchesFound();
@@ -68,7 +67,8 @@ class ComingMatch extends StatelessWidget {
         children: <Widget>[
           Column(
               children:
-                  matches.map((e) => ComingLeagueMatch(nextMatch: e)).toList())
+                  matches.map((e) => ComingLeagueMatch(nextMatch: e)).toList()
+          )
         ],
       ),
     ));

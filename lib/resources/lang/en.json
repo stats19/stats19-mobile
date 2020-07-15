@@ -17,6 +17,8 @@
   "coming_matches": "Upcoming",
   "ranking": "Ranking",
   "played_matches": "Played",
+  "stage": "Day",
+  "forecast": "Predicted",
   "no_coming_matches": "No upcoming matches",
 
   "highlights": "Highlights",

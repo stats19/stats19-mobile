@@ -5,6 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:stat19_app_mobile/core/presentation/widgets/match_gradient.dart';
 import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
 import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 
 import '../../domain/entities/team.dart';
 import '../bloc/team_bloc.dart';
@@ -182,7 +184,7 @@ class EndedMatch extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "predicted :",
+                      "forecast".tr() + ' : ',
                       style: TextStyle(color: Colors.blueGrey[500]), textAlign: TextAlign.center,
                     ),
                     Container(

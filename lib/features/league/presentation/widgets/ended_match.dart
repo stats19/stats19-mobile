@@ -5,6 +5,8 @@ import 'package:stat19_app_mobile/core/presentation/widgets/match_gradient.dart'
 import 'package:stat19_app_mobile/core/presentation/widgets/navigation.dart';
 import 'package:stat19_app_mobile/core/presentation/widgets/on_push_value.dart';
 import 'package:stat19_app_mobile/features/league/domain/entities/matches_by_league.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 
 class EndedMatch extends StatelessWidget {
   final PlayedMatch playedMatch;
@@ -147,7 +149,7 @@ class EndedMatch extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "predicted :",
+                      "forecast".tr() + ' : ',
                       style: TextStyle(color: Colors.blueGrey[500]), textAlign: TextAlign.center,
                     ),
                     Container(
