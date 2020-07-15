@@ -39,6 +39,7 @@ dependencies:
   intl: ^0.16.1
   ez_flutter: ^0.4.2
   splashscreen: ^1.2.0
+  flutter_phoenix: "^0.1.0"
 
 
 dev_dependencies:

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -35,11 +36,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: SplashScreen(
           seconds: 3,
           navigateAfterSeconds: MaterialApp(
             title: 'router',
-            home: widget.token != null ? App() : AuthenticationPage(),
+            home: Phoenix( child: widget.token != null ? App() : AuthenticationPage()),
             // List all of the app's supported locales here
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,

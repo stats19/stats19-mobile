@@ -53,9 +53,10 @@ class _AuthFormState extends State<AuthForm> {
           } else if (state is Error) {
             return MessageDisplay(message: state.message);
           } else if (state is Loaded) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => App()));
-            return Container();
+            SchedulerBinding.instance.addPostFrameCallback((_) {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => App()));
+            });
           }
           return Container();
         }),

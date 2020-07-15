@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:stat19_app_mobile/features/authentication/presentation/pages/authentication_page.dart';
 
 import '../../../../app_router.dart';
 import '../bloc/user_bloc.dart';
@@ -103,7 +104,8 @@ class _RegisterFormState extends State<RegisterForm> {
               return MessageDisplay(message: state.message);
             } else if (state is RegisterLoaded) {
               SchedulerBinding.instance.addPostFrameCallback((_) {
-                Navigator.of(context).pushNamed(NamedRoute.HOME_ROUTE);
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => AuthenticationPage()));
               });
               return Container();
             }
