@@ -51,12 +51,18 @@ class _HeaderPlayerState extends State<HeaderPlayer> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     GestureDetector(
-                      onTap: () => onPush(OnPushValue(
-                          type: TabNavigatorRoutes.team,
-                          id: state.player.teamId)),
+                      onTap: () {
+                        if (state.player.teamId != null) {
+                          onPush(OnPushValue(
+                              type: TabNavigatorRoutes.team,
+                              id: state.player.teamId));
+                        }
+                      },
                       child: Container(
                           width: 60,
-                          child: Image.network(state.player.teamPicture)),
+                          child: Image.network(state.player.teamPicture != null
+                              ? state.player.teamPicture
+                              : "https://www.seekpng.com/png/detail/28-289657_espn-soccer-team-logo-default.png")),
                     ),
                     Container(
                         width: 80, child: Image.network(state.player.picture))
