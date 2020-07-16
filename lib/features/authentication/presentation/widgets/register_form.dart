@@ -61,6 +61,7 @@ class _RegisterFormState extends State<RegisterForm> {
           ),
 //          SizedBox(height: 30),
           TextFormField(
+            obscureText: true,
             controller: _pass,
             validator: (value){
               Pattern pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
@@ -78,6 +79,7 @@ class _RegisterFormState extends State<RegisterForm> {
             },
           ),
           TextFormField(
+            obscureText: true,
             controller: _confirmPass,
             validator: (value){
               if(value.isEmpty)
