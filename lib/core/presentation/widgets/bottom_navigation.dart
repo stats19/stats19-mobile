@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stat19_app_mobile/features/authentication/data/datasources/user_local_data_source.dart';
 import 'package:stat19_app_mobile/features/authentication/presentation/pages/authentication_page.dart';
 
 import '../../../features/navigation/presentation/bloc/navigation_bloc.dart';
@@ -71,12 +73,16 @@ class BottomNavigation extends StatelessWidget {
                 BlocProvider.of<NavigationBloc>(context)
                     .add(RefreshForecastEvent());
               } else if (index == 4 ){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) {
-                    return AuthenticationPage();
-                  }),
-                );
+                SharedPreferences.getInstance().then((value){
+                  value.remove(CACHED_AUTH_TOKEN).then((value){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return AuthenticationPage();
+                      }),
+                    );
+                  });
+                });
               }
 
               else {
