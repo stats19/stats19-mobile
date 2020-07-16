@@ -23,6 +23,7 @@ class AuthenticationPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Stats19'),
+        automaticallyImplyLeading: false,
       ),
       body: Form(child: buildBody(context)),
     );
@@ -40,7 +41,6 @@ class AuthenticationPage extends StatelessWidget {
                 // to half
                 TitlePage(),
                 InscriptionWidget(),
-
                 // Bottom half
                 AuthForm()
               ],
