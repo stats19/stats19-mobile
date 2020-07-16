@@ -17,6 +17,8 @@
   "ranking": "Classement",
   "coming_matches": "A venir",
   "played_matches": "Joués",
+  "stage": "Journée",
+  "forecast": "Prédit",
   "no_coming_matches": "Aucun match à venir",
 
   "highlights": "Temps fort",
@@ -50,7 +52,7 @@
   "home": "Accueil",
   "refresh": "Prédire",
   "fantasy": "Fantasy",
-  "profile": "Profil",
+  "profile": "Quitter",
   "update": "Les données ont été mises à jour.",
 
   "goalKeepers": "Gardiens",

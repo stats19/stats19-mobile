@@ -16,7 +16,7 @@ class InscriptionWidget extends StatelessWidget {
           Text("no_account").tr(),
           FlatButton(
             onPressed: () {
-              Navigator.push(context,
+              Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (BuildContext context) {
                     return RegistrationPage(
                     );

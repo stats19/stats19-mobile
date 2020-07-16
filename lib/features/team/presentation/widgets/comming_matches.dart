@@ -117,7 +117,7 @@ class CommingMatch extends StatelessWidget {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "day" + nextMatch.stage.toString(),
+                        "stage".tr() + ' ' + nextMatch.stage.toString(),
                         style: TextStyle(color: Colors.blueGrey[500]), textAlign: TextAlign.left,
                       ),
                     ),

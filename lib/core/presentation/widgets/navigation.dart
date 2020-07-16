@@ -13,9 +13,7 @@ enum TabNavigatorRoutes {
   root,
   search,
   fantasy,
-  profile,
   league,
-  refresh,
   match,
   team,
   player
@@ -49,7 +47,6 @@ class TabNavigator extends StatelessWidget {
       TabNavigatorRoutes.fantasy.toString(): (context) => FantasyPage(
             onPush: (param) => _push(context, id: param.id, type: param.type),
           ),
-      TabNavigatorRoutes.profile.toString(): (context) => null,
       TabNavigatorRoutes.league.toString(): (context) => LeagueInfoPage(
           leagueId: id,
           onPush: (param) => _push(context, id: param.id, type: param.type)),
@@ -83,14 +80,9 @@ class TabNavigator extends StatelessWidget {
         return TabNavigatorRoutes.root.toString();
       case TabItem.search:
         return TabNavigatorRoutes.search.toString();
-      case TabItem.refresh:
-//        return TabNavigatorRoutes.root.toString();
-        break;
       case TabItem.fantasy:
         return TabNavigatorRoutes.fantasy.toString();
-      case TabItem.profile:
-        // TODO: Handle this case.
-        break;
+
     }
     return TabNavigatorRoutes.root.toString();
   }

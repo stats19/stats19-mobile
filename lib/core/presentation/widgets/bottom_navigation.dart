@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stat19_app_mobile/features/authentication/presentation/pages/authentication_page.dart';
 
 import '../../../features/navigation/presentation/bloc/navigation_bloc.dart';
 import '../../../injection_container.dart';
@@ -55,9 +56,6 @@ class BottomNavigation extends StatelessWidget {
             color = Colors.red;
           }
 
-          if (currentTab == TabItem.refresh) {
-            print("hehe");
-          }
           return BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             items: [
@@ -66,13 +64,22 @@ class BottomNavigation extends StatelessWidget {
               _buildItem(
                   tabItem: TabItem.refresh, icon: Icons.refresh, color: color),
               _buildItem(tabItem: TabItem.fantasy, icon: Icons.group),
-              _buildItem(tabItem: TabItem.profile, icon: Icons.account_circle),
+              _buildItem(tabItem: TabItem.profile, icon: Icons.exit_to_app),
             ],
             onTap: (index) {
               if (index == 2) {
                 BlocProvider.of<NavigationBloc>(context)
                     .add(RefreshForecastEvent());
-              } else {
+              } else if (index == 4 ){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return AuthenticationPage();
+                  }),
+                );
+              }
+
+              else {
                 return onSelectTab(
                   TabItem.values[index],
                 );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:stat19_app_mobile/core/presentation/widgets/match_gradient.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../domain/entities/matches_by_league.dart';
 
@@ -23,14 +24,24 @@ class ComingLeagueMatch extends StatelessWidget {
     final String homewin  = (nextMatch.homeName.toString() + "_HOME");
     final String awaywin  = (nextMatch.homeName.toString() + "_AWAY");
 
-    Gradient gradient = (nextMatch.homeName + '_' + nextMatch.forecast).toString() == homewin
+
+    Gradient gradient = nextMatch.forecast == null
+        ? notyet
+        : (nextMatch.homeName + '_' + nextMatch.forecast).toString() == homewin
         ? win
         :  nextMatch.forecast == 'DRAW'
         ? draw
-        : (nextMatch.homeName + '_' + nextMatch.forecast) == awaywin ? lose: notyet;
+        : (nextMatch.homeName + '_' + nextMatch.forecast) == awaywin ? lose : notyet;
 
     final String formatted =
     DateFormat.yMMMMEEEEd().format(DateTime.parse(nextMatch.date));
+    print(nextMatch.date);
+    print(nextMatch.matchId);
+    print(nextMatch.stage);
+    print(nextMatch.homeName);
+    print(nextMatch.awayName);
+    print("\n");
+
     return FlatButton(
         onPressed: () {  },
         child: Container(
@@ -50,7 +61,7 @@ class ComingLeagueMatch extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Day ' + nextMatch.stage.toString(),
+                        "stage".tr() + ' ' +  nextMatch.stage.toString(),
                         style: TextStyle(fontSize: 15, color: Colors.black),
                       ),
                     ),
